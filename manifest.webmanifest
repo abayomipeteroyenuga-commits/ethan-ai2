@@ -1,0 +1,107 @@
+{
+  "name": "Ethan Office Suite",
+  "short_name": "Ethan Office",
+  "description": "Ethan Office Suite v21 \u2014 Word, Excel, Presentation, Document Utility and everyday office productivity tools.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "background_color": "#F4F7FB",
+  "theme_color": "#102A56",
+  "categories": [
+    "productivity",
+    "business",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ethan Word",
+      "short_name": "Word",
+      "url": "./index.html?open=word",
+      "icons": [
+        {
+          "src": "assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Ethan Excel",
+      "short_name": "Excel",
+      "url": "./index.html?open=excel",
+      "icons": [
+        {
+          "src": "assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Presentation",
+      "short_name": "Slides",
+      "url": "./index.html?open=presentation",
+      "icons": [
+        {
+          "src": "assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Ethan Document Utility",
+      "short_name": "Document Utility",
+      "url": "./index.html?open=documents",
+      "icons": [
+        {
+          "src": "assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Tasks",
+      "short_name": "Tasks",
+      "url": "./index.html?open=tasks",
+      "icons": [
+        {
+          "src": "assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "lang": "en",
+  "dir": "ltr",
+  "orientation": "any",
+  "prefer_related_applications": false
+}

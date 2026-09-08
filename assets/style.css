@@ -1,0 +1,342 @@
+
+:root{--navy:#071b4b;--blue:#0877f9;--blue2:#06b8ff;--green:#12a957;--orange:#ff8c1a;--red:#ee3840;--purple:#6c3ce8;--bg:#f4f8ff;--card:#fff;--text:#10213f;--muted:#63708a;--line:#dbe6f7;--shadow:0 12px 30px rgba(12,42,94,.11)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:linear-gradient(180deg,#f8fbff,#edf5ff);color:var(--text)}button,input,textarea,select{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+.app{min-height:100vh;display:grid;grid-template-columns:250px 1fr}.sidebar{background:linear-gradient(180deg,#071b4b,#0a315d);color:white;padding:18px 14px;position:sticky;top:0;height:100vh;overflow:auto}.brand{display:flex;align-items:center;gap:10px;padding:6px 7px 18px;border-bottom:1px solid rgba(255,255,255,.15)}.brand img{width:46px;height:46px;border-radius:13px}.brand b{font-size:20px}.brand small{display:block;opacity:.75}.nav{display:grid;gap:6px;margin-top:18px}.nav button{display:flex;gap:11px;align-items:center;text-align:left;border:0;background:transparent;color:#eaf3ff;padding:11px 12px;border-radius:11px}.nav button:hover,.nav button.active{background:linear-gradient(90deg,#0b7cff,#07a2f3);color:#fff}.nav .ico{width:25px;text-align:center;font-size:18px}.sidebar-foot{font-size:11px;line-height:1.5;opacity:.72;margin-top:18px;padding:14px 9px;border-top:1px solid rgba(255,255,255,.12)}
+.main{min-width:0}.topbar{height:72px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 24px;position:sticky;top:0;z-index:6}.menuBtn{display:none;border:0;background:#eef5ff;border-radius:10px;padding:9px}.search{flex:1;max-width:680px;position:relative}.search input{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px 14px 11px 38px;outline:none;background:#f8fbff}.search span{position:absolute;left:13px;top:11px}.top-actions{margin-left:auto;display:flex;gap:8px}.btn{border:0;border-radius:10px;padding:10px 14px;background:#eaf2ff;color:#0b3972;font-weight:700}.btn.primary{background:linear-gradient(90deg,var(--blue),#05a1ff);color:white}.btn.green{background:var(--green);color:#fff}.btn.red{background:#fee8e8;color:#b11}.btn.orange{background:#fff1df;color:#a65100}.btn.sm{padding:7px 10px;font-size:12px}.content{padding:24px;max-width:1500px;margin:auto}.page{display:none}.page.active{display:block}.titleRow{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:18px}.titleRow h1{margin:0;font-size:28px;color:var(--navy)}.titleRow p{margin:5px 0 0;color:var(--muted)}
+.hero{background:linear-gradient(120deg,#07255c,#0876e7 70%,#11b2ff);border-radius:22px;color:white;padding:24px;display:grid;grid-template-columns:1fr auto;gap:16px;overflow:hidden;box-shadow:var(--shadow)}.hero img{width:150px;height:150px;object-fit:cover;border-radius:28px;border:4px solid rgba(255,255,255,.5)}.hero h2{font-size:32px;margin:0 0 8px}.hero p{max-width:750px;opacity:.9;margin:0 0 16px}.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.14);font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:18px}.tool{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:17px;box-shadow:0 6px 16px rgba(16,54,109,.06);transition:.2s}.tool:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.tool .toolico{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:23px;color:white;margin-bottom:11px}.tool h3{margin:0 0 5px}.tool p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}.tool button{margin-top:12px}.section{margin-top:24px}.section h2{font-size:18px;color:var(--navy)}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{background:white;border:1px solid var(--line);border-radius:15px;padding:16px;box-shadow:0 5px 15px rgba(20,55,100,.05)}.card h3{margin-top:0}.muted{color:var(--muted);font-size:13px}.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed #bdd0ec;border-radius:14px;background:#fbfdff}
+.panel{background:white;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}.toolbar{padding:10px;border-bottom:1px solid var(--line);display:flex;gap:7px;flex-wrap:wrap;align-items:center;background:#f9fbff}.toolbar button,.toolbar select,.toolbar input{border:1px solid var(--line);background:#fff;padding:7px 9px;border-radius:8px}.editor{min-height:520px;padding:42px;outline:0;line-height:1.6;background:#fff;max-width:900px;margin:auto}.editorWrap{background:#dfe6ef;padding:22px;min-height:600px}.sheetWrap{overflow:auto;max-height:620px}.sheet{border-collapse:collapse;background:#fff;min-width:900px}.sheet th,.sheet td{border:1px solid #d8e1ef;min-width:90px;height:32px;padding:5px}.sheet th{background:#f1f6fd;position:sticky;top:0;z-index:2}.sheet td:first-child,.sheet th:first-child{min-width:45px;text-align:center;background:#f1f6fd;position:sticky;left:0}.sheet td[contenteditable]{outline:none}.sheet td[contenteditable]:focus{box-shadow:inset 0 0 0 2px var(--blue)}
+.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:grid;gap:5px}.field label{font-size:12px;color:var(--muted);font-weight:700}.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px;outline:none;background:#fff}.field textarea{min-height:100px;resize:vertical}.full{grid-column:1/-1}.list{display:grid;gap:9px}.item{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;align-items:flex-start;gap:12px}.item .grow{flex:1}.item h4{margin:0 0 4px}.badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:700;background:#eaf2ff;color:#1251a4}.badge.done{background:#ddf7e8;color:#14723d}.badge.high{background:#fee6e6;color:#a11}.badge.medium{background:#fff0da;color:#995100}.slideStage{background:#1a2433;padding:28px;display:grid;place-items:center;min-height:480px}.slide{aspect-ratio:16/9;width:min(900px,100%);background:white;border-radius:8px;padding:55px;box-shadow:0 20px 60px rgba(0,0,0,.3);overflow:auto}.slide h1{font-size:44px;color:var(--navy)}.slide p{font-size:24px;line-height:1.5}.thumbs{display:flex;gap:10px;overflow:auto;padding:10px;background:#f6f9fd}.thumb{min-width:150px;aspect-ratio:16/9;background:#fff;border:2px solid transparent;border-radius:8px;padding:8px;font-size:10px}.thumb.active{border-color:var(--blue)}
+.calc{max-width:380px;margin:auto}.calcDisplay{width:100%;padding:18px;font-size:28px;text-align:right;border:1px solid var(--line);border-radius:12px;margin-bottom:10px}.calcGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.calcGrid button{border:0;border-radius:11px;padding:16px;background:#eef4ff;font-weight:800}.calcGrid button.eq{background:var(--blue);color:white}.scanPreview{max-width:100%;max-height:600px;display:block;margin:20px auto;border-radius:10px;box-shadow:var(--shadow)}
+.toast{position:fixed;right:20px;bottom:20px;background:#0b2147;color:#fff;padding:12px 16px;border-radius:10px;box-shadow:var(--shadow);z-index:99;display:none}.modal{position:fixed;inset:0;background:rgba(4,18,43,.52);display:none;place-items:center;z-index:50;padding:18px}.modal.show{display:grid}.modalbox{width:min(680px,100%);max-height:90vh;overflow:auto;background:white;border-radius:18px;padding:20px;box-shadow:0 24px 80px rgba(0,0,0,.3)}
+.footer{text-align:center;color:#6d7891;font-size:12px;padding:28px}
+@media(max-width:1050px){.grid{grid-template-columns:repeat(3,1fr)}.app{grid-template-columns:210px 1fr}}@media(max-width:800px){.app{display:block}.sidebar{position:fixed;left:-270px;width:250px;z-index:30;transition:.2s}.sidebar.open{left:0}.menuBtn{display:inline-block}.grid{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr}.hero{grid-template-columns:1fr}.hero img{display:none}.content{padding:16px}.topbar{padding:0 12px}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.editor{padding:22px;min-height:440px}}@media(max-width:500px){.grid{grid-template-columns:1fr}.titleRow{display:block}.top-actions{display:none}.hero h2{font-size:26px}}
+@media print{.sidebar,.topbar,.toolbar,.titleRow,.footer{display:none!important}.app{display:block}.content{padding:0}.page{display:none!important}.page.active{display:block!important}.editorWrap{background:white;padding:0}.editor{max-width:none;padding:0}.slideStage{background:white;padding:0}.slide{box-shadow:none;width:100%}}
+/* Ethan Office v2 usability/performance additions */
+.saveStatus{font-size:12px;padding:6px 9px;border-radius:999px;background:#eef3fb;color:#5c6d86}.saveStatus.ok{background:#e8f7ef;color:#087a45}.saveStatus.warn{background:#fff4df;color:#9a5a00}.cellName{font-weight:800;background:#eef5ff;border:1px solid #bdd7ff;border-radius:8px;padding:8px 10px;min-width:48px;text-align:center}.sheet td.selected{outline:2px solid #0877f9;outline-offset:-2px;background:#eff7ff}.star{border:0;background:transparent;font-size:20px;cursor:pointer;color:#b6c0cf}.star.on{color:#f3a500}.net{font-size:12px;font-weight:800;padding:7px 9px;border-radius:999px}.net.online{background:#e5f8ed;color:#087845}.net.offline{background:#fff0e8;color:#a44716}.installCard{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25)}.installCard span{font-size:13px;max-width:390px}.pinned{border-color:#ffcf51;box-shadow:0 0 0 2px rgba(255,207,81,.18)}.actions{display:flex;gap:6px;flex-wrap:wrap}.chart{display:grid;gap:10px}.barRow{display:grid;grid-template-columns:minmax(70px,130px) 1fr auto;gap:8px;align-items:center}.barTrack{height:18px;background:#eef2f8;border-radius:999px;overflow:hidden}.barTrack i{display:block;height:100%;background:linear-gradient(90deg,#0877f9,#08a85b);border-radius:999px}.slide[data-theme="light"]{background:#fff;color:#13213e;border:1px solid #dce5f3}.slide[data-theme="green"]{background:linear-gradient(135deg,#063c2d,#0d9b62);color:white}.slide[data-theme="purple"]{background:linear-gradient(135deg,#2e176c,#7746df);color:white}.slide[data-theme="navy"]{background:linear-gradient(135deg,#071b4b,#0b69d8);color:white}.toolbar select,.toolbar input[type=color]{height:38px;border:1px solid #d4ddec;border-radius:8px;background:#fff}.toolbar input[type=color]{width:38px;padding:3px}.statusStrip{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.tip{background:#f8fbff;border:1px solid #d9e8ff;border-radius:12px;padding:12px}.tool button,.item button{touch-action:manipulation}@media(max-width:720px){.installCard{align-items:flex-start}.toolbar{overflow-x:auto;flex-wrap:nowrap;padding-bottom:8px}.toolbar>*{flex:0 0 auto}.barRow{grid-template-columns:80px 1fr}.barRow b{grid-column:2}.top-actions .net{display:none}}
+
+/* ===== Ethan Office v3 — redesigned UI + professional Ethan Word ribbon ===== */
+body{background:#eef3f9}.sidebar{box-shadow:6px 0 28px rgba(5,26,67,.12)}.topbar{box-shadow:0 3px 14px rgba(30,67,115,.06)}.content{max-width:1600px}.panel,.tool,.card,.item{transition:box-shadow .18s ease,border-color .18s ease,transform .18s ease}.tool:hover{border-color:#a9cbff}.btn:focus-visible,.nav button:focus-visible,.wordTabs button:focus-visible,.wordRibbon button:focus-visible{outline:3px solid rgba(8,119,249,.24);outline-offset:2px}.btn:active,.wordRibbon button:active{transform:translateY(1px)}
+.wordAppShell{background:#fff;border:1px solid #cad7e8;border-radius:14px;box-shadow:0 16px 45px rgba(12,42,94,.13);overflow:hidden;min-height:720px}.wordTitlebar{height:52px;display:flex;align-items:center;gap:8px;padding:7px 12px;background:linear-gradient(90deg,#0758bd,#0877f9);color:#fff}.wordTitlebar input{flex:1;min-width:120px;max-width:520px;border:1px solid rgba(255,255,255,.25);border-radius:7px;background:rgba(255,255,255,.13);color:#fff;padding:8px 10px;font-weight:700}.wordTitlebar input::placeholder{color:#d9ebff}.wordTitlebar .saveStatus{background:rgba(255,255,255,.16);color:#fff}.wordBack,.wordQuick button{border:0;border-radius:7px;background:rgba(255,255,255,.13);color:#fff;padding:7px 10px}.wordQuick{margin-left:auto;display:flex;gap:5px}.wordTabs{display:flex;gap:1px;padding:0 10px;background:#fff;border-bottom:1px solid #d8e1ec;overflow:auto}.wordTabs button{border:0;background:transparent;padding:10px 15px;font-size:13px;color:#34435c;border-bottom:3px solid transparent;white-space:nowrap}.wordTabs button.active{color:#075fc9;border-bottom-color:#0877f9;font-weight:800}.wordRibbon{background:#fbfcfe;border-bottom:1px solid #cfd9e7;min-height:104px}.wordRibbonPanel{display:none;align-items:stretch;gap:0;overflow-x:auto;padding:8px 10px}.wordRibbonPanel.active{display:flex}.ribbonGroup{display:flex;gap:5px;align-items:center;flex-wrap:wrap;padding:5px 10px 20px;border-right:1px solid #d9e1ec;position:relative;min-width:max-content}.ribbonGroup>b{position:absolute;bottom:2px;left:10px;right:10px;text-align:center;font-size:10px;color:#6e7c91;font-weight:700}.ribbonGroup button,.ribbonBtn,.ribbonGroup select{border:1px solid transparent;background:transparent;border-radius:6px;padding:7px 8px;font-size:12px;color:#24354e;cursor:pointer}.ribbonGroup button:hover,.ribbonBtn:hover,.ribbonGroup select:hover{background:#eaf3ff;border-color:#bfd9fb}.ribbonGroup input[type=color]{width:30px;height:30px;border:1px solid #cad5e5;padding:2px;border-radius:6px;background:white}.ribbonGroup label{font-size:11px;color:#596980;display:flex;align-items:center;gap:4px}.wordWorkspaceBody{background:#dfe5ed;min-height:720px;padding:26px 18px 60px;overflow:auto}.wordRuler{width:min(794px,calc(100% - 20px));margin:0 auto 8px;height:25px;background:#fff;border:1px solid #bec9d7;color:#7a8798;font-size:9px;display:flex;justify-content:space-between;padding:5px 10px;box-shadow:0 2px 5px rgba(0,0,0,.04)}.wordPage{--page-w:794px;--page-min-h:1123px;--page-margin:76px;width:min(var(--page-w),100%);min-height:var(--page-min-h);margin:0 auto;background:#fff;box-shadow:0 6px 22px rgba(20,35,55,.18);position:relative;padding:0 var(--page-margin);transition:width .2s ease,background .2s ease}.wordPage .editor{max-width:none;margin:0;padding:28px 0;min-height:830px;line-height:1.55;background:transparent;column-gap:34px}.wordHeader,.wordFooter{min-height:54px;padding:16px 0 8px;color:#6a7688;font-size:12px;border-bottom:1px dashed transparent;outline:none}.wordFooter{border-top:1px dashed transparent;border-bottom:0;padding:8px 0 16px}.wordHeader:focus,.wordFooter:focus{border-color:#b6c5d8;background:#f8fbff}.wordHeader:empty:before,.wordFooter:empty:before{content:attr(data-placeholder);color:#a6b0bf}.wordPage.pageless{--page-w:1200px;--page-min-h:620px;box-shadow:none;border-radius:8px}.wordPage.pageless .wordHeader,.wordPage.pageless .wordFooter{display:none}.wordPage img{max-width:100%;height:auto}.wordPage table{border-collapse:collapse;width:100%}.wordPage td,.wordPage th{border:1px solid #aeb9c8;padding:6px}.wordPage .pageBreak{border-top:2px dashed #a9b7c9;margin:30px -20px;position:relative;height:0}.wordPage .pageBreak:after{content:'Page break';position:absolute;right:0;top:-18px;font-size:10px;color:#7a8798}.wordStatus{display:flex;gap:18px;align-items:center;min-height:34px;padding:7px 14px;border-top:1px solid #d6dfeb;background:#f7f9fc;color:#58687f;font-size:11px}.wordStatus .grow{flex:1}.wordSignatureLine{display:inline-block;min-width:230px;border-top:1px solid #222;margin-top:28px;padding-top:5px;font-size:11px;color:#555}.wordToc{border:1px solid #d5deea;background:#f8fbff;padding:14px 18px;border-radius:8px}.wordToc h3{margin-top:0}.wordFootnotes{border-top:1px solid #ccd5e2;margin-top:30px;padding-top:8px;font-size:12px}.wordWorkspaceBody.zooming{scroll-behavior:smooth}
+@media(max-width:800px){.wordAppShell{border-radius:0;margin:-16px}.wordTitlebar{position:sticky;top:72px;z-index:5}.wordTabs{position:sticky;top:124px;z-index:5}.wordRibbon{position:sticky;top:163px;z-index:4}.wordWorkspaceBody{padding:16px 6px 45px}.wordPage{--page-margin:28px;min-height:760px}.wordPage .editor{min-height:620px}.wordStatus{gap:8px;overflow:auto;white-space:nowrap}.wordStatus span:last-child{display:none}.ribbonGroup{padding-left:5px;padding-right:5px}.wordRuler{display:none}}
+@media print{#page-word .wordTitlebar,#page-word .wordTabs,#page-word .wordRibbon,#page-word .wordStatus,#page-word .wordRuler{display:none!important}#page-word .wordAppShell{border:0;box-shadow:none}#page-word .wordWorkspaceBody{padding:0;background:#fff}#page-word .wordPage{box-shadow:none;width:100%;min-height:auto;padding-left:var(--page-margin);padding-right:var(--page-margin)}#page-word .wordPage.pageless .wordHeader,#page-word .wordPage.pageless .wordFooter{display:block}}
+
+/* Ethan Office v4 — professional suite UI */
+.officeTop{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#fff;border-bottom:1px solid #dfe5ee;position:sticky;top:0;z-index:20}.officeTop input{font-size:16px;font-weight:700;border:0;min-width:220px}.excelTop{border-top:4px solid #16864b}.presTop{border-top:4px solid #d95d18}.appRibbon{background:#fff;border-bottom:1px solid #d9e0ea;box-shadow:0 2px 8px #00000008}.ribbonTabs{display:flex;gap:2px;padding:0 10px;border-bottom:1px solid #e7ebf0;overflow:auto}.ribbonTabs button{border:0;background:transparent;padding:9px 13px;border-radius:0;font-weight:600;white-space:nowrap}.excelRibbon .ribbonTabs button.active{color:#0c733d;border-bottom:3px solid #16864b}.presRibbon .ribbonTabs button.active{color:#b7470e;border-bottom:3px solid #e06422}.ribbonBody{min-height:66px;padding:8px 12px;display:flex;gap:8px;align-items:center;overflow:auto}.ribbonGroup{display:flex;align-items:center;gap:5px;padding-right:10px;border-right:1px solid #e1e5eb;white-space:nowrap}.ribbonGroup b{font-size:11px;color:#6d7480;margin-right:3px}.ribbonBody button,.ribbonBody select,.ribbonBody input{min-height:32px}.formulaStrip{display:flex;align-items:center;gap:6px;background:#f7f9fb;border-bottom:1px solid #dce2e8;padding:5px 10px;position:sticky;top:102px;z-index:10}.formulaStrip input{flex:1}.fx{font-weight:800;font-style:italic;color:#4b5563}.sheetWrap{max-height:65vh;overflow:auto;background:#fff}.sheet{border-collapse:collapse;min-width:1200px}.sheet th{position:sticky;top:0;z-index:3;background:#f2f5f7}.sheet td:first-child,.sheet th:first-child{position:sticky;left:0;z-index:2;background:#f2f5f7}.sheet td{min-width:92px;height:28px;padding:4px 6px;border:1px solid #d9dee5;outline:none}.sheet td.sel{box-shadow:inset 0 0 0 2px #16864b;background:#effaf4}.sheet td.bold{font-weight:700}.sheet td.italic{font-style:italic}.sheet td.center{text-align:center}.sheet td.right{text-align:right}.sheet td.currency:before{content:'₦'}.sheet td.percent:after{content:'%'}.sheet td.wrap{white-space:normal}.sheetStatus{display:flex;gap:10px;align-items:center;padding:7px 12px;background:#f5f7f9;border-top:1px solid #dfe4e9;font-size:12px}.presLayout{display:grid;grid-template-columns:210px 1fr;min-height:580px;background:#eef1f5}.presLayout aside{background:#f7f8fa;border-right:1px solid #d9dee5;overflow:auto;padding:10px}.presLayout .thumbs{display:flex;flex-direction:column;gap:8px}.presLayout .thumb{width:100%;min-height:92px;text-align:left}.presLayout main{padding:18px;min-width:0}.presEdit{display:grid;grid-template-columns:1fr 1fr;gap:10px;background:#fff;padding:12px;margin-top:12px;border-radius:10px}.presEdit .full{grid-column:1/-1}.slideStage{padding:18px}.slide{aspect-ratio:16/9;max-width:900px;margin:auto;border-radius:6px;box-shadow:0 8px 30px #0002;padding:7%;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,#102b6b,#1c65d8);color:white;overflow:hidden}.slide h1{font-size:clamp(28px,4vw,58px);margin:0 0 20px}.slide p{font-size:clamp(18px,2vw,30px);white-space:pre-wrap}.slide.theme-light{background:white;color:#172033;border-top:10px solid #2767d8}.slide.theme-green{background:linear-gradient(135deg,#075f3d,#18a868)}.slide.theme-purple{background:linear-gradient(135deg,#492177,#895bd4)}.slide.theme-sunset{background:linear-gradient(135deg,#8c2e16,#f19a2b)}.slide.transition-fade{animation:fadeSlide .35s}.slide.transition-push{animation:pushSlide .35s}.slide.transition-zoom{animation:zoomSlide .35s}@keyframes fadeSlide{from{opacity:.2}to{opacity:1}}@keyframes pushSlide{from{transform:translateX(20px);opacity:.4}to{transform:none;opacity:1}}@keyframes zoomSlide{from{transform:scale(.96);opacity:.5}to{transform:none;opacity:1}}@media(max-width:800px){.presLayout{grid-template-columns:1fr}.presLayout aside{border-right:0;border-bottom:1px solid #ddd}.presLayout .thumbs{flex-direction:row}.presLayout .thumb{min-width:150px}.presEdit{grid-template-columns:1fr}.presEdit .full{grid-column:auto}.ribbonBody{min-height:58px}.formulaStrip{top:98px}}
+
+
+/* ===== Ethan Office v5 — Professional Corporate UI System ===== */
+:root{--navy:#0b2f5b;--navy2:#123f77;--blue:#1769d2;--blueSoft:#eaf2fd;--ink:#17253a;--muted:#65758b;--line:#d7e0eb;--surface:#ffffff;--surface2:#f5f8fc;--canvas:#edf2f7;--success:#177a4c;--danger:#b8323a;--shadow:0 10px 28px rgba(20,45,80,.09);--shadowSm:0 3px 12px rgba(22,48,84,.07);--radius:10px;--font:"Segoe UI Variable","Segoe UI",Aptos,Calibri,Arial,sans-serif}
+*{box-sizing:border-box}html{font-family:var(--font);font-size:15px;background:var(--canvas);text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}body{font-family:var(--font);color:var(--ink);background:linear-gradient(180deg,#edf2f7 0,#f6f8fb 42%,#eef3f8 100%);letter-spacing:.002em}.app{min-height:100vh}.sidebar{background:linear-gradient(180deg,#09294e 0%,#0b3565 55%,#0a2b53 100%);border-right:1px solid rgba(255,255,255,.08);box-shadow:8px 0 32px rgba(7,31,62,.18)}.brand{padding:22px 18px 18px;border-bottom:1px solid rgba(255,255,255,.11)}.brand img{width:42px;height:42px;border-radius:10px;box-shadow:0 6px 16px rgba(0,0,0,.22)}.brand b{font-size:17px;letter-spacing:.01em}.brand small{font-size:11px;opacity:.72;letter-spacing:.03em}.nav{padding:12px 9px}.nav button{min-height:42px;border-radius:7px;margin:2px 0;padding:9px 11px;font-size:13px;font-weight:600;color:#dce8f6;transition:background .14s ease,color .14s ease,transform .14s ease}.nav button:hover{background:rgba(255,255,255,.08);color:#fff}.nav button.active{background:#fff;color:#0b3d74;box-shadow:0 5px 15px rgba(0,0,0,.13)}.nav .ico{width:28px;height:28px;border-radius:6px;background:rgba(255,255,255,.09);display:inline-grid;place-items:center;font-size:12px;font-weight:800}.nav button.active .ico{background:#e8f1fc;color:#0b4f9a}.sidebar-foot{font-size:10px;line-height:1.65;opacity:.73;padding:16px 18px 20px}.versionPill{display:inline-block;margin-top:8px;padding:3px 7px;border:1px solid rgba(255,255,255,.22);border-radius:999px;color:#dbeaff}.main{background:transparent}.topbar{height:72px;padding:0 22px;background:rgba(255,255,255,.96);border-bottom:1px solid #d9e1eb;box-shadow:0 3px 14px rgba(26,48,78,.05);backdrop-filter:blur(10px);gap:16px}.topIdentity{display:flex;flex-direction:column;min-width:180px;line-height:1.22}.topIdentity strong{font-size:13px;color:#18395f}.topIdentity span{font-size:10px;color:#75859a}.search{max-width:650px;background:#f3f6fa;border:1px solid #d8e1eb;border-radius:8px;transition:border-color .15s,box-shadow .15s}.search:focus-within{background:#fff;border-color:#8db8ea;box-shadow:0 0 0 3px rgba(23,105,210,.1)}.search input{font-family:var(--font);font-size:13px}.top-actions .btn{background:#fff;color:#23405f;border-color:#cbd7e4;font-weight:600}.content{padding:30px 34px 64px;max-width:1680px}.page{animation:none}.titleRow{background:linear-gradient(180deg,#fff,#fbfcfe);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin-bottom:18px;box-shadow:var(--shadowSm);align-items:center}.titleRow h1{font-size:25px;letter-spacing:-.025em;margin:0 0 5px;color:#102c4d;font-weight:700}.titleRow p{margin:0;color:#68798e;max-width:760px;font-size:13px;line-height:1.55}.titleRow>input{min-width:220px}.hero{border-radius:14px;background:linear-gradient(120deg,#0a315f 0%,#0d4f96 62%,#1769d2 100%);box-shadow:0 18px 40px rgba(12,59,112,.22);padding:34px 38px}.hero h2{font-size:34px;line-height:1.12;letter-spacing:-.035em;font-weight:700}.hero p{font-size:14px;line-height:1.65;max-width:760px;color:#e7f1fc}.hero img{filter:drop-shadow(0 12px 24px rgba(0,0,0,.22))}.chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);font-weight:600;letter-spacing:.015em}.section{margin-top:24px}.section>h2{font-size:17px;color:#1b3555;margin:0 0 12px}.grid{gap:14px}.tool,.card,.panel,.item{border:1px solid #dbe3ed;border-radius:10px;background:#fff;box-shadow:0 2px 8px rgba(22,48,80,.045)}.tool{padding:20px;min-height:175px}.tool:hover{transform:translateY(-1px);border-color:#a9c4e4;box-shadow:0 10px 24px rgba(24,55,91,.09)}.toolico{width:42px;height:42px;border-radius:9px;box-shadow:none;font-weight:800}.tool h3,.card h3{font-size:15px;color:#18314f;margin-top:14px}.tool p,.muted{font-size:12px;color:#738397;line-height:1.55}.cards{gap:12px}.card{padding:17px}.card h2{font-size:27px;letter-spacing:-.03em;color:#12365e}.item{padding:13px 15px;margin-bottom:8px;min-height:62px}.item h4{font-size:13px;margin:0 0 3px;color:#18334f}.empty{border:1px dashed #c8d5e4;border-radius:10px;background:#fbfcfe;color:#78899c;padding:28px;text-align:center}.btn{font-family:var(--font);border-radius:7px;border:1px solid #c9d5e2;min-height:34px;padding:7px 12px;font-size:12px;font-weight:650;letter-spacing:.005em;box-shadow:none;transition:background .14s,border-color .14s,box-shadow .14s,transform .14s}.btn:hover{border-color:#9fb7d2;box-shadow:0 2px 7px rgba(20,50,85,.08)}.btn.primary{background:#135fae;border-color:#135fae}.btn.green{background:#177a4c;border-color:#177a4c}.btn.orange{background:#c85a1c;border-color:#c85a1c}.btn.red{background:#fff1f2;color:#a72e36;border-color:#f0c7ca}.btn.sm{min-height:30px;padding:5px 9px;font-size:11px}.badge{border-radius:5px;font-size:10px;font-weight:750;letter-spacing:.04em;text-transform:uppercase}.field label{font-size:11px;font-weight:700;color:#53667d;letter-spacing:.025em}.field input,.field textarea,.field select,input,textarea,select{font-family:var(--font);border:1px solid #cfd9e5;border-radius:7px;outline:none}.field input:focus,.field textarea:focus,.field select:focus,input:focus,textarea:focus,select:focus{border-color:#7faee2;box-shadow:0 0 0 3px rgba(23,105,210,.09)}
+/* Professional suite workspaces */
+.officeTop{height:55px;padding:8px 14px;background:#fff;border:1px solid #d7e0eb;border-bottom:0;border-radius:10px 10px 0 0;position:relative}.officeTop input{font-family:var(--font);font-size:15px;color:#18324f}.excelTop{border-top:3px solid #177a4c}.presTop{border-top:3px solid #c85a1c}.appRibbon{border:1px solid #d7e0eb;background:#fff;box-shadow:none}.ribbonTabs{padding:0 12px;background:#fbfcfe}.ribbonTabs button{font-family:var(--font);font-size:12px;font-weight:650;color:#51657d;padding:9px 12px}.ribbonBody{min-height:78px;background:#fff;padding:7px 10px}.ribbonGroup{border-right-color:#dce4ed;padding:5px 10px 18px;position:relative}.ribbonGroup>b{position:absolute;bottom:1px;left:8px;right:8px;text-align:center;font-size:9px;color:#7d8998;text-transform:uppercase;letter-spacing:.055em}.ribbonBody button,.ribbonBody select,.ribbonBody input,.ribbonBtn{font-family:var(--font);font-size:11px;border-radius:5px;min-height:30px}.formulaStrip{background:#f7f9fb;border:1px solid #d7e0eb;border-top:0;padding:5px 10px;top:72px}.cellName{min-width:48px;text-align:center;font-weight:700;font-size:11px;color:#35506d}.sheetWrap{border:1px solid #d7e0eb;border-top:0;max-height:64vh;box-shadow:inset 0 1px 0 #fff}.sheet{font-family:Aptos,"Segoe UI",Calibri,Arial,sans-serif;font-size:12px}.sheet th{background:#f2f5f8;color:#4f6176;font-weight:650}.sheet td{min-width:94px;height:29px;border-color:#dfe5ec;padding:4px 6px}.sheet td.sel{box-shadow:inset 0 0 0 2px #177a4c;background:#f0faf5}.sheetStatus{background:#f7f9fb;border:1px solid #d7e0eb;border-top:0;color:#66778a}.presLayout{border:1px solid #d7e0eb;border-top:0;background:#e9edf2}.presLayout aside{background:#f5f7fa}.presLayout .thumb{border:1px solid #d3dce7;border-radius:6px;background:#fff;font-size:11px}.presLayout .thumb.active{border-color:#cf6b31;box-shadow:0 0 0 2px rgba(200,90,28,.1)}.presLayout main{padding:22px}.slide{border-radius:3px;box-shadow:0 12px 32px rgba(24,34,48,.18);font-family:Aptos,"Segoe UI",Arial,sans-serif}.presEdit{border:1px solid #d7e0eb;box-shadow:var(--shadowSm);border-radius:8px}.wordAppShell{border-radius:10px;border-color:#cfd9e5;box-shadow:0 16px 38px rgba(18,45,78,.13)}.wordTitlebar{height:50px;background:linear-gradient(90deg,#0a4c92,#0e64bd);padding:6px 11px}.wordTitlebar input{font-family:var(--font);font-size:14px}.wordTabs button,.wordRibbon button,.wordRibbon select{font-family:var(--font)}.wordWorkspaceBody{background:#dfe4ea}.wordPage{box-shadow:0 7px 22px rgba(28,41,58,.18);font-family:Aptos,Calibri,"Segoe UI",Arial,sans-serif}.wordPage .editor{font-family:Aptos,Calibri,"Segoe UI",Arial,sans-serif;font-size:11.5pt;color:#1f2732}.wordStatus{font-family:var(--font);background:#f7f9fb}.scanPreview{border:1px solid #cfd9e5;border-radius:8px;box-shadow:var(--shadow)}.calc{max-width:430px;margin:auto;background:linear-gradient(180deg,#fff,#f8fafc);box-shadow:var(--shadow)}.calcDisplay{font-family:"Segoe UI Variable",Aptos,Arial,sans-serif;font-size:30px;font-weight:500;letter-spacing:.02em;background:#f3f6f9}.calcGrid button{font-family:var(--font);border-radius:7px;font-weight:650}.modal{font-family:var(--font)}.workspaceStatus{position:fixed;left:260px;right:0;bottom:0;height:28px;background:#f9fbfd;border-top:1px solid #d4deea;display:flex;align-items:center;gap:9px;padding:0 16px;font-size:10px;color:#6d7e91;z-index:40;box-shadow:0 -2px 8px rgba(25,48,75,.04)}.workspaceStatus strong{color:#294765}.workspaceStatus .statusDot{width:7px;height:7px;border-radius:50%;background:#24915c;box-shadow:0 0 0 3px rgba(36,145,92,.1)}.workspaceStatus .grow{flex:1}.reduceMotion *{animation:none!important;transition:none!important;scroll-behavior:auto!important}@media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
+@media(max-width:1000px){.topIdentity{display:none}.content{padding:22px 20px 58px}.workspaceStatus{left:0}.hero{padding:28px}.hero h2{font-size:29px}}
+@media(max-width:800px){.topbar{height:64px;padding:0 12px}.content{padding:16px 12px 52px}.titleRow{padding:17px 16px;border-radius:9px}.titleRow h1{font-size:21px}.hero{border-radius:10px;padding:24px 20px}.hero h2{font-size:26px}.tool{min-height:auto}.workspaceStatus{height:26px;padding:0 9px}.workspaceStatus span:nth-last-child(1){display:none}.wordTitlebar{top:64px}.formulaStrip{top:64px}}
+@media print{.workspaceStatus{display:none!important}}
+
+/* === Ethan Office v6 Deep Executive Theme === */
+:root{--deep:#06152f;--deep2:#09264d;--deep3:#0d376c;--word:#185abd;--wordDeep:#103f91;--excel:#107c41;--excelDeep:#0b5a30;--ppt:#c43e1c;--pptDeep:#8f2d16;--gold:#d9a441;--chromeText:#edf5ff;--softChrome:#132d50}
+body{background:#e7edf4;color:#182538}.sidebar{background:linear-gradient(180deg,#041127 0%,#071c3b 48%,#092950 100%);box-shadow:10px 0 34px rgba(1,10,25,.28)}.brand{background:linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.015));margin:-18px -14px 10px;padding:22px 18px 19px}.nav button{color:#dbe9f8;font-weight:650;letter-spacing:.01em}.nav button:hover{background:#102f59}.nav button.active{background:linear-gradient(90deg,#164f95,#1c6fc8);color:#fff;box-shadow:0 7px 18px rgba(0,0,0,.2)}.nav button.active .ico{background:#fff;color:#134d90}.topbar{height:68px;background:linear-gradient(90deg,#071a38,#0b2d59);border-bottom:1px solid #173f70;color:white;box-shadow:0 5px 18px rgba(4,18,42,.22)}.topIdentity strong{color:white;font-size:13px}.topIdentity span{color:#aac4df}.topbar .search{background:#0e3768;border-color:#27517f}.topbar .search input{color:white;background:transparent;border:0}.topbar .search input::placeholder{color:#a8bfd7}.topbar .search span{color:#d6e5f5}.top-actions .btn,.topbar .menuBtn{background:#143c6d;color:white;border-color:#315b89}.content{padding-top:26px}.hero{background:linear-gradient(120deg,#061832,#0a3566 55%,#12559b);border:1px solid #224e7d}.titleRow{border-top:3px solid #0c386e;background:linear-gradient(180deg,#fff,#f5f8fc)}.titleRow h1{font-family:"Segoe UI Variable Display","Segoe UI",Aptos,Calibri,sans-serif;font-size:26px;font-weight:720}.tool,.card,.panel,.item{border-color:#cbd7e5}.tool:hover{border-color:#6d93bd}.btn.primary{background:linear-gradient(180deg,#1a65bd,#124f97);border-color:#104a8f}.btn.green{background:linear-gradient(180deg,#178b50,#0f6c3b);border-color:#0e6437}.btn.orange{background:linear-gradient(180deg,#d6532d,#ad3519);border-color:#9c2f17}
+/* Deep Office ribbon chrome */
+.wordTitlebar{background:linear-gradient(90deg,#0b326f,#185abd 58%,#2369c9);border-bottom:1px solid #0a3a84}.wordTabs{background:#0d3f8e;border-bottom:1px solid #092f6d}.wordTabs button{color:#dfeaff;background:transparent;border-radius:0;font-weight:650}.wordTabs button:hover{background:#174f9e}.wordTabs button.active{background:#fff;color:#154f9e;border-top:2px solid #fff}.wordRibbon{border-color:#b7c8da}.wordRibbonPanel{background:linear-gradient(180deg,#fff,#edf3fa)}.wordRibbonPanel .ribbonGroup{border-right-color:#cbd8e6}.wordRibbonPanel .ribbonGroup>b{color:#45637f}.wordWorkspaceBody{background:#cfd7e1}.wordPage{border:1px solid #b8c0ca;box-shadow:0 10px 30px rgba(8,22,39,.2)}.wordStatus{background:#0d3f8e;color:#edf5ff;border-top:1px solid #092f6d}.wordStatus span{color:#edf5ff!important}
+.officeTop.excelTop{background:linear-gradient(90deg,#074826,#107c41 58%,#178d4d);border:0;border-radius:9px 9px 0 0;color:white}.excelTop input,.excelTop .muted{color:white}.excelTop input{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.18)}.excelTop .btn{background:#0a5d32;color:white;border-color:#2a9160}.excelRibbon .ribbonTabs{background:#0b5a30}.excelRibbon .ribbonTabs button{color:#dff3e8}.excelRibbon .ribbonTabs button.active{background:#fff;color:#0b6535}.excelRibbon .ribbonBody{background:linear-gradient(180deg,#fff,#eff7f2)}.formulaStrip{background:#e9f3ed}.cellName{color:#0e6c39}.sheetStatus{background:#0b5a30;color:#eefaf3}.sheetStatus span{color:#eefaf3}.sheet th{background:#e7efe9;color:#274a36}.sheet td.sel{box-shadow:inset 0 0 0 2px #107c41;background:#eaf7ef}
+.officeTop.presTop{background:linear-gradient(90deg,#792611,#c43e1c 58%,#d6552f);border:0;border-radius:9px 9px 0 0;color:white}.presTop input,.presTop .muted{color:white}.presTop input{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.18)}.presTop .btn{background:#8f2d16;color:white;border-color:#de765b}.presRibbon .ribbonTabs{background:#8f2d16}.presRibbon .ribbonTabs button{color:#fde7df}.presRibbon .ribbonTabs button.active{background:#fff;color:#a33218}.presRibbon .ribbonBody{background:linear-gradient(180deg,#fff,#faf0ed)}.presLayout{background:#cfd3d8}.presLayout aside{background:#eceff2;border-right:1px solid #c5cbd2}.presLayout .thumb.active{border-color:#c43e1c;box-shadow:0 0 0 2px rgba(196,62,28,.14)}
+/* File Manager / libraries */
+.libraryNotice{display:flex;align-items:center;gap:10px;background:#edf5ff;border:1px solid #b8cee7;border-left:4px solid var(--word);border-radius:8px;padding:10px 12px;margin:0 0 14px;color:#173d68}.libraryNotice>span{color:#1d8f56;font-size:14px}.libraryNotice div{display:grid;gap:1px;flex:1}.libraryNotice b{font-size:12px}.libraryNotice small{font-size:11px;color:#60758d}.libraryNotice.excelNotice{border-left-color:var(--excel);background:#eef8f2}.libraryNotice.presNotice{border-left-color:var(--ppt);background:#fcf1ed}.storageBanner{display:flex;gap:14px;align-items:flex-start;background:linear-gradient(120deg,#081d3e,#0c3b70);color:#edf6ff;border-radius:11px;padding:17px 19px;margin:0 0 14px;box-shadow:0 8px 20px rgba(5,24,52,.18)}.storageBanner .storageIcon{width:42px;height:42px;border-radius:8px;background:#fff;color:#0b3d74;display:grid;place-items:center;font-size:20px;font-weight:800}.storageBanner b{font-size:14px}.storageBanner p{margin:5px 0 0;font-size:12px;line-height:1.55;color:#cfe0f2}.fileCommandBar{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #cbd7e5;border-radius:9px;padding:8px 10px;margin-bottom:12px;box-shadow:0 3px 10px rgba(25,50,80,.05)}.fileTabs{display:flex;gap:3px;flex-wrap:wrap}.fileTabs button{border:0;background:transparent;padding:8px 11px;border-radius:6px;color:#40556d;font-weight:650;font-size:12px}.fileTabs button:hover{background:#edf3fa}.fileTabs button.active{background:#0b3769;color:#fff}.fileSearchBox{margin-left:auto;min-width:270px;border:1px solid #c9d5e2;border-radius:7px;padding:0 9px;display:flex;align-items:center;gap:7px;background:#f8fafc}.fileSearchBox input{width:100%;border:0!important;box-shadow:none!important;background:transparent;padding:8px 3px;font-size:12px}.compactTitle{padding:14px 16px;margin:0 0 10px;border-top:0}.compactTitle h2{margin:0;font-size:17px}.compactTitle p{font-size:11px}.fileTypeIcon{width:34px;height:34px;border-radius:6px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:11px}.fileTypeIcon.Word{background:var(--word)}.fileTypeIcon.Excel{background:var(--excel)}.fileTypeIcon.Presentation{background:var(--ppt)}.fileTypeIcon.Note{background:#6f42c1}.fileMeta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:3px}.locationPill{font-size:10px;color:#5d7086;background:#edf2f7;border:1px solid #d3dde8;border-radius:999px;padding:2px 7px}.star{border:0;background:transparent;color:#b0b8c2;font-size:18px}.star.on{color:#c98e12}
+.workspaceStatus{background:#061a38;color:#bcd0e4;border-top-color:#173c66}.workspaceStatus strong{color:white}.workspaceStatus .statusDot{background:#32bb70}
+@media(max-width:800px){.fileCommandBar{align-items:stretch;flex-direction:column}.fileSearchBox{margin-left:0;min-width:0}.storageBanner{padding:14px}.wordTabs,.excelRibbon .ribbonTabs,.presRibbon .ribbonTabs{overflow:auto;white-space:nowrap}.wordTabs button,.ribbonTabs button{flex:0 0 auto}}
+/* === Ethan Office v7 Professional publishing / page-layout controls === */
+.formGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.formGrid .field{min-width:0}.formGrid input[type=checkbox]{width:auto;margin-right:7px}
+.wordPage{position:relative}.wordPage .editor{min-height:var(--page-min-h);box-sizing:border-box}.pageBorderBox{outline:2px solid #525b66;outline-offset:-24px}.pageBorderShadow{outline:1px solid #525b66;outline-offset:-24px;box-shadow:10px 12px 0 #9aa4b155,0 10px 30px rgba(8,22,39,.2)}
+.liveWatermark{position:absolute;left:8%;right:8%;top:42%;text-align:center;transform:rotate(-28deg);font:700 58px/1 "Segoe UI",Arial,sans-serif;color:rgba(80,91,105,.10);pointer-events:none;z-index:2;letter-spacing:.08em}.wordEditor,.wordPage .editor{position:relative;z-index:3}.sectionBreak{height:22px;border-top:2px dashed #8795a7;margin:22px 0;position:relative;break-before:page}.sectionBreak.continuous{break-before:auto;border-top-style:dotted}.sectionBreak span{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#fff;padding:0 8px;color:#6a7788;font-size:9px;text-transform:uppercase;letter-spacing:.08em}.wordIndexEntry{background:linear-gradient(transparent 58%,#ffe89a 58%);border-bottom:1px dotted #9e7b00}.wordIndex,.wordBibliography{margin:18px 0;padding:14px 18px;border:1px solid #d7dee7;background:#fbfcfe}.wordIndex h2,.wordBibliography h2{margin-top:0}.indexRow{display:grid;grid-template-columns:1fr auto;gap:18px;border-bottom:1px dotted #aeb9c6;padding:3px 0}.wordBookmark{border-bottom:1px dotted #185abd}.wordCaption{text-align:center;font-size:10pt;color:#4f5967}.showFormattingMarks p:after,.showFormattingMarks div:not(.sectionBreak):not(.wordToc):not(.wordIndex):after{content:" ¶";color:#7b8aa0;font-size:.8em}.wordLineNumbers{counter-reset:wordline}.wordLineNumbers>p,.wordLineNumbers>h1,.wordLineNumbers>h2,.wordLineNumbers>h3,.wordLineNumbers>li{counter-increment:wordline;position:relative}.wordLineNumbers>p:before,.wordLineNumbers>h1:before,.wordLineNumbers>h2:before,.wordLineNumbers>h3:before,.wordLineNumbers>li:before{content:counter(wordline);position:absolute;left:-34px;width:26px;text-align:right;color:#8b97a5;font-size:9px;font-weight:400}
+.presFooterMeta{position:absolute!important;left:20px;right:20px;bottom:10px;font-size:11px!important;color:#6e7681!important;text-align:center;pointer-events:none}.slide{position:relative}
+@media(max-width:800px){.formGrid{grid-template-columns:1fr}.wordLineNumbers>p:before,.wordLineNumbers>h1:before,.wordLineNumbers>h2:before,.wordLineNumbers>h3:before,.wordLineNumbers>li:before{left:-24px}}
+@media print{.liveWatermark{position:fixed}.sectionBreak span{display:none}.sectionBreak{border:0;break-before:page;height:0}.wordPage .editor{padding:0!important}.pageBorderBox,.pageBorderShadow{outline:none;box-shadow:none}}
+.wordCommentMark{background:#dff0ff;border-bottom:2px solid #2f7ed8;cursor:help}
+
+
+/* === Ethan Office v8 Signature Corporate Design System === */
+:root{--eo-ink:#071527;--eo-deep:#061a34;--eo-deep2:#0a2a52;--eo-blue:#185abd;--eo-cyan:#2ea6ff;--eo-gold:#d9a441;--eo-surface:#f3f6fa;--eo-line:#c7d3e1;--eo-soft:#e9eef5;--eo-shadow:0 12px 34px rgba(3,20,43,.12)}
+html[data-office-theme="midnight"]{--eo-deep:#020817;--eo-deep2:#0b1830;--eo-blue:#326dcc;--eo-surface:#edf2f8;--eo-line:#bbc9d9}
+html[data-office-theme="graphite"]{--eo-deep:#171a20;--eo-deep2:#2b313b;--eo-blue:#3f6ea7;--eo-surface:#f2f3f5;--eo-line:#c8ccd2}
+body{font-family:Aptos,"Segoe UI Variable Text","Segoe UI",Calibri,Arial,sans-serif;background:radial-gradient(circle at 90% -10%,#dce9f7 0,transparent 30%),var(--eo-surface);color:var(--eo-ink);letter-spacing:.003em}
+.sidebar{background:linear-gradient(180deg,var(--eo-deep) 0%,#071d3b 52%,#0a2e56 100%);border-right:1px solid rgba(255,255,255,.06)}
+.brand{border-bottom:1px solid rgba(255,255,255,.09);box-shadow:none}.brand b{font-family:"Segoe UI Variable Display","Segoe UI",Aptos,sans-serif;font-weight:760;letter-spacing:-.02em}.brand small{letter-spacing:.03em}
+.navLabel{font-size:9px;letter-spacing:.18em;color:#819db9;margin:17px 12px 5px;font-weight:800}.nav button{min-height:40px;border-left:3px solid transparent;border-radius:7px;padding:9px 10px}.nav button:hover{background:rgba(255,255,255,.07)}.nav button.active{background:linear-gradient(90deg,#123c72,#1559a4);border-left-color:#67b7ff;box-shadow:inset 0 1px rgba(255,255,255,.07),0 5px 16px rgba(0,0,0,.17)}
+.nav .ico{border-radius:6px}.sidebar-foot{color:#91acc8}.versionPill{background:#d8a84b!important;color:#162235!important;font-weight:800!important}
+.topbar{background:linear-gradient(90deg,var(--eo-deep),var(--eo-deep2));height:70px;border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 8px 26px rgba(3,18,40,.22)}
+.topIdentity strong{font-size:13px;font-weight:750;letter-spacing:.02em}.topIdentity span{font-size:10px;letter-spacing:.03em}.top-actions .btn{border-radius:6px;background:#173f6c;border-color:#315b87;font-weight:650}.top-actions .btn:hover{background:#235486}.topFileBtn{background:#fff!important;color:#0e3d70!important;border-color:#fff!important}
+.content{max-width:1660px;padding:26px 28px 50px}.page{animation:eoPageIn .18s ease-out}@keyframes eoPageIn{from{opacity:.65;transform:translateY(3px)}to{opacity:1;transform:none}}
+.executiveHero{position:relative;overflow:hidden;min-height:270px;padding:34px 38px;border-radius:15px;background:linear-gradient(120deg,#04152d 0%,#0a3263 52%,#145ea9 100%);box-shadow:0 18px 45px rgba(5,26,57,.24);border:1px solid #1f558a}
+.executiveHero:before{content:"";position:absolute;inset:-40% -10% auto 54%;height:420px;background:radial-gradient(circle,rgba(255,255,255,.16),transparent 66%);transform:rotate(15deg)}
+.executiveHero:after{content:"EO";position:absolute;right:180px;bottom:-62px;font:bold 220px/1 "Segoe UI",sans-serif;color:rgba(255,255,255,.035);letter-spacing:-.08em}.executiveHero h2{max-width:760px;font-size:38px;line-height:1.08;letter-spacing:-.035em;margin:8px 0 13px;font-weight:760}.executiveHero p{max-width:760px;font-size:14px;line-height:1.65;color:#d7e7f8}.eyebrow{font-size:10px;font-weight:800;letter-spacing:.18em;color:#9ed0ff}.darkEyebrow{color:#456987}.heroActions{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}.heroPrimary{background:#fff!important;color:#0b3970!important;border-color:#fff!important}.heroGhost{background:rgba(255,255,255,.09)!important;color:#fff!important;border:1px solid rgba(255,255,255,.25)!important}.heroBrandOrb{position:relative;z-index:2;justify-self:end;display:grid;justify-items:center;gap:8px;min-width:190px}.heroBrandOrb img{width:150px;height:150px;object-fit:contain;filter:drop-shadow(0 16px 30px rgba(0,0,0,.28))}.heroBrandOrb span{text-align:center;color:#d8e8fa;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+#page-home>.grid{margin-top:18px}.tool{position:relative;border-radius:10px;padding:17px 16px 15px;background:linear-gradient(180deg,#fff,#f9fbfd);box-shadow:0 4px 14px rgba(14,39,69,.055);transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}.tool:before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:#9eb1c4;border-radius:10px 10px 0 0}.tool:hover{transform:translateY(-3px);box-shadow:var(--eo-shadow);border-color:#91a9c3}.tool:nth-child(1):before{background:#185abd}.tool:nth-child(2):before{background:#107c41}.tool:nth-child(3):before{background:#c43e1c}.utilityTool:before{background:#b4232f!important}.tool h3{font-size:14px;font-weight:750;letter-spacing:-.01em}.tool p{line-height:1.55}.toolico{border-radius:7px!important;box-shadow:0 6px 14px rgba(0,0,0,.12)}
+.card{border-radius:9px;box-shadow:0 3px 12px rgba(12,35,62,.05)}.titleRow{border-radius:10px;border:1px solid var(--eo-line);border-top:3px solid #174d88;box-shadow:0 4px 13px rgba(16,44,78,.05);padding:18px 19px}.titleRow h1{letter-spacing:-.025em}.titleRow p{max-width:860px;line-height:1.55}
+.btn{border-radius:6px;font-weight:650;letter-spacing:.005em;transition:background .12s ease,transform .12s ease,border-color .12s ease,box-shadow .12s ease}.btn:active{transform:translateY(1px)}
+input,select,textarea{border-radius:6px!important}.item{border-radius:7px}.panel{border-radius:9px}
+/* Utility integration */
+.utilityTitleRow{border-top-color:#b4232f;background:linear-gradient(115deg,#fff 0%,#fbfcfe 70%,#fff0f1 100%)}.utilityHeaderActions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.utilityFeatureStrip{display:flex;gap:6px;flex-wrap:wrap;margin:11px 0}.utilityFeatureStrip span{font-size:10px;font-weight:700;color:#5a2630;background:#fff1f2;border:1px solid #f0ccd1;border-radius:999px;padding:5px 9px}.utilityInfoBar{display:flex;align-items:center;gap:12px;padding:11px 13px;background:linear-gradient(90deg,#251017,#4d1b27);border:1px solid #6c2b39;color:#fff;border-radius:8px;margin-bottom:10px}.utilityInfoBar>div{display:grid;gap:2px;flex:1}.utilityInfoBar small{font-size:10px;color:#e9cbd0}.documentUtilityFrameWrap{height:calc(100vh - 260px);min-height:650px;background:#0a1524;border:1px solid #243f5f;border-radius:10px;overflow:hidden;box-shadow:0 14px 36px rgba(4,21,43,.16)}.documentUtilityFrameWrap iframe{width:100%;height:100%;border:0;background:#f4f7fc}.docUtilityFocus .sidebar,.docUtilityFocus .topbar,.docUtilityFocus #page-documents>.titleRow,.docUtilityFocus #page-documents>.utilityFeatureStrip,.docUtilityFocus #page-documents>.utilityInfoBar{display:none!important}.docUtilityFocus .main{margin-left:0!important;width:100%!important}.docUtilityFocus .content{padding:0!important;max-width:none!important}.docUtilityFocus #page-documents{display:block!important}.docUtilityFocus .documentUtilityFrameWrap{height:100vh;min-height:100vh;border:0;border-radius:0}.docUtilityFocus .workspaceStatus{display:none!important}
+/* More premium ribbons: keep functional density but sharpen hierarchy */
+.wordRibbonPanel,.excelRibbon .ribbonBody,.presRibbon .ribbonBody{box-shadow:inset 0 -1px #c8d3df}.ribbonGroup{position:relative}.ribbonGroup>b{font-size:9px!important;letter-spacing:.08em;text-transform:uppercase}.wordRibbonPanel button,.ribbonGroup button,.ribbonBtn{border-radius:4px!important}.wordTabs button,.ribbonTabs button{font-size:11px!important;letter-spacing:.015em}.wordTitlebar,.officeTop.excelTop,.officeTop.presTop{box-shadow:inset 0 1px rgba(255,255,255,.12),0 4px 12px rgba(0,0,0,.12)}
+.wordPage{box-shadow:0 14px 34px rgba(10,28,48,.22)}.sheet{font-family:Aptos,"Segoe UI",Calibri,sans-serif}.sheet th{font-weight:700}.slide{box-shadow:0 12px 26px rgba(20,24,32,.2)}
+.workspaceStatus{background:#04142b;color:#afc8e2;border-top:1px solid #173b62}
+@media(max-width:1100px){.executiveHero h2{font-size:31px}.heroBrandOrb{min-width:150px}.heroBrandOrb img{width:120px;height:120px}.content{padding:20px 18px 45px}.documentUtilityFrameWrap{height:calc(100vh - 285px);min-height:600px}}
+@media(max-width:800px){.executiveHero{grid-template-columns:1fr;padding:25px 20px}.executiveHero h2{font-size:28px}.heroBrandOrb{display:none}.topFileBtn{display:none}.utilityInfoBar{align-items:flex-start;flex-direction:column}.documentUtilityFrameWrap{height:calc(100vh - 300px);min-height:560px}.content{padding:14px 11px 40px}.titleRow{padding:14px}.navLabel{margin-top:12px}}
+@media(prefers-reduced-motion:reduce){.page,.tool{animation:none!important;transition:none!important}}
+
+.docFocusExit{display:none;position:fixed;z-index:9999;top:12px;left:12px;background:#fff;color:#0b386d;border:1px solid #b8c9db;border-radius:6px;padding:9px 12px;font-weight:750;box-shadow:0 8px 24px rgba(0,0,0,.18);cursor:pointer}.docUtilityFocus .docFocusExit{display:block}
+
+
+/* Ethan Office v9 — image selection and stability polish */
+.wordImageSelected{outline:3px solid #2b78ff!important;outline-offset:3px;box-shadow:0 0 0 6px rgba(43,120,255,.16);cursor:pointer}
+.wordImageParagraph{position:relative;margin:12px 0}.wordImageContext{position:fixed;z-index:3000;display:none;align-items:center;gap:6px;padding:7px 9px;border:1px solid rgba(255,255,255,.12);border-radius:9px;background:#071a38;color:#fff;box-shadow:0 14px 38px rgba(2,14,34,.32);font:600 12px/1.2 "Segoe UI Variable","Segoe UI",Aptos,Calibri,sans-serif}.wordImageContext.show{display:flex}.wordImageContext button{border:1px solid #315176;background:#102d55;color:#fff;border-radius:6px;padding:6px 9px;font:inherit;cursor:pointer}.wordImageContext button:hover{background:#183d70}.wordImageContext button.danger{background:#9f2330;border-color:#bc3543}.dangerText{color:#ffdddd!important;background:#7f1d2a!important;border-color:#9f2b39!important}.v9FileActions{display:inline-flex;gap:6px;margin-left:4px}
+@media(max-width:700px){.wordImageContext{max-width:calc(100vw - 20px);overflow:auto}.v9FileActions{width:100%;justify-content:flex-end;margin-top:6px}}
+
+/* v11 runtime-verified spreadsheet states */
+.sheet td.tableCell{border-color:#91aac4;background:#f8fbff}.sheet td.tableHeader{background:#0b5c43!important;color:#fff!important;font-weight:750;border-color:#0b5c43}.sheet td.sheetProtected{background-image:linear-gradient(135deg,transparent 0 92%,rgba(7,45,83,.06) 92%)}.sheet td.validatedCell{position:relative}.sheet td.validatedCell:after{content:"▾";position:absolute;right:3px;top:4px;font-size:9px;color:#356;opacity:.65}
+
+/* ===== Ethan Office v16: stable Executive interface ===== */
+html,body{background:#eaf0f7;color:#102033}
+body{overflow-x:hidden}
+.page{min-width:0}
+.tool,.card,.panel{min-width:0}
+@media(max-width:700px){.content{min-width:0}.grid{min-width:0}}
+
+
+/* =========================================================
+   ETHAN OFFICE v17 — EXECUTIVE AZURE
+   Premium light enterprise interface. Functional CSS only.
+   ========================================================= */
+:root{
+  --navy:#102A56;
+  --navy-2:#153A70;
+  --blue:#2563EB;
+  --blue2:#38A3FF;
+  --bg:#F4F7FB;
+  --card:#FFFFFF;
+  --text:#172033;
+  --muted:#667085;
+  --line:#DCE4F0;
+  --soft:#EEF4FF;
+  --shadow:0 12px 32px rgba(24,55,101,.10);
+  --shadow-soft:0 4px 16px rgba(24,55,101,.07);
+}
+html{background:#F4F7FB}
+body{
+  background:
+    radial-gradient(circle at 82% 0%,rgba(56,163,255,.10),transparent 28%),
+    linear-gradient(180deg,#F8FAFD 0%,#F2F6FB 50%,#F6F8FC 100%) !important;
+  color:var(--text);
+}
+.app{background:transparent}
+.sidebar{
+  background:
+    radial-gradient(circle at 18% 3%,rgba(77,163,255,.22),transparent 26%),
+    linear-gradient(180deg,#102A56 0%,#0D244A 55%,#0A1D3D 100%) !important;
+  border-right:1px solid rgba(255,255,255,.08);
+  box-shadow:12px 0 34px rgba(12,38,78,.11);
+  padding:18px 13px;
+}
+.brand{
+  margin:0 3px 14px;
+  padding:7px 8px 18px;
+  border-bottom:1px solid rgba(255,255,255,.13);
+}
+.brand img{
+  width:48px;height:48px;border-radius:14px;
+  box-shadow:0 8px 24px rgba(0,0,0,.20);
+  border:1px solid rgba(255,255,255,.22);
+}
+.brand b{font-size:20px;letter-spacing:-.02em}
+.brand small{color:#B9CBE5;opacity:1;margin-top:2px}
+.nav{gap:5px;margin-top:7px}
+.nav button{
+  position:relative;
+  color:#DCE9F8;
+  padding:11px 12px;
+  border-radius:12px;
+  font-weight:650;
+  transition:background .18s ease,transform .18s ease,color .18s ease,box-shadow .18s ease;
+}
+.nav button:hover{
+  background:rgba(255,255,255,.085) !important;
+  color:#fff;
+  transform:translateX(2px);
+}
+.nav button.active{
+  background:linear-gradient(100deg,#2563EB 0%,#2F80ED 70%,#38A3FF 100%) !important;
+  color:#fff;
+  box-shadow:0 8px 20px rgba(37,99,235,.28);
+}
+.nav button.active::before{
+  content:"";
+  position:absolute;left:-6px;top:9px;bottom:9px;width:3px;
+  border-radius:999px;background:#8FD3FF;
+}
+.nav .ico{
+  width:28px;height:28px;display:grid;place-items:center;
+  background:rgba(255,255,255,.08);border-radius:8px;
+  font-size:16px;
+}
+.nav button.active .ico{background:rgba(255,255,255,.18)}
+.sidebar-foot{
+  color:#B6C8E0;opacity:1;
+  border-top:1px solid rgba(255,255,255,.11);
+}
+.main{background:transparent}
+.topbar{
+  height:74px;
+  background:rgba(255,255,255,.96) !important;
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid #E4EAF2;
+  box-shadow:0 3px 14px rgba(24,55,101,.04);
+}
+.menuBtn{
+  background:#EEF4FF !important;color:#18498E;
+  border:1px solid #D9E6FA !important;
+}
+.search input{
+  background:#F8FAFD !important;
+  border:1px solid #D8E2EF !important;
+  border-radius:14px;
+  box-shadow:inset 0 1px 2px rgba(16,42,86,.02);
+  transition:.18s ease;
+}
+.search input:focus{
+  background:#fff !important;
+  border-color:#7FB3FF !important;
+  box-shadow:0 0 0 4px rgba(37,99,235,.10);
+}
+.content{padding:28px}
+.titleRow{margin-bottom:20px}
+.titleRow h1{color:#102A56 !important;font-size:29px;letter-spacing:-.025em}
+.titleRow p{color:#667085 !important}
+.btn{
+  background:#EEF4FF;
+  color:#18498E;
+  border:1px solid #DCE8F8;
+  border-radius:11px;
+  box-shadow:0 1px 2px rgba(16,42,86,.03);
+  transition:transform .15s ease,box-shadow .15s ease,background .15s ease;
+}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(24,55,101,.09);background:#E6F0FF}
+.btn.primary{
+  background:linear-gradient(100deg,#2563EB,#2F80ED 68%,#38A3FF) !important;
+  border-color:transparent !important;
+  color:#fff;
+  box-shadow:0 8px 18px rgba(37,99,235,.20);
+}
+.btn.green{background:#EAF8F0 !important;color:#147A43 !important;border-color:#CDEEDD}
+.btn.orange{background:#FFF4E6 !important;color:#9C5B10 !important;border-color:#FFE0B6}
+.btn.red{background:#FFF0F0 !important;color:#B42318 !important;border-color:#FFD5D2}
+.hero{
+  background:
+    radial-gradient(circle at 95% 5%,rgba(147,210,255,.34),transparent 28%),
+    linear-gradient(120deg,#12366E 0%,#1D5FC2 55%,#2F8FEA 100%) !important;
+  border:1px solid rgba(255,255,255,.20);
+  border-radius:24px;
+  box-shadow:0 18px 46px rgba(27,71,133,.20);
+}
+.hero img{box-shadow:0 14px 30px rgba(3,24,60,.24)}
+.grid{gap:16px}
+.tool,.card,.panel,.item{
+  background:#fff !important;
+  border:1px solid #E0E7F0 !important;
+  box-shadow:var(--shadow-soft) !important;
+}
+.tool{border-radius:18px;padding:18px}
+.tool:hover{
+  transform:translateY(-3px);
+  border-color:#C9DAEE !important;
+  box-shadow:0 14px 28px rgba(25,66,120,.12) !important;
+}
+.tool h3,.card h3,.section h2{color:#19355F}
+.tool p,.muted{color:#667085 !important}
+.card{border-radius:16px}
+.panel{border-radius:19px}
+.empty{
+  background:#FAFCFF !important;
+  border-color:#CCD9EA !important;
+  color:#708096 !important;
+}
+.toolbar{
+  background:#F8FAFD !important;
+  border-bottom:1px solid #E1E8F1 !important;
+}
+.toolbar button,.toolbar select,.toolbar input{
+  background:#fff !important;
+  border-color:#D9E2EE !important;
+}
+.toolbar button:hover{background:#EEF5FF !important;border-color:#BFD4EF !important}
+.officeTop{
+  background:#fff !important;
+  border-color:#E0E7F0 !important;
+}
+.editorWrap{background:#E8EEF5 !important}
+.editor{box-shadow:0 10px 32px rgba(31,60,99,.10)}
+.sheetWrap{background:#fff}
+.sheet th{
+  background:#F3F7FC !important;
+  color:#314766;
+}
+.sheet td:first-child,.sheet th:first-child{background:#F3F7FC !important}
+.sheet td[contenteditable]:focus{box-shadow:inset 0 0 0 2px #2563EB !important}
+.sheet td.selected{background:#EDF5FF !important;outline-color:#2563EB !important}
+.field input,.field textarea,.field select,.calcDisplay{
+  border-color:#D9E3EF !important;
+  background:#fff !important;
+}
+.field input:focus,.field textarea:focus,.field select:focus,.calcDisplay:focus{
+  outline:none;border-color:#78AFFF !important;box-shadow:0 0 0 4px rgba(37,99,235,.09)
+}
+.fileCommandBar,.storageBanner,.libraryNotice,.utilityInfoBar{
+  background:#fff !important;
+  border:1px solid #E0E7F0 !important;
+  box-shadow:var(--shadow-soft);
+}
+.fileTabs button.active{
+  background:#EAF2FF !important;color:#1E5EC8 !important;
+  box-shadow:inset 0 -2px 0 #2563EB;
+}
+.fileSearchBox{
+  background:#F8FAFD !important;border-color:#DCE4F0 !important;
+}
+.thumb.active{border-color:#2563EB !important;box-shadow:0 0 0 2px rgba(37,99,235,.08)}
+.thumbs{background:#F4F7FB !important}
+.slideStage{
+  background:
+    radial-gradient(circle at 50% 0,#253F67 0,#182D4E 45%,#11223D 100%) !important;
+}
+.slide{box-shadow:0 22px 56px rgba(3,19,42,.34)}
+.calcGrid button{background:#F1F5FB !important;color:#233A5C}
+.calcGrid button:hover{background:#E5EEFA !important}
+.calcGrid button.eq{background:linear-gradient(100deg,#2563EB,#3187EE) !important;color:#fff}
+.modal{background:rgba(8,26,55,.48) !important;backdrop-filter:blur(3px)}
+.modalbox{
+  border:1px solid #E1E7EF;
+  box-shadow:0 28px 80px rgba(14,37,72,.24) !important;
+}
+.toast{background:#102A56 !important}
+.footer{color:#7B879B}
+.badge{background:#EAF2FF !important;color:#225CB5 !important}
+.badge.done{background:#E7F7ED !important;color:#147243 !important}
+.net.online{background:#E8F7EF !important;color:#13754A !important}
+.saveStatus{background:#F0F4FA !important;color:#5C6B80 !important}
+.saveStatus.ok{background:#E7F7ED !important;color:#147243 !important}
+@media(max-width:800px){
+  .sidebar{box-shadow:18px 0 50px rgba(4,18,42,.22)}
+  .content{padding:18px}
+  .topbar{height:68px}
+}
+@media(max-width:500px){
+  .content{padding:14px}
+  .tool,.card{border-radius:15px}
+}
+
+
+
+/* Ethan Office v18 stability/performance */
+@media (prefers-reduced-motion:reduce){
+ *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
