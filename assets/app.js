@@ -461,7 +461,7 @@ const g=document.getElementById('globalSearch');if(g){g.autocomplete='off';g.add
 if(matchMedia?.('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('reduceMotion');
 
 // Professional workspace status strip.
-if(!document.getElementById('workspaceStatus')){const bar=document.createElement('div');bar.id='workspaceStatus';bar.className='workspaceStatus';bar.innerHTML='<strong>Ethan Office</strong><span>Executive Suite v22</span><span id="storageStatus">Local workspace ready</span>';document.querySelector('.main')?.appendChild(bar)}
+if(!document.getElementById('workspaceStatus')){const bar=document.createElement('div');bar.id='workspaceStatus';bar.className='workspaceStatus';bar.innerHTML='<strong>Ethan Office</strong><span>Executive Suite v21</span><span id="storageStatus">Local workspace ready</span>';document.querySelector('.main')?.appendChild(bar)}
 function updateStorageStatus(){try{const bytes=new Blob([localStorage.getItem(STORE)||'']).size;const el=document.getElementById('storageStatus');if(el)el.textContent=bytes>1024*1024?(bytes/1024/1024).toFixed(1)+' MB local data':Math.max(1,Math.round(bytes/1024))+' KB local data'}catch(e){}}
 const oldDbSave=DB.save;DB.save=function(){const ok=oldDbSave.call(DB);updateStorageStatus();return ok};updateStorageStatus();
 
@@ -850,14 +850,14 @@ try{DB.save();renderHome();renderFiles()}catch(e){console.error(e)}
 // ===== Ethan Office v13: runtime audit fixes, performance hardening and theme reliability =====
 (function(){
   'use strict';
-  const V16='22.0.0';
+  const V16='21.0.0';
   if(!state.settings)state.settings={};
   state.settings.version=V16;
 
   // Ensure every visible version label agrees with the running suite version.
-  const vp=document.querySelector('.versionPill');if(vp)vp.textContent='Executive Suite v22';
+  const vp=document.querySelector('.versionPill');if(vp)vp.textContent='Executive Suite v21';
   const status=document.getElementById('workspaceStatus');
-  if(status){const spans=[...status.querySelectorAll('span')];const ver=spans.find(x=>/Suite v\d+/i.test(x.textContent||''));if(ver)ver.textContent='Executive Suite v22'}
+  if(status){const spans=[...status.querySelectorAll('span')];const ver=spans.find(x=>/Suite v\d+/i.test(x.textContent||''));if(ver)ver.textContent='Executive Suite v21'}
 
   // Restore backups through a v13-safe path. Older backups are migrated instead of downgrading runtime state.
   function restoreOfficeV13(input){
@@ -908,7 +908,7 @@ try{DB.save();renderHome();renderFiles()}catch(e){console.error(e)}
 // ===== Ethan Office v17: AI removal + clean stable suite =====
 (function(){
   'use strict';
-  const V16='22.0.0';
+  const V16='21.0.0';
   try{
     state.settings=state.settings||{};
     state.settings.version=V16;
@@ -921,9 +921,9 @@ try{DB.save();renderHome();renderFiles()}catch(e){console.error(e)}
     document.body.removeAttribute('data-office-theme');
     DB.save();
   }catch(e){console.error('v17 migration',e)}
-  const vp=document.querySelector('.versionPill');if(vp)vp.textContent='Executive Suite v22';
+  const vp=document.querySelector('.versionPill');if(vp)vp.textContent='Executive Suite v21';
   const status=document.getElementById('workspaceStatus');
-  if(status){const spans=[...status.querySelectorAll('span')];const ver=spans.find(x=>/Suite v\d+/i.test(x.textContent||''));if(ver)ver.textContent='Executive Suite v22'}
+  if(status){const spans=[...status.querySelectorAll('span')];const ver=spans.find(x=>/Suite v\d+/i.test(x.textContent||''));if(ver)ver.textContent='Executive Suite v21'}
   try{renderHome();renderFiles()}catch(e){console.error('v17 refresh',e)}
 })();
 
@@ -931,12 +931,12 @@ try{DB.save();renderHome();renderFiles()}catch(e){console.error(e)}
 // ===== Ethan Office v18: deep-audit stability hardening =====
 (function(){
  'use strict';
- const VERSION='22.0.0';
+ const VERSION='21.0.0';
  try{
    state.settings=state.settings||{}; state.settings.version=VERSION;
-   const vp=document.querySelector('.versionPill');if(vp)vp.textContent='Executive Suite v22';
+   const vp=document.querySelector('.versionPill');if(vp)vp.textContent='Executive Suite v21';
    const ws=document.getElementById('workspaceStatus');
-   if(ws){const spans=[...ws.querySelectorAll('span')],v=spans.find(x=>/Suite v\d+/i.test(x.textContent||''));if(v)v.textContent='Executive Suite v22'}
+   if(ws){const spans=[...ws.querySelectorAll('span')],v=spans.find(x=>/Suite v\d+/i.test(x.textContent||''));if(v)v.textContent='Executive Suite v21'}
    // Render all library/list surfaces after the DOM repair/migration.
    [renderHome,renderWordList,renderSheetList,renderPresList,renderNotes,renderEvents,renderTasks,renderMeetings,renderContacts,renderFiles]
      .forEach(fn=>{try{typeof fn==='function'&&fn()}catch(e){console.error('render recovery',e)}});
@@ -948,7 +948,7 @@ try{DB.save();renderHome();renderFiles()}catch(e){console.error(e)}
 // ===== Ethan Office v20: PWA installation + final brand cleanup =====
 (function(){
   'use strict';
-  const VERSION='22.0.0';
+  const VERSION='21.0.0';
   try{
     state.settings=state.settings||{};
     state.settings.version=VERSION;
@@ -972,21 +972,6 @@ try{DB.save();renderHome();renderFiles()}catch(e){console.error(e)}
     DB.save();
     try{renderHome();renderWordList();renderFiles()}catch(e){console.error('v20 render refresh',e)}
   }catch(e){console.error('v20 brand migration',e)}
-  const vp=document.querySelector('.versionPill');if(vp)vp.textContent='Executive Suite v22';
+  const vp=document.querySelector('.versionPill');if(vp)vp.textContent='Executive Suite v21';
   updateInstallUI();
 })();
-
-// ===== Ethan Office v22 — secure email OTP access =====
-const ETHAN_AUTH_API=(localStorage.getItem('ethanAuthApi')||location.origin).replace(/\/$/,'');
-let ethanAuthToken=sessionStorage.getItem('ethanOfficeSession')||'';
-function authStatus(msg,type=''){const e=document.getElementById('authStatus');if(e){e.textContent=msg;e.className='ethanAuthStatus '+type}}
-function authBusy(on){['authSendBtn','authVerifyBtn'].forEach(id=>{const e=document.getElementById(id);if(e)e.disabled=on})}
-function showOfficeAuthenticated(email=''){document.getElementById('ethanAuthGate')?.classList.add('hidden');document.getElementById('ethanSecurityBtn')?.classList.remove('hidden');if(email)sessionStorage.setItem('ethanOfficeEmail',email)}
-function showOfficeLocked(){document.getElementById('ethanAuthGate')?.classList.remove('hidden');document.getElementById('ethanSecurityBtn')?.classList.add('hidden')}
-async function ethanAuthFetch(path,opts={}){const headers=new Headers(opts.headers||{});if(ethanAuthToken)headers.set('Authorization','Bearer '+ethanAuthToken);return fetch(ETHAN_AUTH_API+path,{...opts,headers,credentials:'include'})}
-window.ethanAuthSend=async function(){const email=(document.getElementById('authEmail')?.value||'').trim().toLowerCase();if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))return authStatus('Enter a valid email address.','error');authBusy(true);authStatus('Sending your secure code…');try{const r=await ethanAuthFetch('/api/auth/request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})});const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||'OTP could not be sent.');sessionStorage.setItem('ethanOtpEmail',email);document.getElementById('authEmailStep')?.classList.add('hidden');document.getElementById('authOtpStep')?.classList.remove('hidden');authStatus('Code sent. Check your email. It expires in 10 minutes.','ok');document.getElementById('authOtp')?.focus()}catch(e){authStatus(e.message,'error')}finally{authBusy(false)}};
-window.ethanAuthVerify=async function(){const email=sessionStorage.getItem('ethanOtpEmail')||'';const code=(document.getElementById('authOtp')?.value||'').replace(/\D/g,'').slice(0,6);if(code.length!==6)return authStatus('Enter the 6-digit code.','error');authBusy(true);authStatus('Verifying…');try{const r=await ethanAuthFetch('/api/auth/verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,code})});const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||'Verification failed.');ethanAuthToken=d.token||'';if(!ethanAuthToken)throw new Error('Secure session was not returned.');sessionStorage.setItem('ethanOfficeSession',ethanAuthToken);showOfficeAuthenticated(email);authStatus('')}catch(e){authStatus(e.message,'error')}finally{authBusy(false)}};
-window.ethanAuthBack=function(){sessionStorage.removeItem('ethanOtpEmail');document.getElementById('authOtpStep')?.classList.add('hidden');document.getElementById('authEmailStep')?.classList.remove('hidden');authStatus('')};
-window.ethanAuthLogout=async function(){try{await ethanAuthFetch('/api/auth/logout',{method:'POST'})}catch(e){}ethanAuthToken='';sessionStorage.removeItem('ethanOfficeSession');sessionStorage.removeItem('ethanOfficeEmail');showOfficeLocked()};
-async function ethanAuthBoot(){showOfficeLocked();if(!ethanAuthToken)return;try{const r=await ethanAuthFetch('/api/auth/session');if(!r.ok)throw new Error('expired');const d=await r.json();showOfficeAuthenticated(d.email||'')}catch(e){ethanAuthToken='';sessionStorage.removeItem('ethanOfficeSession');showOfficeLocked()}}
-window.addEventListener('DOMContentLoaded',ethanAuthBoot);

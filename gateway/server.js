@@ -3,9 +3,6 @@ import express from 'express';
 import cors from 'cors';
 import multer from 'multer';
 import rateLimit from 'express-rate-limit';
-import nodemailer from 'nodemailer';
-import crypto from 'node:crypto';
-import helmet from 'helmet';
 
 const app = express();
 const port = Number(process.env.PORT || 8787);
@@ -13,23 +10,8 @@ const maxMb = Math.max(1, Math.min(100, Number(process.env.MAX_FILE_MB || 50)));
 const convertApiToken = process.env.CONVERTAPI_TOKEN || '';
 const cloudConvertToken = process.env.CLOUDCONVERT_API_KEY || '';
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || '*').split(',').map(x=>x.trim()).filter(Boolean);
-const authSecret = process.env.AUTH_SECRET || '';
-const smtpHost = process.env.SMTP_HOST || '';
-const smtpPort = Number(process.env.SMTP_PORT || 587);
-const smtpSecure = String(process.env.SMTP_SECURE || 'false').toLowerCase()==='true';
-const smtpUser = process.env.SMTP_USER || '';
-const smtpPass = process.env.SMTP_PASS || '';
-const mailFrom = process.env.MAIL_FROM || smtpUser;
-const allowedEmails = new Set((process.env.AUTH_ALLOWED_EMAILS || '').split(',').map(x=>x.trim().toLowerCase()).filter(Boolean));
-const allowedDomains = new Set((process.env.AUTH_ALLOWED_DOMAINS || '').split(',').map(x=>x.trim().toLowerCase()).filter(Boolean));
-const otpStore = new Map();
-const revokedSessions = new Map();
-const OTP_TTL = 10*60*1000;
-const SESSION_TTL = Math.max(15,Math.min(1440,Number(process.env.AUTH_SESSION_MINUTES||720)))*60*1000;
-
 
 app.disable('x-powered-by');
-app.use(helmet({contentSecurityPolicy:false,crossOriginEmbedderPolicy:false}));
 app.use(cors({origin(origin, cb){
   if (!origin || allowedOrigins.includes('*') || allowedOrigins.includes(origin)) return cb(null,true);
   cb(new Error('Origin not allowed'));
@@ -47,7 +29,7 @@ const pdfOps = new Set(['ocr','compress','extract','split','encrypt','decrypt','
 app.get('/health', (_req,res)=>res.json({
   ok:true, service:'Ethan Office Document Utility Conversion Gateway',
   convertApiConfigured:Boolean(convertApiToken), cloudConvertConfigured:Boolean(cloudConvertToken),
-  maxFileMb:maxMb, authConfigured:Boolean(authSecret&&smtpHost&&mailFrom)
+  maxFileMb:maxMb
 }));
 
 function safeExt(name=''){return (name.split('.').pop()||'').toLowerCase().replace(/[^a-z0-9]/g,'');}
@@ -101,74 +83,7 @@ function exportFiles(job){
 
 
 
-
-const authRequestLimiter=rateLimit({windowMs:15*60_000,limit:5,standardHeaders:'draft-7',legacyHeaders:false,message:{error:'Too many OTP requests. Try again later.'}});
-const authVerifyLimiter=rateLimit({windowMs:15*60_000,limit:12,standardHeaders:'draft-7',legacyHeaders:false,message:{error:'Too many verification attempts. Try again later.'}});
-const mailer=()=>nodemailer.createTransport({host:smtpHost,port:smtpPort,secure:smtpSecure,auth:smtpUser?{user:smtpUser,pass:smtpPass}:undefined});
-function normEmail(v=''){return String(v).trim().toLowerCase()}
-function validEmail(v=''){return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)&&v.length<=254}
-function emailAllowed(email){
-  if(!allowedEmails.size&&!allowedDomains.size)return true;
-  const domain=email.split('@')[1]||'';
-  return allowedEmails.has(email)||allowedDomains.has(domain);
-}
-function b64url(v){return Buffer.from(v).toString('base64url')}
-function sign(v){return crypto.createHmac('sha256',authSecret).update(v).digest('base64url')}
-function makeToken(email){
-  const payload=b64url(JSON.stringify({email,iat:Date.now(),exp:Date.now()+SESSION_TTL,jti:crypto.randomUUID()}));
-  return payload+'.'+sign(payload);
-}
-function readToken(token=''){
-  if(!authSecret||typeof token!=='string'||!token.includes('.'))return null;
-  const [p,sig]=token.split('.');
-  const expected=sign(p);
-  if(sig.length!==expected.length||!crypto.timingSafeEqual(Buffer.from(sig),Buffer.from(expected)))return null;
-  try{const d=JSON.parse(Buffer.from(p,'base64url').toString('utf8'));if(!d.email||!d.exp||Date.now()>d.exp||revokedSessions.has(d.jti))return null;return d}catch{return null}
-}
-function bearer(req){const h=String(req.headers.authorization||'');return h.startsWith('Bearer ')?h.slice(7):''}
-function requireAuth(req,res,next){const d=readToken(bearer(req));if(!d)return res.status(401).json({error:'Secure Ethan Office session required.'});req.auth=d;next()}
-function hashOtp(email,code,salt){return crypto.createHmac('sha256',authSecret).update(email+'|'+code+'|'+salt).digest('hex')}
-function pruneAuth(){
-  const now=Date.now();for(const [k,v] of otpStore)if(now>v.expires)otpStore.delete(k);
-  for(const [k,v] of revokedSessions)if(now>v)revokedSessions.delete(k);
-}
-setInterval(pruneAuth,5*60_000).unref();
-
-app.post('/api/auth/request',authRequestLimiter,async(req,res)=>{
-  try{
-    if(!authSecret||authSecret.length<32||!smtpHost||!mailFrom)return res.status(503).json({error:'Email OTP is not configured on the Ethan Office server.'});
-    const email=normEmail(req.body?.email);
-    if(!validEmail(email)||!emailAllowed(email))return res.status(400).json({error:'This email address is not permitted to access Ethan Office.'});
-    const code=String(crypto.randomInt(0,1000000)).padStart(6,'0');
-    const salt=crypto.randomBytes(16).toString('hex');
-    otpStore.set(email,{hash:hashOtp(email,code,salt),salt,expires:Date.now()+OTP_TTL,attempts:0});
-    await mailer().sendMail({from:mailFrom,to:email,subject:'Your Ethan Office verification code',text:`Your Ethan Office verification code is ${code}. It expires in 10 minutes. If you did not request this code, ignore this email.`});
-    res.json({ok:true,expiresIn:600});
-  }catch(err){console.error('OTP mail error',err);res.status(502).json({error:'The verification email could not be sent.'})}
-});
-app.post('/api/auth/verify',authVerifyLimiter,(req,res)=>{
-  const email=normEmail(req.body?.email),code=String(req.body?.code||'').replace(/\D/g,'').slice(0,6);
-  const item=otpStore.get(email);
-  if(!item||Date.now()>item.expires){otpStore.delete(email);return res.status(400).json({error:'The code expired or is no longer valid. Request a new code.'})}
-  item.attempts++;
-  if(item.attempts>5){otpStore.delete(email);return res.status(429).json({error:'Too many incorrect codes. Request a new OTP.'})}
-  const got=hashOtp(email,code,item.salt);
-  if(got.length!==item.hash.length||!crypto.timingSafeEqual(Buffer.from(got),Buffer.from(item.hash)))return res.status(400).json({error:'Incorrect verification code.'});
-  otpStore.delete(email);
-  const token=makeToken(email);
-  res.setHeader('Cache-Control','no-store');
-  res.json({ok:true,token,email,expiresIn:Math.floor(SESSION_TTL/1000)});
-});
-app.get('/api/auth/session',(req,res)=>{
-  const d=readToken(bearer(req));if(!d)return res.status(401).json({error:'Session expired.'});
-  res.setHeader('Cache-Control','no-store');res.json({ok:true,email:d.email,expiresAt:d.exp});
-});
-app.post('/api/auth/logout',(req,res)=>{
-  const d=readToken(bearer(req));if(d?.jti)revokedSessions.set(d.jti,d.exp);
-  res.json({ok:true});
-});
-
-app.post('/api/convert', requireAuth, upload.single('file'), async (req,res)=>{
+app.post('/api/convert', upload.single('file'), async (req,res)=>{
   try{
     if(!convertApiToken) return res.status(503).json({error:'Office conversion provider is not configured on this gateway.'});
     if(!req.file) return res.status(400).json({error:'Choose a file to convert.'});
@@ -186,7 +101,7 @@ app.post('/api/convert', requireAuth, upload.single('file'), async (req,res)=>{
   }catch(err){console.error(err);res.status(500).json({error:'Conversion failed safely. No provider token was exposed to the client.'});}
 });
 
-app.post('/api/pdf', requireAuth, upload.single('file'), async (req,res)=>{
+app.post('/api/pdf', upload.single('file'), async (req,res)=>{
   try{
     if(!cloudConvertToken) return res.status(503).json({error:'Advanced PDF engine is not configured. Add CLOUDCONVERT_API_KEY on the gateway server.'});
     if(!req.file) return res.status(400).json({error:'Choose a PDF file.'});

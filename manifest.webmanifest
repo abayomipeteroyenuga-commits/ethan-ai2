@@ -1,7 +1,7 @@
 {
   "name": "Ethan Office Suite",
   "short_name": "Ethan Office",
-  "description": "Ethan Office Suite v22 \u2014 secure email OTP protected productivity suite.",
+  "description": "Ethan Office Suite v21 \u2014 Word, Excel, Presentation, Document Utility and everyday office productivity tools.",
   "id": "./",
   "start_url": "./",
   "scope": "./",
