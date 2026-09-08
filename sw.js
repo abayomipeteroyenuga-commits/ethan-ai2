@@ -1,4 +1,4 @@
-const CACHE='ethan-office-v21-docutil-nullfix';
+const CACHE='ethan-office-v22-secure-otp';
 const CORE=['./','./index.html','./manifest.webmanifest','./assets/style.css','./assets/app.js','./assets/icon-96.png','./assets/icon-192.png','./assets/icon-512.png','./assets/ethan-office-brand.jpg','./document-utility.html','./assets/ethan-documents-logo.png'];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)))});
 self.addEventListener('activate',e=>e.waitUntil(Promise.all([self.clients.claim(),caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k))))])));
