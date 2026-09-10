@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#061a34" />
+<title>Ethan Document Utility — Ethan Office Suite</title>
+<style>
+:root{--navy:#061b4f;--blue:#0869ed;--sky:#10b4f4;--gold:#ffb000;--green:#12a85b;--red:#e84545;--purple:#7137dc;--bg:#f4f7fc;--card:#fff;--text:#102141;--muted:#6b7892;--line:#dfe6f2}
+*{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+button,input,select,textarea{font:inherit}.app{display:flex;min-height:100vh}.sidebar{width:252px;background:linear-gradient(180deg,#061b4f,#063f99);color:white;padding:18px 14px;position:fixed;inset:0 auto 0 0;overflow:auto}.brand{display:flex;align-items:center;gap:10px;padding:6px 8px 20px}.brand img{width:48px;height:48px;border-radius:13px;object-fit:cover}.brand b{font-size:18px}.brand small{display:block;color:#bcd6ff}.nav button{display:flex;gap:11px;align-items:center;width:100%;border:0;background:transparent;color:#e8f1ff;padding:11px 12px;border-radius:10px;text-align:left;margin:3px 0;cursor:pointer}.nav button:hover,.nav button.active{background:#0d70ed;color:#fff}.nav .sep{margin:14px 9px 5px;font-size:11px;letter-spacing:.12em;color:#9fc5ff;text-transform:uppercase}.main{margin-left:252px;width:calc(100% - 252px);min-height:100vh}.topbar{height:68px;background:white;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:sticky;top:0;z-index:20}.topbar h1{font-size:20px;margin:0}.top-actions{display:flex;gap:8px}.btn{border:0;border-radius:9px;padding:10px 14px;font-weight:700;cursor:pointer}.btn.primary{background:var(--blue);color:#fff}.btn.dark{background:var(--navy);color:#fff}.btn.light{background:#edf4ff;color:#0757d8}.btn.danger{background:#fff0f0;color:#bd1d1d}.btn.green{background:#e9fff3;color:#08763a}.content{padding:22px;max-width:1500px;margin:auto}.view{display:none}.view.active{display:block}.hero{background:linear-gradient(135deg,#062363,#0874ef);border-radius:18px;color:#fff;padding:24px;display:grid;grid-template-columns:1.5fr .7fr;gap:16px;align-items:center}.hero h2{font-size:28px;margin:0 0 6px}.hero p{margin:0;color:#d9e9ff}.hero-logo{justify-self:end;width:130px;height:130px;border-radius:26px;object-fit:cover;box-shadow:0 15px 35px #001b5170}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:17px 0}.stat,.card{background:white;border:1px solid var(--line);border-radius:14px;padding:17px;box-shadow:0 4px 13px #183d7010}.stat small{color:var(--muted)}.stat strong{display:block;font-size:25px;margin-top:5px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.quick{cursor:pointer;transition:.15s}.quick:hover{transform:translateY(-2px);box-shadow:0 9px 22px #1d3d6d1c}.qicon{font-size:26px}.quick h3{margin:8px 0 4px}.quick p{margin:0;color:var(--muted);font-size:13px}.section-head{display:flex;justify-content:space-between;align-items:center;margin:0 0 13px;gap:10px}.section-head h2{margin:0}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.search{flex:1;min-width:210px;border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 12px}.doc-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.doc{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:pointer;position:relative}.doc-thumb{height:170px;background:#edf2fb;display:flex;align-items:center;justify-content:center;overflow:hidden}.doc-thumb img{width:100%;height:100%;object-fit:cover}.doc-thumb .placeholder{font-size:56px}.doc-body{padding:12px}.doc-title{font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.doc-meta{font-size:12px;color:var(--muted);margin-top:5px}.badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}.badge{font-size:11px;background:#eef4ff;color:#085ad4;border-radius:999px;padding:4px 7px}.badge.gold{background:#fff5d8;color:#8a6200}.badge.red{background:#fff0f0;color:#b32020}.modal{position:fixed;inset:0;background:#071a3f88;display:none;align-items:center;justify-content:center;padding:20px;z-index:100}.modal.show{display:flex}.modal-card{background:white;border-radius:16px;width:min(760px,100%);max-height:92vh;overflow:auto;padding:20px}.modal-card.large{width:min(1120px,100%)}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.modal-head h3{margin:0}.x{border:0;background:#edf2fa;width:34px;height:34px;border-radius:50%;cursor:pointer}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field label{display:block;font-size:12px;font-weight:800;margin:0 0 5px}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px;background:white}.field textarea{min-height:90px}.span2{grid-column:span 2}.pages{display:flex;gap:10px;overflow:auto;padding:6px 1px 13px}.page-chip{min-width:105px;width:105px;height:135px;border:2px solid transparent;border-radius:9px;overflow:hidden;background:#e9eff8;position:relative;cursor:pointer}.page-chip.active{border-color:var(--blue)}.page-chip img{width:100%;height:100%;object-fit:cover}.page-chip span{position:absolute;bottom:3px;left:4px;background:#071b4dcc;color:#fff;padding:2px 5px;border-radius:4px;font-size:10px}.editor{display:grid;grid-template-columns:1fr 300px;gap:16px}.canvas-wrap{background:#dbe2ed;border-radius:12px;min-height:500px;display:flex;align-items:center;justify-content:center;padding:15px;overflow:auto}.canvas-wrap canvas{max-width:100%;max-height:72vh;box-shadow:0 4px 20px #0002;background:white}.tools{display:flex;flex-direction:column;gap:9px}.tools .card{padding:13px}.tools h4{margin:0 0 9px}.toolrow{display:flex;gap:7px;flex-wrap:wrap}.toolrow button{flex:1}.range{width:100%}.folder-list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.folder{background:white;border:1px solid var(--line);border-radius:13px;padding:16px;cursor:pointer}.folder .fi{font-size:28px}.folder strong{display:block;margin-top:7px}.table-wrap{overflow:auto;background:#fff;border:1px solid var(--line);border-radius:13px}table{width:100%;border-collapse:collapse}th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left;font-size:13px}th{background:#f7f9fd}.empty{text-align:center;padding:42px 15px;color:var(--muted)}.statusline{font-size:12px;color:var(--muted);margin:8px 0}.busy{position:fixed;inset:0;background:#071a3f77;display:none;align-items:center;justify-content:center;z-index:300}.busy.show{display:flex}.busybox{background:#fff;border-radius:14px;padding:18px 22px;font-weight:800;box-shadow:0 10px 35px #0003}.mini{font-size:11px;color:var(--muted)}.signature-pad{border:1px dashed #a7b3c8;border-radius:9px;background:#fff;width:100%;height:170px}.footer{text-align:center;color:#8390a8;font-size:12px;padding:30px 10px}.mobile-menu{display:none}.copyright{font-size:11px;color:#bdd6ff;margin:25px 9px 10px;line-height:1.5}
+@media(max-width:1000px){.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(2,1fr)}.doc-grid{grid-template-columns:repeat(3,1fr)}.editor{grid-template-columns:1fr}.tools{display:grid;grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.sidebar{transform:translateX(-105%);transition:.2s;z-index:50}.sidebar.open{transform:none}.main{margin-left:0;width:100%}.mobile-menu{display:inline-block}.topbar{padding:0 12px}.content{padding:14px}.hero{grid-template-columns:1fr}.hero-logo{display:none}.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.doc-grid{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:1fr}.span2{grid-column:auto}.folder-list{grid-template-columns:repeat(2,1fr)}.tools{grid-template-columns:1fr}.doc-thumb{height:140px}}
+@media(max-width:430px){.doc-grid{grid-template-columns:1fr 1fr;gap:9px}.doc-thumb{height:120px}.doc-body{padding:9px}.top-actions .hide-sm{display:none}.stats{gap:9px}.stat{padding:12px}.stat strong{font-size:20px}}
+@media print{.sidebar,.topbar,.no-print,.footer{display:none!important}.main{margin:0;width:100%}.content{padding:0}.print-page{page-break-after:always;width:100%;min-height:100vh;display:flex;align-items:center;justify-content:center}.print-page img{max-width:100%;max-height:98vh}}
+
+.converter-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.converter-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px}.converter-card h3{margin:6px 0}.converter-card p{color:var(--muted);font-size:13px;min-height:38px}.convert-icon{font-size:30px}.convert-status{font-size:12px;border-radius:999px;padding:4px 8px;display:inline-block;margin:5px 0 10px}.offline{background:#e8fff2;color:#08723b}.service{background:#fff3d8;color:#7f5800}.output-list{display:grid;gap:8px;margin-top:12px}.output-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:#f9fbff}.small-input{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px;background:#fff;margin:6px 0}.note-box{background:#eef5ff;border:1px solid #cfe1ff;border-radius:11px;padding:12px;color:#34506f;font-size:13px}.danger-note{background:#fff7e5;border-color:#ffe0a1;color:#735100}
+@media(max-width:1000px){.converter-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:760px){.converter-grid{grid-template-columns:1fr}}
+</style>
+
+<style id="ethanOfficeV8UtilityTheme">
+:root{--navy:#061a34;--blue:#185abd;--sky:#2ea6ff;--gold:#d9a441;--green:#107c41;--red:#b4232f;--purple:#5b3fa3;--bg:#eef3f8;--card:#fff;--text:#0b1c30;--muted:#63758a;--line:#c9d6e3}
+body{font-family:Aptos,"Segoe UI Variable Text","Segoe UI",Calibri,Arial,sans-serif;background:radial-gradient(circle at 100% 0,#dae9f7 0,transparent 27%),var(--bg);letter-spacing:.002em}
+.sidebar{background:linear-gradient(180deg,#041327 0%,#071d3c 53%,#0c3767 100%);box-shadow:8px 0 28px rgba(2,15,34,.18)}
+.brand{margin:-18px -14px 10px;padding:20px 18px 18px;background:linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.015));border-bottom:1px solid rgba(255,255,255,.08)}
+.brand b{font-family:"Segoe UI Variable Display","Segoe UI",Aptos,sans-serif;font-weight:760;letter-spacing:-.02em}.brand small{color:#a8c5e0;letter-spacing:.02em}
+.nav button{border-radius:6px;font-weight:650}.nav button:hover{background:#12365f}.nav button.active{background:linear-gradient(90deg,#174d88,#1b68b4);box-shadow:0 6px 16px rgba(0,0,0,.18)}.nav .sep{color:#87a7c6;font-size:9px;font-weight:800}
+.topbar{background:linear-gradient(90deg,#061a34,#0b315e);color:white;border-bottom:1px solid #214d79;box-shadow:0 5px 18px rgba(4,20,43,.2)}.topbar h1{font-weight:760;letter-spacing:-.02em}.topbar .btn.light{background:#173f6c;color:#fff}.topbar .btn.primary{background:#fff;color:#0b3d74}
+.content{max-width:1660px;padding:24px 26px 42px}.hero{background:linear-gradient(120deg,#07172f,#0b386d 55%,#1864ac);border:1px solid #24598b;border-radius:13px;box-shadow:0 16px 38px rgba(4,21,46,.20)}.hero h2{font-size:31px;letter-spacing:-.035em}.hero p{color:#d7e7f8}.hero-logo{filter:drop-shadow(0 14px 24px rgba(0,0,0,.24))}
+.stat,.card,.converter-card,.doc,.folder,.table-wrap{border-radius:9px;border-color:#c9d6e3;box-shadow:0 4px 13px rgba(12,39,69,.05)}.card.quick{position:relative;overflow:hidden}.card.quick:before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:linear-gradient(90deg,#185abd,#2ea6ff)}.card.quick:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(7,31,60,.13)}
+.btn{border-radius:6px;font-weight:680}.btn.primary{background:linear-gradient(180deg,#2167b6,#174e91)}.btn.dark{background:#0a2d57}.btn.light{background:#e7f0fa;color:#174b83}.btn.green{background:#e9f7ef;color:#0d6c39}.btn.danger{background:#fff0f1;color:#a52530}
+.search,.field input,.field select,.field textarea,.small-input{border-radius:6px}.modal-card{border-radius:10px}.doc{overflow:hidden}.doc-thumb{background:#e7edf4}.badge{font-weight:650}.note-box{border-radius:7px}
+.converter-card{position:relative;overflow:hidden}.converter-card:before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:#b4232f}.footer{font-weight:600;letter-spacing:.02em}
+@media(max-width:760px){.content{padding:14px 11px 34px}.hero h2{font-size:27px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+</style>
+<style id="eoUtilityThemeStyle">
+</style></head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><img src="assets/ethan-documents-logo.png"><div><b>Ethan Document Utility</b><small>Ethan Office • Documents & PDF</small></div></div>
+  <nav class="nav">
+    <button class="active" data-view="dashboard">🏠 Dashboard</button>
+    <button data-view="documents">📄 My Documents</button>
+    <button data-view="folders">📁 Folders</button>
+    <button data-view="favorites">⭐ Favorites</button>
+    <div class="sep">Create & Edit</div>
+    <button data-view="converter">🔄 File Converter</button>
+    <button onclick="newScan()">📷 Scan / Import</button>
+    <button data-view="signatures">✍️ Signatures</button>
+    <button data-view="recent">🕘 Recent</button>
+    <button data-view="trash">🗑️ Trash</button>
+    <div class="sep">Data</div>
+    <button data-view="backup">💾 Backup & Restore</button>
+    <button data-view="settings">⚙️ Settings</button>
+  </nav>
+  <div class="copyright">© 2026 Ethan Digital Academy<br>All Rights Reserved.</div>
+</aside>
+<main class="main">
+  <header class="topbar"><div style="display:flex;gap:10px;align-items:center"><button class="btn light mobile-menu" onclick="sidebar.classList.toggle('open')">☰</button><h1 id="pageTitle">Dashboard</h1></div><div class="top-actions"><button class="btn light hide-sm" onclick="go('documents')">🔎 Browse</button><button class="btn primary" onclick="newScan()">＋ Scan / Import</button></div></header>
+  <div class="content">
+    <section id="dashboard" class="view active">
+      <div class="hero"><div><h2>Your documents. Organized.</h2><p>Scan, import, edit, sign, organize and export documents from one secure offline-first workspace.</p><div style="margin-top:16px"><button class="btn" style="background:white;color:#0757d8" onclick="newScan()">📷 Scan or Import</button> <button class="btn" style="background:#ffffff22;color:white" onclick="go('documents')">Open Library</button></div></div><img class="hero-logo" src="assets/ethan-documents-logo.png"></div>
+      <div class="stats"><div class="stat"><small>Documents</small><strong id="statDocs">0</strong></div><div class="stat"><small>Total Pages</small><strong id="statPages">0</strong></div><div class="stat"><small>Folders</small><strong id="statFolders">0</strong></div><div class="stat"><small>Favorites</small><strong id="statFav">0</strong></div></div>
+      <div class="section-head"><h2>Quick tools</h2></div>
+      <div class="grid">
+        <div class="card quick" onclick="newScan()"><div class="qicon">📷</div><h3>Scan documents</h3><p>Use camera or import images for multi-page documents.</p></div>
+        <div class="card quick" onclick="newScan()"><div class="qicon">🖼️</div><h3>Images to PDF</h3><p>Combine one or more images, reorder pages and print/save as PDF.</p></div>
+        <div class="card quick" onclick="go('converter')"><div class="qicon">🔄</div><h3>File Converter</h3><p>Convert images and text files offline, plus access Office/PDF conversion workflows.</p></div>
+        <div class="card quick" onclick="go('signatures')"><div class="qicon">✍️</div><h3>Create signature</h3><p>Draw and save reusable signatures for document pages.</p></div>
+        <div class="card quick" onclick="go('folders')"><div class="qicon">📁</div><h3>Organize folders</h3><p>Create work, school, receipts, IDs or custom folders.</p></div>
+        <div class="card quick" onclick="go('favorites')"><div class="qicon">⭐</div><h3>Important files</h3><p>Favorite documents for quicker access.</p></div>
+        <div class="card quick" onclick="go('backup')"><div class="qicon">💾</div><h3>Backup data</h3><p>Export and restore your Ethan Document Utility metadata and scans.</p></div><div class="card quick" onclick="go('documents')"><div class="qicon">🧩</div><h3>Merge & duplicate</h3><p>Combine document pages or duplicate files without rescanning.</p></div><div class="card quick" onclick="newScan()"><div class="qicon">⚡</div><h3>Optimized scanning</h3><p>Large camera photos are resized and thumbnailed to reduce lag.</p></div>
+      </div>
+      <div class="section-head" style="margin-top:22px"><h2>Recent documents</h2><button class="btn light" onclick="go('recent')">View all</button></div><div id="recentDash" class="doc-grid"></div>
+    </section>
+
+    <section id="documents" class="view"><div class="section-head"><h2>My Documents</h2><button class="btn primary" onclick="newScan()">＋ New Document</button></div><div class="toolbar"><input class="search" id="docSearch" placeholder="Search title, tag, folder or note…" oninput="renderDocuments()"><select class="search" style="flex:0 0 180px" id="folderFilter" onchange="renderDocuments()"><option value="">All folders</option></select><select class="search" style="flex:0 0 160px" id="sortFilter" onchange="renderDocuments()"><option value="new">Newest</option><option value="old">Oldest</option><option value="name">Name A–Z</option></select></div><div id="docsGrid" class="doc-grid"></div></section>
+    <section id="folders" class="view"><div class="section-head"><h2>Folders</h2><button class="btn primary" onclick="createFolder()">＋ New Folder</button></div><div id="foldersGrid" class="folder-list"></div></section>
+    <section id="favorites" class="view"><div class="section-head"><h2>Favorites</h2></div><div id="favGrid" class="doc-grid"></div></section>
+    <section id="recent" class="view"><div class="section-head"><h2>Recent Documents</h2></div><div id="recentGrid" class="doc-grid"></div></section>
+    <section id="trash" class="view"><div class="section-head"><h2>Trash</h2><button class="btn danger" onclick="emptyTrash()">Empty Trash</button></div><div id="trashGrid" class="doc-grid"></div></section>
+    <section id="signatures" class="view"><div class="section-head"><h2>Saved Signatures</h2><button class="btn primary" onclick="openSigModal()">＋ New Signature</button></div><div id="signatureGrid" class="grid"></div></section>
+
+    <section id="converter" class="view">
+      <div class="section-head"><div><h2>File Converter Center</h2><div class="statusline">Offline tools run on this device. Advanced Office/PDF conversion is kept separate until a secure conversion engine is connected.</div></div></div>
+      <div class="note-box"><strong>Private by design:</strong> offline conversions below stay on this device. Ethan Document Utility does not upload the selected files in this build.</div>
+      <h3 style="margin-top:20px">Offline converters</h3>
+      <div class="converter-grid">
+        <div class="converter-card"><div class="convert-icon">🖼️</div><h3>Image Converter</h3><span class="convert-status offline">Works offline</span><p>Convert JPG, PNG, WebP and other browser-readable images. Resize and compress before download.</p><input id="imageConvertInput" class="small-input" type="file" accept="image/*" multiple><select id="imageConvertFormat" class="small-input"><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select><label class="mini">Quality <span id="imageQualityVal">85</span>%</label><input id="imageQuality" type="range" min="40" max="100" value="85" class="range" oninput="imageQualityVal.textContent=this.value"><label class="mini">Maximum dimension</label><select id="imageMax" class="small-input"><option value="0">Original size</option><option value="2400">2400 px</option><option value="1600" selected>1600 px</option><option value="1200">1200 px</option><option value="800">800 px</option></select><button class="btn primary" style="width:100%" onclick="convertImages()">Convert Images</button><div id="imageOutputs" class="output-list"></div></div>
+        <div class="converter-card"><div class="convert-icon">📄</div><h3>Text / CSV / HTML → PDF</h3><span class="convert-status offline">Works offline</span><p>Open a text-based file in a clean printable document and use Print / Save as PDF.</p><input id="textConvertInput" class="small-input" type="file" accept=".txt,.csv,.html,.htm,.md,text/plain,text/csv,text/html"><button class="btn primary" style="width:100%" onclick="textFileToPdf()">Open for PDF</button><button class="btn light" style="width:100%;margin-top:7px" onclick="textFileToDoc()">Download Word-compatible DOC</button></div>
+        <div class="converter-card"><div class="convert-icon">📚</div><h3>Images → PDF</h3><span class="convert-status offline">Works offline</span><p>Create a multi-page document from photos/images, reorder or edit pages, then save through Print → PDF.</p><button class="btn primary" style="width:100%" onclick="newScan()">Import Images</button></div>
+        <div class="converter-card"><div class="convert-icon">🧩</div><h3>Merge / Reorder PDF Scans</h3><span class="convert-status offline">Works with Ethan scans</span><p>Open a scanned document to merge another Ethan document, reorder pages, rotate, trim, sign or watermark.</p><button class="btn light" style="width:100%" onclick="go('documents')">Open Documents</button></div>
+        <div class="converter-card"><div class="convert-icon">✂️</div><h3>PDF Page → JPG</h3><span class="convert-status offline">Works with Ethan scans</span><p>Export the current scanned page as a JPG image from the document editor.</p><button class="btn light" style="width:100%" onclick="go('documents');toast('Open a document, select a page, then use Export Page as JPG in the editor.')">Choose Document</button></div>
+        <div class="converter-card"><div class="convert-icon">🗜️</div><h3>Image Compression</h3><span class="convert-status offline">Works offline</span><p>Use the Image Converter with a smaller maximum dimension and lower quality to reduce file size.</p><button class="btn light" style="width:100%" onclick="imageConvertInput.click()">Choose Images</button></div>
+      </div>
+      <h3 style="margin-top:24px">Document toolbox</h3>
+      <div class="converter-grid">
+        <div class="converter-card"><div class="convert-icon">🔢</div><h3>Page Numbers</h3><span class="convert-status offline">Works offline</span><p>Burn page numbers into every page of an Ethan document, with bottom-center placement.</p><button class="btn light" style="width:100%" onclick="go('documents');toast('Open a document, then choose Add Page Numbers in the editor.')">Open Document</button></div>
+        <div class="converter-card"><div class="convert-icon">⬛</div><h3>Visual Redaction</h3><span class="convert-status offline">Works offline</span><p>Draw a permanent black redaction box over sensitive content on a scanned page.</p><button class="btn light" style="width:100%" onclick="go('documents');toast('Open a document, then choose Redact Area in the editor and drag over the page.')">Open Document</button></div>
+        <div class="converter-card"><div class="convert-icon">🧾</div><h3>Document Templates</h3><span class="convert-status offline">Works offline</span><p>Create blank A4, lined notes, meeting notes or simple letter pages without scanning.</p><select id="templateType" class="small-input"><option value="blank">Blank A4</option><option value="lined">Lined Notes</option><option value="meeting">Meeting Notes</option><option value="letter">Simple Letter</option></select><button class="btn primary" style="width:100%" onclick="createTemplateDocument()">Create Template</button></div>
+        <div class="converter-card"><div class="convert-icon">🧹</div><h3>Privacy Cleanup</h3><span class="convert-status offline">Works offline</span><p>Clear notes, tags and optional author metadata stored with an Ethan document before sharing.</p><button class="btn light" style="width:100%" onclick="go('documents');toast('Open a document and use Privacy Cleanup in the editor.')">Open Document</button></div>
+        <div class="converter-card"><div class="convert-icon">⚖️</div><h3>Compare Text Files</h3><span class="convert-status offline">Works offline</span><p>Compare two TXT, CSV, HTML or Markdown files and show changed line counts and differences.</p><input id="compareA" class="small-input" type="file" accept=".txt,.csv,.html,.htm,.md,text/plain,text/csv,text/html"><input id="compareB" class="small-input" type="file" accept=".txt,.csv,.html,.htm,.md,text/plain,text/csv,text/html"><button class="btn primary" style="width:100%" onclick="compareTextFiles()">Compare Files</button><div id="compareOutput" class="output-list"></div></div>
+        <div class="converter-card"><div class="convert-icon">🌐</div><h3>Text / HTML → Printable Page</h3><span class="convert-status offline">Works offline</span><p>Paste text or HTML source into a clean printable page for Print → Save as PDF.</p><textarea id="pastePrintText" class="small-input" style="min-height:90px" placeholder="Paste text or HTML source here..."></textarea><button class="btn light" style="width:100%" onclick="pasteToPrintablePdf()">Open for PDF</button></div>
+      </div>
+      <h3 style="margin-top:24px">Batch & productivity tools</h3>
+      <div class="converter-grid">
+        <div class="converter-card"><div class="convert-icon">🖼️</div><h3>Batch Page Export</h3><span class="convert-status offline">Works offline</span><p>Export every page of an Ethan document as separate JPG files without reopening each page.</p><button class="btn light" style="width:100%" onclick="go('documents');toast('Open a document and use Batch Export JPG in the editor.')">Open Document</button></div>
+        <div class="converter-card"><div class="convert-icon">🗂️</div><h3>Contact Sheet</h3><span class="convert-status offline">Works offline</span><p>Create a printable overview containing miniature previews of all pages for review or filing.</p><button class="btn light" style="width:100%" onclick="go('documents');toast('Open a document and use Contact Sheet in the editor.')">Open Document</button></div>
+        <div class="converter-card"><div class="convert-icon">🧼</div><h3>Batch Cleanup</h3><span class="convert-status offline">Works offline</span><p>Apply grayscale, auto-contrast, or smaller optimized copies to all pages in one operation.</p><button class="btn light" style="width:100%" onclick="go('documents');toast('Open a document and use Batch Cleanup in the editor.')">Open Document</button></div>
+        <div class="converter-card"><div class="convert-icon">📅</div><h3>Date / Time Stamp</h3><span class="convert-status offline">Works offline</span><p>Burn the current date and time into a page for inspections, field records and evidence logs.</p><button class="btn light" style="width:100%" onclick="go('documents');toast('Open a document and use Date Stamp in the editor.')">Open Document</button></div>
+        <div class="converter-card"><div class="convert-icon">📋</div><h3>Duplicate Page</h3><span class="convert-status offline">Works offline</span><p>Clone the selected page inside a document before editing, signing or annotating it.</p><button class="btn light" style="width:100%" onclick="go('documents');toast('Open a document and use Duplicate Page in the editor.')">Open Document</button></div>
+        <div class="converter-card"><div class="convert-icon">🧰</div><h3>More Document Categories</h3><span class="convert-status service">Roadmap ready</span><p>PDF forms, PDF compare, webpage-to-PDF, QR, bookmarks, PDF overlay, metadata editor, flattening and archive workflows are tracked for gateway/native expansion.</p></div>
+      </div>
+      <h3 style="margin-top:24px">Advanced Office & PDF converters</h3>
+      <div class="note-box" style="border-left:4px solid #1b6cff"><strong>Advanced PDF engine in Ethan Office v10.</strong> Set your Ethan Office Conversion Gateway URL in Settings. The browser/APK never stores the provider API token. Files upload only after you choose a conversion and press Convert.</div>
+      <div class="card" style="margin:12px 0"><div class="form-grid"><div class="field"><label>Quick conversion</label><select id="advancedPreset" class="small-input"><option value="docx:pdf">Word DOCX → PDF</option><option value="doc:pdf">Word DOC → PDF</option><option value="pdf:docx">PDF → Word DOCX</option><option value="xlsx:pdf">Excel XLSX → PDF</option><option value="xls:pdf">Excel XLS → PDF</option><option value="pdf:xlsx">PDF → Excel XLSX</option><option value="pptx:pdf">PowerPoint PPTX → PDF</option><option value="ppt:pdf">PowerPoint PPT → PDF</option><option value="pdf:pptx">PDF → PowerPoint PPTX</option><option value="pdf:jpg">PDF → JPG</option><option value="pdf:png">PDF → PNG</option><option value="html:pdf">HTML → PDF</option><option value="txt:pdf">TXT → PDF</option></select></div><div class="field"><label>Choose file</label><input id="engineFile" class="small-input" type="file"></div><div class="field span2"><button class="btn primary" onclick="runEnginePreset()">Convert with Ethan Gateway</button><div id="engineResult" class="output-list"></div></div></div></div>
+      <div class="converter-grid" style="margin-top:14px">
+        <div class="converter-card"><div class="convert-icon">📝</div><h3>Word ↔ PDF</h3><span class="convert-status service">Conversion engine required</span><p>DOC/DOCX → PDF and PDF → editable Word documents.</p><button class="btn dark" style="width:100%" onclick="setPreset('docx:pdf')">Select File</button></div>
+        <div class="converter-card"><div class="convert-icon">📊</div><h3>Excel ↔ PDF</h3><span class="convert-status service">Conversion engine required</span><p>XLS/XLSX → PDF and PDF tables → Excel.</p><button class="btn dark" style="width:100%" onclick="setPreset('xlsx:pdf')">Select File</button></div>
+        <div class="converter-card"><div class="convert-icon">📽️</div><h3>PowerPoint ↔ PDF</h3><span class="convert-status service">Conversion engine required</span><p>PPT/PPTX → PDF and PDF → presentation conversion.</p><button class="btn dark" style="width:100%" onclick="setPreset('pptx:pdf')">Select File</button></div>
+        <div class="converter-card"><div class="convert-icon">🔎</div><h3>OCR Searchable PDF</h3><span class="convert-status service">Gateway</span><p>Add a searchable/copyable OCR text layer to a scanned PDF.</p><button class="btn dark" style="width:100%" onclick="openPdfTool('ocr')">Run OCR</button></div>
+        <div class="converter-card"><div class="convert-icon">🔐</div><h3>Protect / Unlock PDF</h3><span class="convert-status service">Gateway</span><p>Add a password or remove protection when you know the current password and have permission.</p><button class="btn dark" style="width:100%" onclick="openPdfTool('protect')">Security Tools</button></div>
+        <div class="converter-card"><div class="convert-icon">📦</div><h3>Compress PDF</h3><span class="convert-status service">Gateway</span><p>Optimize PDFs for web, print, archive, scanned documents or maximum size reduction.</p><button class="btn dark" style="width:100%" onclick="openPdfTool('compress')">Compress</button></div>
+        <div class="converter-card"><div class="convert-icon">✂️</div><h3>Split / Extract Pages</h3><span class="convert-status service">Gateway</span><p>Extract page ranges into a new PDF or split every page into separate files.</p><button class="btn dark" style="width:100%" onclick="openPdfTool('extract')">Page Tools</button></div>
+        <div class="converter-card"><div class="convert-icon">🗄️</div><h3>PDF/A Archive</h3><span class="convert-status service">Gateway</span><p>Create PDF/A-1b, PDF/A-2b or PDF/A-3b archival files.</p><button class="btn dark" style="width:100%" onclick="openPdfTool('pdfa')">Create PDF/A</button></div>
+        <div class="converter-card"><div class="convert-icon">↻</div><h3>Rotate PDF Pages</h3><span class="convert-status service">Gateway</span><p>Rotate selected pages or a page range by 90°, 180° or 270°.</p><button class="btn dark" style="width:100%" onclick="openPdfTool('rotate')">Rotate</button></div>
+      </div>
+      <div id="pdfToolPanel" class="card" style="margin-top:18px;display:none">
+        <div class="section-head"><div><h3 id="pdfToolTitle">Advanced PDF Tool</h3><div class="statusline">Files upload only after you press Run. Provider credentials stay on your Ethan gateway.</div></div><button class="btn light" onclick="closePdfTool()">Close</button></div>
+        <div class="form-grid">
+          <div class="field span2"><label>PDF file</label><input id="pdfToolFile" class="small-input" type="file" accept="application/pdf,.pdf"></div>
+          <div class="field" id="pdfLangField"><label>OCR language</label><select id="pdfLang"><option value="eng">English</option><option value="fra">French</option><option value="deu">German</option><option value="spa">Spanish</option><option value="por">Portuguese</option></select></div>
+          <div class="field" id="pdfProfileField"><label>Compression profile</label><select id="pdfProfile"><option value="web">Web</option><option value="mrc">Scanned document</option><option value="print">Print</option><option value="archive">Archive</option><option value="max">Maximum reduction</option></select></div>
+          <div class="field" id="pdfPageModeField"><label>Page action</label><select id="pdfPageMode"><option value="extract">Extract selected pages</option><option value="split">Split every page</option></select></div>
+          <div class="field" id="pdfPagesField"><label>Pages / ranges</label><input id="pdfPages" placeholder="e.g. 1,2,5-8"></div>
+          <div class="field" id="pdfRotationField"><label>Rotation</label><select id="pdfRotation"><option value="+90">90° clockwise</option><option value="180">180°</option><option value="-90">90° counter-clockwise</option></select></div>
+          <div class="field" id="pdfConformanceField"><label>PDF/A level</label><select id="pdfConformance"><option value="2b">PDF/A-2b</option><option value="1b">PDF/A-1b</option><option value="3b">PDF/A-3b</option></select></div>
+          <div class="field" id="pdfModeField"><label>Security action</label><select id="pdfSecurityMode" onchange="syncPdfSecurityFields()"><option value="encrypt">Protect PDF</option><option value="decrypt">Unlock with known password</option></select></div>
+          <div class="field" id="pdfPasswordField"><label>New password</label><input id="pdfPassword" type="password" autocomplete="new-password" placeholder="Password"></div>
+          <div class="field" id="pdfUnlockField"><label>Current password</label><input id="pdfUnlockPassword" type="password" autocomplete="current-password" placeholder="Known current password"></div>
+          <div class="field span2"><button class="btn primary" onclick="runPdfTool()">Run Advanced PDF Tool</button><div id="pdfToolResult" class="output-list"></div></div>
+        </div>
+      </div>
+    </section>
+    <section id="backup" class="view"><div class="section-head"><h2>Backup & Restore</h2></div><div class="grid"><div class="card"><h3>Export backup</h3><p style="color:var(--muted)">Download your document database, including stored scan images. Large backups may take a moment.</p><button class="btn primary" onclick="exportBackup()">Download Backup (.json)</button></div><div class="card"><h3>Restore backup</h3><p style="color:var(--muted)">Restoring adds/replaces Ethan Document Utility data stored in this browser/device.</p><input type="file" id="restoreFile" accept="application/json" style="margin-bottom:10px"><br><button class="btn dark" onclick="restoreBackup()">Restore Backup</button></div><div class="card"><h3>Storage</h3><p style="color:var(--muted)">Scanned images are stored locally in your browser/app using IndexedDB. Use backups before clearing app/browser data.</p><strong id="storageSummary">0 documents</strong></div></div></section>
+    <section id="settings" class="view"><div class="section-head"><h2>Settings</h2></div><div class="card"><div class="form-grid"><div class="field"><label>Display name</label><input id="setName" placeholder="Your name / business"></div><div class="field"><label>Default folder</label><select id="setFolder"></select></div><div class="field"><label>Default watermark</label><input id="setWatermark" placeholder="e.g. CONFIDENTIAL"></div><div class="field"><label>Ethan Office Conversion Gateway URL</label><input id="setGateway" placeholder="https://your-gateway.example.com"></div><div class="field"><label>PDF page fit</label><select id="setFit"><option value="contain">Fit full page</option><option value="width">Fit width</option></select></div><div class="field span2"><label>Privacy note</label><textarea readonly>Ethan Document Utility v10 remains offline-first for local tools. Advanced conversions can use a separately deployed Ethan Conversion Gateway. Files are uploaded only when you explicitly start an advanced conversion.</textarea></div></div><div style="margin-top:12px"><button class="btn primary" onclick="saveSettings()">Save Settings</button></div></div></section>
+    <div class="footer">Ethan Document Utility • Built into Ethan Office Suite • A Product of Ethan Digital Academy • © 2026 Ethan Digital Academy. All Rights Reserved.</div>
+  </div>
+</main>
+</div>
+
+<input type="file" id="advancedInput" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.odt,.ods,.odp" hidden><input type="file" id="scanInput" accept="image/*" capture="environment" multiple hidden><input type="file" id="appendInput" accept="image/*" capture="environment" multiple hidden><div id="busy" class="busy"><div id="busyText" class="busybox">Working…</div></div>
+
+<div id="metaModal" class="modal"><div class="modal-card"><div class="modal-head"><h3>Document Details</h3><button class="x" onclick="closeModal('metaModal')">×</button></div><div class="form-grid"><div class="field span2"><label>Document title</label><input id="metaTitle"></div><div class="field"><label>Folder</label><select id="metaFolder"></select></div><div class="field"><label>Tags</label><input id="metaTags" placeholder="receipt, work, school"></div><div class="field span2"><label>Notes</label><textarea id="metaNotes"></textarea></div></div><div style="display:flex;justify-content:flex-end;gap:8px;margin-top:15px"><button class="btn light" onclick="closeModal('metaModal')">Cancel</button><button class="btn primary" onclick="saveMeta()">Save Document</button></div></div></div>
+
+<div id="editModal" class="modal"><div class="modal-card large"><div class="modal-head"><div><h3 id="editTitle">Document Editor</h3><small id="editMeta" style="color:var(--muted)"></small></div><button class="x" onclick="closeEditor()">×</button></div><div class="pages" id="pageStrip"></div><div class="editor"><div class="canvas-wrap"><canvas id="editorCanvas"></canvas></div><div class="tools">
+<div class="card"><h4>Page</h4><div class="toolrow"><button class="btn light" onclick="rotatePage(-90)">↺ Rotate</button><button class="btn light" onclick="rotatePage(90)">↻ Rotate</button></div><div class="toolrow" style="margin-top:7px"><button class="btn light" onclick="movePage(-1)">← Move</button><button class="btn light" onclick="movePage(1)">Move →</button></div><div class="toolrow" style="margin-top:7px"><button class="btn light" onclick="appendPages()">＋ Add Pages</button><button class="btn light" onclick="trimMargins()">✂ Trim</button></div><div class="toolrow" style="margin-top:7px"><button class="btn light" onclick="duplicatePage()">⧉ Duplicate Page</button><button class="btn light" onclick="dateStamp()">📅 Date Stamp</button></div><div class="toolrow" style="margin-top:7px"><button class="btn light" onclick="exportCurrentPageJpg()">⬇ Page JPG</button><button class="btn light" onclick="invertCurrentPage()">◐ Invert</button></div><button class="btn danger" style="width:100%;margin-top:7px" onclick="deletePage()">🗑️ Delete Image / Page</button></div>
+<div class="card"><h4>Enhance</h4><label>Brightness <span id="brightVal">100</span>%</label><input class="range" type="range" id="bright" min="60" max="160" value="100" oninput="brightVal.textContent=this.value;previewPage()"><label>Contrast <span id="contrastVal">100</span>%</label><input class="range" type="range" id="contrast" min="60" max="180" value="100" oninput="contrastVal.textContent=this.value;previewPage()"><div class="toolrow"><button class="btn light" onclick="applyFilter('gray')">B&W</button><button class="btn light" onclick="applyFilter('original')">Original</button></div><button class="btn primary" style="width:100%;margin-top:7px" onclick="commitEnhance()">Apply Enhancement</button></div>
+<div class="card"><h4>Signature & Annotation</h4><select id="sigSelect" style="width:100%;padding:9px;border:1px solid var(--line);border-radius:8px"></select><button class="btn light" style="width:100%;margin-top:7px" onclick="addSignature()">Add Signature</button><input id="wmText" placeholder="Watermark text" style="width:100%;padding:9px;border:1px solid var(--line);border-radius:8px;margin-top:7px"><button class="btn light" style="width:100%;margin-top:7px" onclick="addWatermark()">Add Watermark</button><button class="btn light" style="width:100%;margin-top:7px" onclick="addTextStamp()">Add Text Note</button><button class="btn light" style="width:100%;margin-top:7px" onclick="startRedaction()">⬛ Redact Area</button><button class="btn light" style="width:100%;margin-top:7px" onclick="addPageNumbers()">🔢 Add Page Numbers</button></div>
+<div class="card"><h4>Document</h4><button class="btn primary" style="width:100%" onclick="printDocument()">🖨️ Print / Save PDF</button><button class="btn green" style="width:100%;margin-top:7px" onclick="shareDocument()">↗ Share</button><button class="btn light" style="width:100%;margin-top:7px" onclick="duplicateCurrent()">⧉ Duplicate</button><button class="btn light" style="width:100%;margin-top:7px" onclick="mergeIntoCurrent()">🧩 Merge Another</button><button class="btn light" style="width:100%;margin-top:7px" onclick="batchExportJpg()">🖼️ Batch Export JPG</button><button class="btn light" style="width:100%;margin-top:7px" onclick="contactSheet()">🗂️ Contact Sheet</button><button class="btn light" style="width:100%;margin-top:7px" onclick="batchCleanup()">🧼 Batch Cleanup</button><button class="btn light" style="width:100%;margin-top:7px" onclick="togglePrivate()">🔒 Toggle Private Mark</button><button class="btn light" style="width:100%;margin-top:7px" onclick="privacyCleanup()">🧹 Privacy Cleanup</button><button class="btn light" style="width:100%;margin-top:7px" onclick="editDetails()">Edit Details</button><button class="btn danger" style="width:100%;margin-top:7px" onclick="trashCurrent()">Move to Trash</button><div class="mini" style="margin-top:7px">Private mark is a local label, not encryption.</div></div>
+</div></div></div></div>
+
+<div id="sigModal" class="modal"><div class="modal-card"><div class="modal-head"><h3>Create Signature</h3><button class="x" onclick="closeModal('sigModal')">×</button></div><div class="field"><label>Signature name</label><input id="sigName" placeholder="My Signature"></div><p style="font-size:12px;color:var(--muted)">Draw inside the box using your mouse, finger or stylus.</p><canvas id="sigPad" class="signature-pad" width="700" height="220"></canvas><div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px"><button class="btn light" onclick="clearSigPad()">Clear</button><button class="btn primary" onclick="saveSignature()">Save Signature</button></div></div></div>
+
+<script>
+const $=id=>document.getElementById(id); let db, currentDoc=null,currentPage=0,pendingPages=[],editingMetaId=null,filterMode='original',redactMode=false,redactStart=null;
+const DB='ethanDocumentsDB', VER=1;
+function openDB(){return new Promise((res,rej)=>{let r=indexedDB.open(DB,VER);r.onupgradeneeded=e=>{let d=e.target.result;if(!d.objectStoreNames.contains('docs'))d.createObjectStore('docs',{keyPath:'id'});if(!d.objectStoreNames.contains('signatures'))d.createObjectStore('signatures',{keyPath:'id'});};r.onsuccess=e=>{db=e.target.result;res(db)};r.onerror=()=>rej(r.error)})}
+function store(name,mode='readonly'){return db.transaction(name,mode).objectStore(name)}
+function getAll(name){return new Promise((res,rej)=>{let r=store(name).getAll();r.onsuccess=()=>res(r.result||[]);r.onerror=()=>rej(r.error)})}
+function getOne(name,id){return new Promise((res,rej)=>{let r=store(name).get(id);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
+function put(name,obj){return new Promise((res,rej)=>{let r=store(name,'readwrite').put(obj);r.onsuccess=()=>res(obj);r.onerror=()=>rej(r.error)})}
+async function safePut(name,obj){try{return await put(name,obj)}catch(e){console.error(e);toast(e?.name==='QuotaExceededError'?'Storage is full. Export a backup, delete old scans, or reduce page count.':'Could not save this change.');throw e}}
+function setBusy(on,text='Working…'){$('busyText').textContent=text;$('busy').classList.toggle('show',!!on)}
+function del(name,id){return new Promise((res,rej)=>{let r=store(name,'readwrite').delete(id);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)})}
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,8); const now=()=>new Date().toISOString();
+let folders=JSON.parse(localStorage.getItem('ethanDocFolders')||'["General","Work","School","Receipts","IDs"]'); let settings=JSON.parse(localStorage.getItem('ethanDocSettings')||'{}');
+function saveFolders(){localStorage.setItem('ethanDocFolders',JSON.stringify(folders))}
+function toast(m){alert(m)}
+function go(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));$(id).classList.add('active');document.querySelectorAll('.nav button[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===id));$('pageTitle').textContent=({dashboard:'Dashboard',documents:'My Documents',folders:'Folders',favorites:'Favorites',recent:'Recent',trash:'Trash',signatures:'Signatures',converter:'File Converter',backup:'Backup & Restore',settings:'Settings'})[id]||id;sidebar.classList.remove('open');refresh()}
+document.querySelectorAll('.nav button[data-view]').forEach(b=>b.onclick=()=>go(b.dataset.view));
+function closeModal(id){$(id).classList.remove('show')}
+function makeThumb(doc){let p=doc.pages?.[0],img=p?.thumb||p?.data;return img?`<img loading="lazy" src="${img}">`:`<div class="placeholder">📄</div>`}
+function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function docCard(d,trash=false){return `<div class="doc" onclick="${trash?`restorePrompt('${d.id}')`:`openEditor('${d.id}')`}"><div class="doc-thumb">${makeThumb(d)}</div><div class="doc-body"><div class="doc-title">${d.favorite?'⭐ ':''}${esc(d.title||'Untitled')}</div><div class="doc-meta">${d.pages?.length||0} page(s) • ${new Date(d.updated||d.created).toLocaleDateString()}</div><div class="badges">${d.folder?`<span class="badge">📁 ${esc(d.folder)}</span>`:''}${d.secure?'<span class="badge gold">🔒 Secure</span>':''}${trash?'<span class="badge red">Tap to restore</span>':''}</div></div></div>`}
+async function refresh(){if(!db)return;let docs=await getAll('docs'), active=docs.filter(d=>!d.deleted), trashed=docs.filter(d=>d.deleted);$('statDocs').textContent=active.length;$('statPages').textContent=active.reduce((a,d)=>a+(d.pages?.length||0),0);$('statFolders').textContent=folders.length;$('statFav').textContent=active.filter(d=>d.favorite).length;$('storageSummary').textContent=`${active.length} documents • ${active.reduce((a,d)=>a+(d.pages?.length||0),0)} pages stored locally`;if(navigator.storage?.estimate){navigator.storage.estimate().then(x=>{if(x.usage&&x.quota)$('storageSummary').textContent+=` • ${(x.usage/1048576).toFixed(1)} MB used`}).catch(()=>{})}
+let recent=[...active].sort((a,b)=>new Date(b.updated)-new Date(a.updated)).slice(0,4);$('recentDash').innerHTML=recent.length?recent.map(docCard).join(''):'<div class="empty">No documents yet. Scan or import your first one.</div>';$('recentGrid').innerHTML=active.length?[...active].sort((a,b)=>new Date(b.updated)-new Date(a.updated)).map(docCard).join(''):'<div class="empty">No recent documents.</div>';$('favGrid').innerHTML=active.filter(d=>d.favorite).length?active.filter(d=>d.favorite).map(docCard).join(''):'<div class="empty">No favorites yet.</div>';$('trashGrid').innerHTML=trashed.length?trashed.map(d=>docCard(d,true)).join(''):'<div class="empty">Trash is empty.</div>';renderDocuments(active);renderFolders(active);renderSignatures();fillFolderSelects();loadSettings()}
+async function renderDocuments(pre){let docs=pre|| (await getAll('docs')).filter(d=>!d.deleted),q=($('docSearch')?.value||'').toLowerCase(),f=$('folderFilter')?.value||'',sort=$('sortFilter')?.value||'new';docs=docs.filter(d=>!f||d.folder===f).filter(d=>!q||[d.title,d.folder,d.tags,d.notes].join(' ').toLowerCase().includes(q));docs.sort((a,b)=>sort==='name'?(a.title||'').localeCompare(b.title||''):sort==='old'?new Date(a.created)-new Date(b.created):new Date(b.updated)-new Date(a.updated));$('docsGrid').innerHTML=docs.length?docs.map(docCard).join(''):'<div class="empty">No matching documents.</div>'}
+function renderFolders(docs=[]){$('foldersGrid').innerHTML=folders.map(f=>`<div class="folder" onclick="openFolder('${encodeURIComponent(f)}')"><div class="fi">📁</div><strong>${esc(f)}</strong><small>${docs.filter(d=>d.folder===f).length} document(s)</small></div>`).join('')}
+function openFolder(f){go('documents');$('folderFilter').value=decodeURIComponent(f);renderDocuments()}
+function fillFolderSelects(){['folderFilter','metaFolder','setFolder'].forEach(id=>{let e=$(id);if(!e)return;let val=e.value;e.innerHTML=(id==='folderFilter'?'<option value="">All folders</option>':'')+folders.map(f=>`<option>${esc(f)}</option>`).join('');if(folders.includes(val)||id==='folderFilter')e.value=val});}
+function createFolder(){let f=prompt('Folder name');if(!f)return;f=f.trim();if(f&&!folders.includes(f)){folders.push(f);saveFolders();refresh()}}
+function newScan(){pendingPages=[];$('scanInput').value='';$('scanInput').click()}
+async function imageFileToPage(file){let data=await compressImage(file);return{id:uid(),data,thumb:await createThumb(data),rotation:0,name:file.name||'',bytes:Math.round(data.length*.75)}}
+$('scanInput').onchange=async e=>{let files=[...e.target.files].slice(0,40);if(!files.length)return;setBusy(true,`Preparing ${files.length} page(s)…`);try{pendingPages=[];for(let i=0;i<files.length;i++){setBusy(true,`Optimizing page ${i+1} of ${files.length}…`);pendingPages.push(await imageFileToPage(files[i]))}editingMetaId=null;$('metaTitle').value='Document '+new Date().toLocaleDateString();$('metaFolder').value=settings.defaultFolder||folders[0];$('metaTags').value='';$('metaNotes').value='';$('metaModal').classList.add('show')}catch(e){console.error(e);toast('One or more images could not be processed. Try smaller JPG/PNG images.')}finally{setBusy(false)}}
+function compressImage(file){return new Promise((res,rej)=>{if(!file.type.startsWith('image/'))return rej(new Error('Not an image'));let fr=new FileReader();fr.onload=()=>{let im=new Image();im.onload=()=>{let max=1600,scale=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.width*scale));c.height=Math.max(1,Math.round(im.height*scale));let x=c.getContext('2d',{alpha:false});x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);res(c.toDataURL('image/jpeg',.82))};im.onerror=rej;im.src=fr.result};fr.onerror=rej;fr.readAsDataURL(file)})}
+function createThumb(data){return new Promise(res=>{let im=new Image();im.onload=()=>{let max=280,scale=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.width*scale));c.height=Math.max(1,Math.round(im.height*scale));c.getContext('2d').drawImage(im,0,0,c.width,c.height);res(c.toDataURL('image/jpeg',.66))};im.onerror=()=>res(data);im.src=data})}
+async function updatePageThumb(p){p.thumb=await createThumb(p.data);return p}
+function appendPages(){$('appendInput').value='';$('appendInput').click()}
+$('appendInput').onchange=async e=>{let files=[...e.target.files].slice(0,40);if(!files.length||!currentDoc)return;setBusy(true,'Adding pages…');try{for(let i=0;i<files.length;i++){setBusy(true,`Adding page ${i+1} of ${files.length}…`);currentDoc.pages.push(await imageFileToPage(files[i]))}currentDoc.updated=now();await safePut('docs',currentDoc);renderPageStrip();previewPage();refresh();toast(`${files.length} page(s) added.`)}finally{setBusy(false)}}
+async function saveMeta(){let title=$('metaTitle').value.trim()||'Untitled Document', folder=$('metaFolder').value||'General',tags=$('metaTags').value,notes=$('metaNotes').value;if(editingMetaId){let d=await getOne('docs',editingMetaId);Object.assign(d,{title,folder,tags,notes,updated:now()});await safePut('docs',d);closeModal('metaModal');currentDoc=d;if($('editModal').classList.contains('show')){$('editTitle').textContent=d.title;renderPageStrip()}refresh();return}let d={id:uid(),title,folder,tags,notes,pages:pendingPages,created:now(),updated:now(),favorite:false,deleted:false,secure:false};await safePut('docs',d);closeModal('metaModal');refresh();openEditor(d.id)}
+async function openEditor(id){currentDoc=await getOne('docs',id);if(!currentDoc||currentDoc.deleted)return;currentDoc.updated=now();await safePut('docs',currentDoc);currentPage=0;$('editTitle').textContent=currentDoc.title;$('editMeta').textContent=`${currentDoc.pages.length} page(s) • ${currentDoc.folder}`;$('wmText').value=settings.watermark||'';$('editModal').classList.add('show');await loadSigSelect();renderPageStrip();previewPage();refresh()}
+function closeEditor(){closeModal('editModal');currentDoc=null}
+function renderPageStrip(){$('pageStrip').innerHTML=currentDoc.pages.map((p,i)=>`<div class="page-chip ${i===currentPage?'active':''}" onclick="selectPage(${i})"><img loading="lazy" src="${p.thumb||p.data}"><span>${i+1}</span></div>`).join('');$('editMeta').textContent=`${currentDoc.pages.length} page(s) • ${currentDoc.folder}`}
+function selectPage(i){currentPage=i;renderPageStrip();$('bright').value=100;$('contrast').value=100;$('brightVal').textContent=100;$('contrastVal').textContent=100;filterMode='original';previewPage()}
+function drawPage(page,cb){let im=new Image();im.onload=()=>{let rot=((page.rotation||0)%360+360)%360,swap=rot===90||rot===270,c=$('editorCanvas');c.width=swap?im.height:im.width;c.height=swap?im.width:im.height;let ctx=c.getContext('2d');ctx.save();ctx.translate(c.width/2,c.height/2);ctx.rotate(rot*Math.PI/180);let b=$('bright').value,co=$('contrast').value;ctx.filter=`brightness(${b}%) contrast(${co}%) ${filterMode==='gray'?'grayscale(100%)':''}`;ctx.drawImage(im,-im.width/2,-im.height/2);ctx.restore();cb&&cb(c,ctx)};im.src=page.data}
+function previewPage(){if(!currentDoc?.pages?.length)return;drawPage(currentDoc.pages[currentPage])}
+async function rotatePage(deg){let p=currentDoc.pages[currentPage];p.rotation=(p.rotation||0)+deg;currentDoc.updated=now();await safePut('docs',currentDoc);renderPageStrip();previewPage()}
+async function movePage(dir){let ni=currentPage+dir;if(ni<0||ni>=currentDoc.pages.length)return;[currentDoc.pages[currentPage],currentDoc.pages[ni]]=[currentDoc.pages[ni],currentDoc.pages[currentPage]];currentPage=ni;currentDoc.updated=now();await safePut('docs',currentDoc);renderPageStrip();previewPage()}
+async function deletePage(){if(!confirm('Delete this image/page from the document?'))return;if(currentDoc.pages.length===1){toast('A document must contain at least one image/page. Add another page first, or move the whole document to Trash.');return}currentDoc.pages.splice(currentPage,1);currentPage=Math.max(0,currentPage-1);currentDoc.updated=now();await safePut('docs',currentDoc);renderPageStrip();previewPage();refresh()}
+function applyFilter(m){filterMode=m;previewPage()}
+async function commitEnhance(){drawPage(currentDoc.pages[currentPage],async c=>{currentDoc.pages[currentPage].data=c.toDataURL('image/jpeg',.84);currentDoc.pages[currentPage].rotation=0;await updatePageThumb(currentDoc.pages[currentPage]);currentDoc.updated=now();await safePut('docs',currentDoc);$('bright').value=$('contrast').value=100;$('brightVal').textContent=$('contrastVal').textContent=100;filterMode='original';renderPageStrip();previewPage();refresh();toast('Enhancement applied.')})}
+async function editDetails(){editingMetaId=currentDoc.id;$('metaTitle').value=currentDoc.title;$('metaFolder').value=currentDoc.folder;$('metaTags').value=currentDoc.tags||'';$('metaNotes').value=currentDoc.notes||'';$('metaModal').classList.add('show')}
+async function trimMargins(){if(!currentDoc)return;let p=currentDoc.pages[currentPage],src=await normalizedPageData(p),im=new Image();im.onload=async()=>{let m=.04,c=document.createElement('canvas'),sx=Math.round(im.width*m),sy=Math.round(im.height*m),sw=im.width-sx*2,sh=im.height-sy*2;c.width=sw;c.height=sh;c.getContext('2d').drawImage(im,sx,sy,sw,sh,0,0,sw,sh);p.data=c.toDataURL('image/jpeg',.84);p.rotation=0;await updatePageThumb(p);currentDoc.updated=now();await safePut('docs',currentDoc);renderPageStrip();previewPage();toast('Outer 4% margins trimmed. Use Undo only by restoring a backup.')} ;im.src=src}
+async function addTextStamp(){let t=prompt('Text to place on this page');if(!t||!currentDoc)return;let p=currentDoc.pages[currentPage],base=new Image();base.onload=async()=>{let c=document.createElement('canvas');c.width=base.width;c.height=base.height;let x=c.getContext('2d');x.drawImage(base,0,0);let fs=Math.max(28,Math.round(c.width/28));x.font=`bold ${fs}px Arial`;let pad=Math.round(fs*.55),w=x.measureText(t).width+pad*2,h=fs+pad*1.5,px=pad,py=c.height-h-pad;x.fillStyle='rgba(255,255,255,.88)';x.fillRect(px,py,w,h);x.strokeStyle='#0b57d0';x.lineWidth=Math.max(2,fs/14);x.strokeRect(px,py,w,h);x.fillStyle='#071b4f';x.fillText(t,px+pad,py+fs+pad*.25);p.data=c.toDataURL('image/jpeg',.84);p.rotation=0;await updatePageThumb(p);currentDoc.updated=now();await safePut('docs',currentDoc);renderPageStrip();previewPage();toast('Text note added.')} ;base.src=await normalizedPageData(p)}
+async function duplicateCurrent(){if(!currentDoc)return;let copy=JSON.parse(JSON.stringify(currentDoc));copy.id=uid();copy.title=(copy.title||'Document')+' Copy';copy.created=copy.updated=now();copy.deleted=false;copy.favorite=false;await safePut('docs',copy);refresh();toast('Document duplicated.')}
+async function mergeIntoCurrent(){if(!currentDoc)return;let docs=(await getAll('docs')).filter(d=>!d.deleted&&d.id!==currentDoc.id);if(!docs.length)return toast('There is no other document to merge.');let menu=docs.slice(0,20).map((d,i)=>`${i+1}. ${d.title} (${d.pages?.length||0} pages)`).join('\n');let n=parseInt(prompt('Choose a document number to append:\n'+menu),10);if(!n||!docs[n-1])return;let source=docs[n-1];currentDoc.pages.push(...JSON.parse(JSON.stringify(source.pages||[])));currentDoc.updated=now();await safePut('docs',currentDoc);renderPageStrip();previewPage();refresh();toast(`${source.pages?.length||0} page(s) merged.`)}
+async function togglePrivate(){if(!currentDoc)return;currentDoc.secure=!currentDoc.secure;currentDoc.updated=now();await safePut('docs',currentDoc);refresh();toast(currentDoc.secure?'Private mark enabled. This is not encryption.':'Private mark removed.')}
+async function trashCurrent(){if(!confirm('Move this document to Trash?'))return;currentDoc.deleted=true;currentDoc.deletedAt=now();currentDoc.updated=now();await safePut('docs',currentDoc);closeEditor();refresh()}
+async function restorePrompt(id){if(confirm('Restore this document from Trash?')){let d=await getOne('docs',id);d.deleted=false;delete d.deletedAt;d.updated=now();await safePut('docs',d);refresh()}}
+async function emptyTrash(){if(!confirm('Permanently delete all documents in Trash? This cannot be undone.'))return;let ds=await getAll('docs');for(let d of ds.filter(x=>x.deleted))await del('docs',d.id);refresh()}
+async function toggleFavorite(id){let d=await getOne('docs',id);d.favorite=!d.favorite;d.updated=now();await safePut('docs',d);refresh()}
+function openSigModal(){$('sigName').value='';clearSigPad();$('sigModal').classList.add('show')}
+let sp=$('sigPad'),sctx=sp.getContext('2d'),drawing=false,last=null;function pos(e){let r=sp.getBoundingClientRect(),p=e.touches?e.touches[0]:e;return{x:(p.clientX-r.left)*sp.width/r.width,y:(p.clientY-r.top)*sp.height/r.height}};function startDraw(e){drawing=true;last=pos(e);e.preventDefault()}function moveDraw(e){if(!drawing)return;let p=pos(e);sctx.lineWidth=5;sctx.lineCap='round';sctx.strokeStyle='#071b4f';sctx.beginPath();sctx.moveTo(last.x,last.y);sctx.lineTo(p.x,p.y);sctx.stroke();last=p;e.preventDefault()}function endDraw(){drawing=false}['mousedown','touchstart'].forEach(x=>sp.addEventListener(x,startDraw,{passive:false}));['mousemove','touchmove'].forEach(x=>sp.addEventListener(x,moveDraw,{passive:false}));['mouseup','mouseleave','touchend'].forEach(x=>sp.addEventListener(x,endDraw));function clearSigPad(){sctx.clearRect(0,0,sp.width,sp.height)}
+async function saveSignature(){let name=$('sigName').value.trim()||'Signature';let data=sp.toDataURL('image/png');await put('signatures',{id:uid(),name,data,created:now()});closeModal('sigModal');renderSignatures();loadSigSelect();toast('Signature saved.')}
+async function renderSignatures(){let ss=await getAll('signatures');$('signatureGrid').innerHTML=ss.length?ss.map(s=>`<div class="card"><img src="${s.data}" style="width:100%;height:100px;object-fit:contain;border:1px solid var(--line);border-radius:8px"><h3>${esc(s.name)}</h3><button class="btn danger" onclick="deleteSignature('${s.id}')">Delete</button></div>`).join(''):'<div class="empty">No saved signatures.</div>'}
+async function deleteSignature(id){if(confirm('Delete signature?')){await del('signatures',id);renderSignatures();loadSigSelect()}}
+async function loadSigSelect(){let ss=await getAll('signatures');$('sigSelect').innerHTML='<option value="">Select saved signature</option>'+ss.map(s=>`<option value="${s.id}">${esc(s.name)}</option>`).join('')}
+async function addSignature(){let id=$('sigSelect').value;if(!id)return toast('Create or select a signature first.');let s=await getOne('signatures',id),p=currentDoc.pages[currentPage],base=new Image(),sig=new Image();base.onload=()=>{let c=document.createElement('canvas');c.width=base.width;c.height=base.height;let x=c.getContext('2d');x.drawImage(base,0,0);sig.onload=async()=>{let w=c.width*.28,h=w*(sig.height/sig.width),px=c.width-w-c.width*.05,py=c.height-h-c.height*.05;x.drawImage(sig,px,py,w,h);p.data=c.toDataURL('image/jpeg',.84);p.rotation=0;await updatePageThumb(p);currentDoc.updated=now();await safePut('docs',currentDoc);renderPageStrip();previewPage();toast('Signature added to bottom-right of this page.')};sig.src=s.data};base.src=await normalizedPageData(p)}
+async function addWatermark(){let t=$('wmText').value.trim();if(!t)return toast('Enter watermark text.');let p=currentDoc.pages[currentPage],base=new Image();base.onload=async()=>{let c=document.createElement('canvas');c.width=base.width;c.height=base.height;let x=c.getContext('2d');x.drawImage(base,0,0);x.save();x.translate(c.width/2,c.height/2);x.rotate(-Math.PI/6);x.globalAlpha=.16;x.fillStyle='#0b57d0';x.font=`bold ${Math.max(34,c.width/12)}px Arial`;x.textAlign='center';x.fillText(t,0,0);x.restore();p.data=c.toDataURL('image/jpeg',.84);p.rotation=0;await updatePageThumb(p);currentDoc.updated=now();await safePut('docs',currentDoc);renderPageStrip();previewPage();toast('Watermark added.')};base.src=await normalizedPageData(p)}
+function normalizedPageData(p){return new Promise(res=>{let im=new Image();im.onload=()=>{let rot=((p.rotation||0)%360+360)%360,swap=rot===90||rot===270,c=document.createElement('canvas');c.width=swap?im.height:im.width;c.height=swap?im.width:im.height;let x=c.getContext('2d');x.translate(c.width/2,c.height/2);x.rotate(rot*Math.PI/180);x.drawImage(im,-im.width/2,-im.height/2);res(c.toDataURL('image/jpeg',.92))};im.src=p.data})}
+async function printDocument(){let pages=[];for(let p of currentDoc.pages)pages.push(await normalizedPageData(p));let html=`<!doctype html><html><head><title>${esc(currentDoc.title)}</title><style>@page{margin:8mm}body{margin:0}.p{page-break-after:always;height:96vh;display:flex;align-items:center;justify-content:center}.p:last-child{page-break-after:auto}img{max-width:100%;max-height:96vh;object-fit:contain}</style>
+</head><body>${pages.map(x=>`<div class="p"><img src="${x}"></div>`).join('')}<script>onload=()=>setTimeout(()=>print(),400)<\/script></body></html>`;if(window.Android?.printHtml){Android.printHtml(currentDoc.title,html);return}let w=window.open('','_blank');if(!w)return toast('Pop-up blocked. Allow pop-ups to print/save PDF.');w.document.write(html);w.document.close()}
+async function shareDocument(){let text=`${currentDoc.title}\n${currentDoc.pages.length} page(s)\nCreated with Ethan Office Suite — Ethan Document Utility — Ethan Digital Academy.`;if(window.Android?.shareText){Android.shareText(currentDoc.title,text);return}if(navigator.share){try{await navigator.share({title:currentDoc.title,text})}catch(e){}}else window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank')}
+
+function readFileAsDataURL(file){return new Promise((res,rej)=>{let r=new FileReader();r.onload=()=>res(r.result);r.onerror=()=>rej(r.error);r.readAsDataURL(file)})}
+function readFileText(file){return new Promise((res,rej)=>{let r=new FileReader();r.onload=()=>res(String(r.result||''));r.onerror=()=>rej(r.error);r.readAsText(file)})}
+function downloadDataUrl(data,name){let a=document.createElement('a');a.href=data;a.download=name;document.body.appendChild(a);a.click();a.remove()}
+async function convertImages(){let input=$('imageConvertInput'),files=[...(input.files||[])].slice(0,30);if(!files.length)return toast('Choose one or more images first.');let mime=$('imageConvertFormat').value,q=Number($('imageQuality').value)/100,max=Number($('imageMax').value),ext=mime==='image/png'?'png':mime==='image/webp'?'webp':'jpg',out=$('imageOutputs');out.innerHTML='';setBusy(true,'Converting images…');try{for(let i=0;i<files.length;i++){let f=files[i];setBusy(true,`Converting ${i+1} of ${files.length}…`);let src=await readFileAsDataURL(f),data=await new Promise((res,rej)=>{let im=new Image();im.onload=()=>{let scale=max?Math.min(1,max/Math.max(im.width,im.height)):1,c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.width*scale));c.height=Math.max(1,Math.round(im.height*scale));let x=c.getContext('2d',{alpha:mime!=='image/jpeg'});if(mime==='image/jpeg'){x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height)}x.drawImage(im,0,0,c.width,c.height);try{res(c.toDataURL(mime,q))}catch(e){rej(e)}};im.onerror=rej;im.src=src});let base=(f.name||`image-${i+1}`).replace(/\.[^.]+$/,''),name=`${base}.${ext}`,a=document.createElement('a');a.className='btn light';a.textContent='Download';a.href=data;a.download=name;let row=document.createElement('div');row.className='output-item';let label=document.createElement('span');label.textContent=name;row.append(label,a);out.appendChild(row)}}catch(e){console.error(e);toast('A selected image could not be converted. Try JPG, PNG or WebP.')}finally{setBusy(false)}}
+function printableTextHtml(name,text){return `<!doctype html><html><head><meta charset="utf-8"><title>${esc(name)}</title><style>@page{margin:18mm}body{font:14px/1.5 Arial,sans-serif;color:#111}h1{font-size:18px;border-bottom:1px solid #ddd;padding-bottom:8px}pre{white-space:pre-wrap;word-wrap:break-word;font:13px/1.45 Consolas,monospace}</style>
+</head><body><h1>${esc(name)}</h1><pre>${esc(text)}</pre><script>onload=()=>setTimeout(()=>print(),300)<\/script></body></html>`}
+async function textFileToPdf(){let f=$('textConvertInput').files?.[0];if(!f)return toast('Choose a TXT, CSV, HTML or Markdown file.');if(f.size>8*1024*1024)return toast('This offline text converter is limited to 8 MB per file to prevent freezing.');setBusy(true,'Preparing printable document…');try{let text=await readFileText(f),html=printableTextHtml(f.name,text);if(window.Android?.printHtml){Android.printHtml(f.name.replace(/\.[^.]+$/,''),html)}else{let w=window.open('','_blank');if(!w)return toast('Pop-up blocked. Allow pop-ups to use Print / Save as PDF.');w.document.write(html);w.document.close()}}finally{setBusy(false)}}
+async function textFileToDoc(){let f=$('textConvertInput').files?.[0];if(!f)return toast('Choose a TXT, CSV, HTML or Markdown file.');if(f.size>8*1024*1024)return toast('This offline text converter is limited to 8 MB per file.');let text=await readFileText(f),html=`<html><head><meta charset="utf-8"><meta name="generator" content="Ethan Office Suite — Ethan Document Utility — Ethan Digital Academy"><meta name="application-name" content="Ethan Office Suite">
+</head><body><pre style="white-space:pre-wrap;font-family:Arial,sans-serif">${esc(text)}</pre></body></html>`,blob=new Blob([html],{type:'application/msword'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Ethan-Office-'+f.name.replace(/\.[^.]+$/,'').replace(/[^a-z0-9_-]+/gi,'-')+'.doc';a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);toast('Downloaded a Word-compatible .doc file. Complex Word formatting is not generated offline.')}
+let pendingAdvancedName='';function advancedConvert(name){pendingAdvancedName=name;go('converter');toast(name+': choose a conversion preset, select your file, then press Convert with Ethan Gateway.');setTimeout(()=>document.getElementById('advancedPreset')?.focus(),0)}
+function setPreset(v){$('advancedPreset').value=v;$('engineFile').click()}
+function gatewayUrl(){return (settings.gateway||'').replace(/\/$/,'')}
+async function runEnginePreset(){let f=$('engineFile').files?.[0];if(!f)return toast('Choose a file first.');let base=gatewayUrl();if(!base)return toast('Set the Ethan Office Conversion Gateway URL in Settings first.');let [from,to]=$('advancedPreset').value.split(':');let ext=(f.name.split('.').pop()||'').toLowerCase();if(from!=='any'&&ext!==from)return toast(`This preset expects a .${from} file. You selected .${ext||'unknown'}.`);if(f.size>50*1024*1024)return toast('For stability, this build limits gateway uploads to 50 MB per file.');let fd=new FormData();fd.append('file',f);fd.append('from',from);fd.append('to',to);$('engineResult').innerHTML='<div class="mini">Uploading and converting…</div>';setBusy(true,'Converting with secure gateway…');try{let r=await fetch(base+'/api/convert',{method:'POST',body:fd});let data=await r.json().catch(()=>({}));if(!r.ok)throw new Error(data.error||data.message||('Gateway error '+r.status));let files=data.files||[];if(!files.length)throw new Error('Conversion finished but no output file was returned.');$('engineResult').innerHTML=files.map(x=>`<a class="btn green" style="display:inline-block;margin:5px" target="_blank" rel="noopener" href="${x.url}">Download ${esc(x.name||('converted.'+to))}</a>`).join('');toast('Conversion completed. Download link is temporary.')}catch(e){$('engineResult').innerHTML='<div class="mini" style="color:#b42318">'+esc(e.message)+'</div>';toast('Conversion failed: '+e.message)}finally{setBusy(false)}}
+
+async function exportCurrentPageJpg(){if(!currentDoc?.pages?.[currentPage])return toast('Open a document page first.');setBusy(true,'Preparing JPG…');try{let data=await normalizedPageData(currentDoc.pages[currentPage]),base=(currentDoc.title||'document').replace(/[^a-z0-9_-]+/gi,'-').replace(/^-|-$/g,''),name=`${base||'document'}-page-${currentPage+1}.jpg`;downloadDataUrl(data,name);toast('Page JPG prepared.')}finally{setBusy(false)}}
+
+
+async function addPageNumbers(){
+  if(!currentDoc?.pages?.length)return toast('Open a document first.');
+  if(!confirm(`Add page numbers to all ${currentDoc.pages.length} pages? This writes the numbers onto the images.`))return;
+  setBusy(true,'Adding page numbers…');
+  try{
+    for(let i=0;i<currentDoc.pages.length;i++){
+      let p=currentDoc.pages[i],src=await normalizedPageData(p),im=new Image();
+      await new Promise((res,rej)=>{im.onload=res;im.onerror=rej;im.src=src});
+      let c=document.createElement('canvas');c.width=im.width;c.height=im.height;let x=c.getContext('2d');x.drawImage(im,0,0);
+      let fs=Math.max(24,Math.round(c.width/38)),txt=`${i+1} / ${currentDoc.pages.length}`;x.font=`bold ${fs}px Arial`;x.textAlign='center';x.textBaseline='middle';
+      let w=x.measureText(txt).width+fs*1.2,h=fs*1.6,px=c.width/2,py=c.height-h*.9;x.fillStyle='rgba(255,255,255,.86)';x.fillRect(px-w/2,py-h/2,w,h);x.fillStyle='#111';x.fillText(txt,px,py);
+      p.data=c.toDataURL('image/jpeg',.86);p.rotation=0;await updatePageThumb(p);
+    }
+    currentDoc.updated=now();await safePut('docs',currentDoc);renderPageStrip();previewPage();toast('Page numbers added.');
+  }catch(e){console.error(e);toast('Could not add page numbers.')}finally{setBusy(false)}
+}
+function startRedaction(){
+  if(!currentDoc?.pages?.[currentPage])return toast('Open a document page first.');
+  redactMode=true;redactStart=null;toast('Redaction mode: drag a box over the area to permanently cover it.');
+}
+async function commitRedaction(x1,y1,x2,y2){
+  let p=currentDoc.pages[currentPage],src=await normalizedPageData(p),im=new Image();await new Promise((res,rej)=>{im.onload=res;im.onerror=rej;im.src=src});
+  let canvas=$('editorCanvas'),r=canvas.getBoundingClientRect(),sx=im.width/r.width,sy=im.height/r.height;
+  let left=Math.max(0,Math.min(x1,x2))*sx,top=Math.max(0,Math.min(y1,y2))*sy,w=Math.abs(x2-x1)*sx,h=Math.abs(y2-y1)*sy;
+  if(w<8||h<8)return toast('Redaction area was too small.');
+  let c=document.createElement('canvas');c.width=im.width;c.height=im.height;let ctx=c.getContext('2d');ctx.drawImage(im,0,0);ctx.fillStyle='#000';ctx.fillRect(left,top,w,h);
+  p.data=c.toDataURL('image/jpeg',.88);p.rotation=0;await updatePageThumb(p);currentDoc.updated=now();await safePut('docs',currentDoc);renderPageStrip();previewPage();toast('Redaction permanently applied to this page.');
+}
+function installRedactionHandlers(){
+  let c=$('editorCanvas'); if(!c||c.dataset.redactInstalled)return;c.dataset.redactInstalled='1';
+  const pos=e=>{let r=c.getBoundingClientRect(),t=e.touches?.[0]||e.changedTouches?.[0]||e;return{x:t.clientX-r.left,y:t.clientY-r.top}};
+  c.addEventListener('pointerdown',e=>{if(!redactMode)return;redactStart=pos(e);c.setPointerCapture?.(e.pointerId)});
+  c.addEventListener('pointerup',async e=>{if(!redactMode||!redactStart)return;let q=pos(e),a=redactStart;redactStart=null;redactMode=false;await commitRedaction(a.x,a.y,q.x,q.y)});
+}
+async function privacyCleanup(){
+  if(!currentDoc)return; if(!confirm('Clear notes, tags and author/subject/keyword metadata from this document?'))return;
+  currentDoc.notes='';currentDoc.tags='';delete currentDoc.author;delete currentDoc.subject;delete currentDoc.keywords;currentDoc.updated=now();await safePut('docs',currentDoc);toast('Stored metadata cleaned. Image pixels are unchanged.');refresh();
+}
+async function createTemplateDocument(){
+  let type=$('templateType')?.value||'blank',c=document.createElement('canvas');c.width=1240;c.height=1754;let x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.fillStyle='#0b2d67';x.font='bold 54px Arial';
+  let title={blank:'',lined:'Notes',meeting:'Meeting Notes',letter:'Letter'}[type]||'';if(title)x.fillText(title,90,120);
+  x.strokeStyle='#d7dfec';x.lineWidth=2;
+  if(type==='lined'){for(let y=190;y<c.height-100;y+=58){x.beginPath();x.moveTo(90,y);x.lineTo(c.width-90,y);x.stroke()}}
+  if(type==='meeting'){x.font='28px Arial';x.fillStyle='#334';x.fillText('Date:',90,190);x.fillText('Attendees:',90,250);x.fillText('Agenda:',90,340);for(let y=390;y<760;y+=58){x.beginPath();x.moveTo(90,y);x.lineTo(c.width-90,y);x.stroke()}x.fillText('Decisions / Action Items:',90,850);for(let y=900;y<c.height-100;y+=58){x.beginPath();x.moveTo(90,y);x.lineTo(c.width-90,y);x.stroke()}}
+  if(type==='letter'){x.font='28px Arial';x.fillStyle='#334';x.fillText('Date:',90,190);x.fillText('To:',90,260);x.fillText('Subject:',90,330);for(let y=430;y<c.height-130;y+=58){x.beginPath();x.moveTo(90,y);x.lineTo(c.width-90,y);x.stroke()}}
+  let data=c.toDataURL('image/jpeg',.9),page={id:uid(),data,thumb:await createThumb(data),rotation:0,name:type+'-template.jpg',bytes:Math.round(data.length*.75)};
+  let d={id:uid(),title:title||'Blank Document',folder:settings.defaultFolder||'General',tags:'template',notes:'',pages:[page],created:now(),updated:now(),favorite:false,deleted:false,secure:false};await safePut('docs',d);await refresh();openEditor(d.id);
+}
+async function compareTextFiles(){
+  let a=$('compareA').files?.[0],b=$('compareB').files?.[0],out=$('compareOutput');if(!a||!b)return toast('Choose two text-based files.');
+  if(a.size>5*1024*1024||b.size>5*1024*1024)return toast('Compare files up to 5 MB each to prevent freezing.');
+  setBusy(true,'Comparing files…');try{let A=(await readFileText(a)).replace(/\r/g,'').split('\n'),B=(await readFileText(b)).replace(/\r/g,'').split('\n'),n=Math.max(A.length,B.length),diff=[];for(let i=0;i<n;i++)if((A[i]||'')!==(B[i]||''))diff.push(i+1);let preview=diff.slice(0,20).map(i=>`Line ${i}: “${esc((A[i-1]||'').slice(0,70))}” → “${esc((B[i-1]||'').slice(0,70))}”`).join('<br>');out.innerHTML=`<div class="output-item" style="display:block"><strong>${diff.length} changed line(s)</strong><div class="mini">${A.length} vs ${B.length} total lines</div>${preview?`<div style="margin-top:8px;font-size:12px;line-height:1.5">${preview}${diff.length>20?'<br>…more differences not shown':''}</div>`:'<div class="mini" style="margin-top:8px">Files match line-for-line.</div>'}</div>`}finally{setBusy(false)}
+}
+function pasteToPrintablePdf(){let text=$('pastePrintText').value;if(!text.trim())return toast('Paste some text first.');let html=printableTextHtml('Ethan Office Suite — Document Utility Export',text);if(window.Android?.printHtml){Android.printHtml('Ethan Office Suite — Document Utility Export',html)}else{let w=window.open('','_blank');if(!w)return toast('Pop-up blocked.');w.document.write(html);w.document.close()}}
+
+async function exportBackup(){let docs=await getAll('docs'), signatures=await getAll('signatures'),data={app:'Ethan Document Utility',suite:'Ethan Office Suite',version:8,exported:now(),folders,settings,docs,signatures};let blob=new Blob([JSON.stringify(data)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Ethan-Office-Document-Utility-Backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+async function restoreBackup(){let f=$('restoreFile').files[0];if(!f)return toast('Choose a backup JSON file.');try{let data=JSON.parse(await f.text());if(!['Ethan Documents','Ethan Document Utility'].includes(data.app)&&!data.docs)throw 0;if(!confirm(`Restore ${data.docs?.length||0} documents?`))return;for(let d of data.docs||[])await safePut('docs',d);for(let s of data.signatures||[])await put('signatures',s);if(data.folders){folders=data.folders;saveFolders()}if(data.settings){settings=data.settings;localStorage.setItem('ethanDocSettings',JSON.stringify(settings))}refresh();toast('Backup restored.')}catch(e){toast('That file is not a valid Ethan Document Utility backup.')}}
+
+let activePdfTool='ocr';
+const pdfToolNames={ocr:'OCR Searchable PDF',compress:'Compress PDF',extract:'Split / Extract PDF Pages',protect:'Protect / Unlock PDF',pdfa:'Create PDF/A Archive',rotate:'Rotate PDF Pages'};
+function syncPdfSecurityFields(){let enc=$('pdfSecurityMode').value==='encrypt';$('pdfPasswordField').style.display=enc?'block':'none';$('pdfUnlockField').style.display=enc?'none':'block';}
+function openPdfTool(tool){
+  activePdfTool=tool;$('pdfToolTitle').textContent=pdfToolNames[tool]||'Advanced PDF Tool';$('pdfToolPanel').style.display='block';
+  ['pdfLangField','pdfProfileField','pdfPageModeField','pdfPagesField','pdfRotationField','pdfConformanceField','pdfModeField','pdfPasswordField','pdfUnlockField'].forEach(id=>$(id).style.display='none');
+  if(tool==='ocr')$('pdfLangField').style.display='block';
+  if(tool==='compress')$('pdfProfileField').style.display='block';
+  if(tool==='extract'){ $('pdfPageModeField').style.display='block';$('pdfPagesField').style.display='block'; }
+  if(tool==='rotate'){ $('pdfPagesField').style.display='block';$('pdfRotationField').style.display='block'; }
+  if(tool==='pdfa')$('pdfConformanceField').style.display='block';
+  if(tool==='protect'){ $('pdfModeField').style.display='block';syncPdfSecurityFields(); }
+  $('pdfToolResult').innerHTML='';$('pdfToolPanel').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function closePdfTool(){$('pdfToolPanel').style.display='none';}
+async function runPdfTool(){
+  let f=$('pdfToolFile').files?.[0];if(!f)return toast('Choose a PDF file first.');
+  if((f.name.split('.').pop()||'').toLowerCase()!=='pdf')return toast('This tool requires a PDF file.');
+  let base=gatewayUrl();if(!base)return toast('Set the Ethan Office Conversion Gateway URL in Settings first.');
+  if(f.size>50*1024*1024)return toast('This build limits gateway uploads to 50 MB per PDF.');
+  let op=activePdfTool,fd=new FormData();fd.append('file',f);
+  if(op==='ocr'){fd.append('operation','ocr');fd.append('language',$('pdfLang').value)}
+  if(op==='compress'){fd.append('operation','compress');fd.append('profile',$('pdfProfile').value)}
+  if(op==='extract'){let mode=$('pdfPageMode').value;fd.append('operation',mode);if(mode==='extract'){let pg=$('pdfPages').value.trim();if(!pg)return toast('Enter the pages or ranges to extract.');fd.append('pages',pg)}}
+  if(op==='rotate'){fd.append('operation','rotate');fd.append('pages',$('pdfPages').value.trim()||'1-');fd.append('rotation',$('pdfRotation').value)}
+  if(op==='pdfa'){fd.append('operation','pdfa');fd.append('conformance',$('pdfConformance').value)}
+  if(op==='protect'){let mode=$('pdfSecurityMode').value;fd.append('operation',mode);let pw=mode==='encrypt'?$('pdfPassword').value:$('pdfUnlockPassword').value;if(!pw)return toast(mode==='encrypt'?'Enter a new PDF password.':'Enter the current PDF password.');fd.append('password',pw)}
+  $('pdfToolResult').innerHTML='<div class="mini">Uploading and processing…</div>';setBusy(true,'Processing PDF securely…');
+  try{let r=await fetch(base+'/api/pdf',{method:'POST',body:fd});let data=await r.json().catch(()=>({}));if(!r.ok)throw new Error(data.error||data.message||('Gateway error '+r.status));let files=data.files||[];if(!files.length)throw new Error('Processing completed but no output file was returned.');$('pdfToolResult').innerHTML=files.map(x=>`<a class="btn green" style="display:inline-block;margin:5px" target="_blank" rel="noopener" href="${x.url}">Download ${esc(x.name||'processed.pdf')}</a>`).join('');toast('PDF processing completed. Download links are temporary.')}catch(e){$('pdfToolResult').innerHTML='<div class="mini" style="color:#b42318">'+esc(e.message)+'</div>';toast('PDF processing failed: '+e.message)}finally{setBusy(false)}
+}
+
+async function duplicatePage(){if(!currentDoc?.pages?.[currentPage])return;let p=JSON.parse(JSON.stringify(currentDoc.pages[currentPage]));p.id=uid();p.name=(p.name||'page')+' copy';currentDoc.pages.splice(currentPage+1,0,p);currentPage++;currentDoc.updated=now();await safePut('docs',currentDoc);renderPageStrip();previewPage();toast('Page duplicated.');}
+async function dateStamp(){if(!currentDoc?.pages?.[currentPage])return;let p=currentDoc.pages[currentPage],src=await normalizedPageData(p),im=new Image();im.onload=async()=>{let c=document.createElement('canvas');c.width=im.width;c.height=im.height;let x=c.getContext('2d');x.drawImage(im,0,0);let label=new Date().toLocaleString();let fs=Math.max(22,Math.round(c.width/38));x.font=`bold ${fs}px Arial`;let pad=Math.round(fs*.6),tw=x.measureText(label).width;x.fillStyle='rgba(0,0,0,.72)';x.fillRect(c.width-tw-pad*2-pad,c.height-fs-pad*2,tw+pad*2,fs+pad);x.fillStyle='#fff';x.fillText(label,c.width-tw-pad*2,c.height-pad);p.data=c.toDataURL('image/jpeg',.86);p.rotation=0;await updatePageThumb(p);currentDoc.updated=now();await safePut('docs',currentDoc);renderPageStrip();previewPage();toast('Date/time stamp added.');};im.src=src;}
+async function invertCurrentPage(){if(!currentDoc?.pages?.[currentPage])return;let p=currentDoc.pages[currentPage],src=await normalizedPageData(p),im=new Image();im.onload=async()=>{let c=document.createElement('canvas');c.width=im.width;c.height=im.height;let x=c.getContext('2d');x.filter='invert(100%)';x.drawImage(im,0,0);p.data=c.toDataURL('image/jpeg',.86);p.rotation=0;await updatePageThumb(p);currentDoc.updated=now();await safePut('docs',currentDoc);renderPageStrip();previewPage();toast('Page colors inverted.');};im.src=src;}
+async function batchExportJpg(){if(!currentDoc?.pages?.length)return;setBusy(true,'Preparing page images…');try{let base=(currentDoc.title||'document').replace(/[^a-z0-9_-]+/gi,'-').replace(/^-|-$/g,'')||'document';for(let i=0;i<currentDoc.pages.length;i++){let data=await normalizedPageData(currentDoc.pages[i]);downloadDataUrl(data,`${base}-page-${i+1}.jpg`);await new Promise(r=>setTimeout(r,120));}toast(`Prepared ${currentDoc.pages.length} JPG page(s).`);}finally{setBusy(false)}}
+async function contactSheet(){if(!currentDoc?.pages?.length)return;setBusy(true,'Building contact sheet…');try{let pages=[];for(let p of currentDoc.pages)pages.push(await normalizedPageData(p));let title=esc(currentDoc.title||'Document');let html=`<!doctype html><html><head><meta charset="utf-8"><title>${title} Contact Sheet</title><style>body{font-family:Arial;padding:24px}h1{font-size:20px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.p{border:1px solid #ccc;padding:8px;page-break-inside:avoid}.p img{width:100%;height:240px;object-fit:contain;background:#f5f5f5}.n{text-align:center;font-size:12px;margin-top:5px}@media print{.p img{height:190px}}</style>
+</head><body><h1>${title} — Contact Sheet</h1><div class="grid">${pages.map((d,i)=>`<div class="p"><img src="${d}"><div class="n">Page ${i+1}</div></div>`).join('')}</div></body></html>`;if(window.Android?.printHtml)Android.printHtml(title+' Contact Sheet',html);else{let w=window.open('','_blank');if(!w)return toast('Pop-up blocked.');w.document.write(html);w.document.close();setTimeout(()=>w.print(),250);}toast('Contact sheet prepared.');}finally{setBusy(false)}}
+async function batchCleanup(){if(!currentDoc?.pages?.length)return;let mode=prompt('Batch cleanup mode: type GRAY for grayscale, AUTO for auto-contrast, or SMALL for smaller optimized copies.','AUTO');if(!mode)return;mode=mode.trim().toUpperCase();if(!['GRAY','AUTO','SMALL'].includes(mode))return toast('Use GRAY, AUTO, or SMALL.');if(!confirm(`Apply ${mode} to all ${currentDoc.pages.length} pages? This changes stored images.`))return;setBusy(true,'Cleaning pages…');try{for(let i=0;i<currentDoc.pages.length;i++){let p=currentDoc.pages[i],src=await normalizedPageData(p),im=await new Promise((res,rej)=>{let z=new Image();z.onload=()=>res(z);z.onerror=rej;z.src=src});let scale=mode==='SMALL'?Math.min(1,1400/Math.max(im.width,im.height)):1,c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.width*scale));c.height=Math.max(1,Math.round(im.height*scale));let x=c.getContext('2d');if(mode==='GRAY')x.filter='grayscale(100%) contrast(108%)';if(mode==='AUTO')x.filter='contrast(112%) brightness(103%)';x.drawImage(im,0,0,c.width,c.height);p.data=c.toDataURL('image/jpeg',mode==='SMALL'?.76:.84);p.rotation=0;await updatePageThumb(p);}currentDoc.updated=now();await safePut('docs',currentDoc);renderPageStrip();previewPage();toast('Batch cleanup completed.');}catch(e){toast('Batch cleanup failed: '+e.message)}finally{setBusy(false)}}
+function loadSettings(){$('setName').value=settings.name||'';$('setWatermark').value=settings.watermark||'';$('setFit').value=settings.fit||'contain';$('setGateway').value=settings.gateway||'';if(settings.defaultFolder&&folders.includes(settings.defaultFolder))$('setFolder').value=settings.defaultFolder}
+function saveSettings(){settings={name:$('setName').value.trim(),defaultFolder:$('setFolder').value,watermark:$('setWatermark').value.trim(),fit:$('setFit').value,gateway:$('setGateway').value.trim()};localStorage.setItem('ethanDocSettings',JSON.stringify(settings));toast('Settings saved.')}
+window.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.modal.show').forEach(m=>m.classList.remove('show'))}});
+(async()=>{try{await openDB();installRedactionHandlers();let ds=await getAll('docs'),changed=0;for(let d of ds){for(let p of d.pages||[]){if(!p.thumb&&p.data){p.thumb=await createThumb(p.data);changed++}}if(changed)await safePut('docs',d)}await refresh()}catch(e){console.error(e);toast('Ethan Document Utility could not open its local database. Reload the app or clear only this app\'s site data after exporting a backup.')}})();
+</script>
+</body></html>
+# Ethan Office v17.1
+
+Presentation workspace enlargement:
+- Larger editable slide canvas for title and body text
+- Narrower thumbnail pane
+- Reduced stage padding
+- Reduced notes pane height
+- Larger title/body editing areas
+- Improved tablet/mobile canvas sizing
+
+# Ethan Office v17.2
+
+## Ethan Presentation full-bleed canvas fix
+
+- Removed the grey working-space bands above and below the active slide.
+- Expanded the active slide surface to fill the entire available presentation editing stage.
+- Removed stage padding, slide shadows, outer borders, and rounded corners in the editor so the slide reads as one continuous presentation canvas.
+- Preserved the ribbon, slide thumbnails, notes pane, themes, transitions, and presentation tools.
+- Mobile/tablet presentation stage also uses the full available canvas.
+
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b3a78"><meta name="color-scheme" content="light"><meta name="description" content="Ethan Office Suite — professional everyday productivity workspace with Word, Excel, Presentation and Ethan Document Utility"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="assets/icon-192.png"><link rel="apple-touch-icon" href="assets/icon-192.png"><link rel="stylesheet" href="assets/style.css"><title>Ethan Office Suite — Executive Productivity Workspace</title></head><body>
+<div class=app><aside class=sidebar id=side><div class=brand><img src="assets/icon-96.png"><div><b>Ethan Office</b><small>Work Smarter Everyday</small></div></div><nav class=nav>
+<button class=active data-page=home><span class=ico>⌂</span>Home</button><div class="navLabel">CREATE</div><button data-page=word><span class=ico>W</span>Ethan Word</button><button data-page=excel><span class=ico>▦</span>Ethan Excel</button><button data-page=presentation><span class=ico>▶</span>Presentation</button><button data-page=documents><span class=ico>DU</span>Document Utility</button><div class="navLabel">ORGANIZE</div><button data-page=notes><span class=ico>✎</span>Notes</button><button data-page=calendar><span class=ico>▣</span>Calendar</button><button data-page=tasks><span class=ico>✓</span>Tasks</button><button data-page=meetings><span class=ico>☷</span>Meetings</button><button data-page=contacts><span class=ico>☻</span>Contacts</button><div class="navLabel">WORKSPACE</div><button data-page=templates><span class=ico>▤</span>Templates</button><button data-page=files><span class=ico>▰</span>File Manager</button><button data-page=calculator><span class=ico>＋</span>Calculator</button></nav><div class=sidebar-foot>A product of <b>Ethan Digital Academy</b><br>© 2026 Ethan Digital Academy.<br>All Rights Reserved.<br><span class="versionPill">Executive Suite v17.3</span></div></aside>
+<main class=main><header class=topbar><button id=menuBtn class=menuBtn aria-label="Open navigation">☰</button><div class="topIdentity"><strong>Professional Workspace</strong><span>My Workspace • AutoSave • Office-ready</span></div><div class=search><span>⌕</span><input id=globalSearch placeholder="Search tools, files and office apps..." aria-label="Search Ethan Office"></div><div class=top-actions><button class="btn topFileBtn" data-page=files title="Open My Office Files">My Files</button><button class=btn onclick="backup()">Backup</button><label class=btn>Restore<input id=restoreInput type=file accept=.json hidden></label></div></header><div class=content>
+<section id=page-home class="page active"><div class="hero executiveHero"><div><div class="eyebrow">ETHAN OFFICE SUITE • EXECUTIVE WORKSPACE</div><h2>One memorable workspace for serious everyday office work.</h2><p>Create, calculate, present, scan, convert, organize and manage your office files from a single polished productivity environment.</p><div class=chips><span class=chip>AutoSave Workspace</span><span class=chip>Document Utility Built In</span><span class=chip>Offline-first</span><span class=chip>Android + PWA</span></div><div class="heroActions"><button class="btn heroPrimary" data-page=word>Create Document</button><button class="btn heroGhost" data-page=documents>Open Document Utility</button><button id=installBtn class="btn hidden heroGhost">Install Ethan Office</button></div></div><div class="heroBrandOrb"><img src="assets/icon-512.png"><span>Work Smarter<br>Everyday</span></div></div><div class=grid>
+<div class=tool><div class=toolico style="background:#1671e8">W</div><h3>Ethan Word</h3><p>Letters, memos, reports, minutes and printable documents.</p><button class="btn sm" data-page=word>Open</button></div><div class=tool><div class=toolico style="background:#10a657">▦</div><h3>Ethan Excel</h3><p>Spreadsheets, formulas, calculations and CSV export.</p><button class="btn sm" data-page=excel>Open</button></div><div class=tool><div class=toolico style="background:#ff6a21">▶</div><h3>Presentation</h3><p>Create simple professional slide presentations.</p><button class="btn sm" data-page=presentation>Open</button></div><div class="tool utilityTool"><div class=toolico style="background:#b4232f">DU</div><h3>Ethan Document Utility</h3><p>Scan, OCR, convert, merge, split, sign, redact, compress, protect and organize document workflows.</p><button class="btn sm" data-page=documents>Open Utility</button></div><div class=tool><div class=toolico style="background:#6f3be7">✎</div><h3>Notes</h3><p>Quick notes, checklists and office information.</p><button class="btn sm" data-page=notes>Open</button></div><div class=tool><div class=toolico style="background:#08a9b6">▣</div><h3>Calendar</h3><p>Appointments, events and office schedules.</p><button class="btn sm" data-page=calendar>Open</button></div><div class=tool><div class=toolico style="background:#f03a88">✓</div><h3>Tasks</h3><p>Priorities, deadlines and daily to-do lists.</p><button class="btn sm" data-page=tasks>Open</button></div><div class=tool><div class=toolico style="background:#f4a000">☷</div><h3>Meetings</h3><p>Agendas, attendance, minutes and action points.</p><button class="btn sm" data-page=meetings>Open</button></div></div>
+<div class=section><div class=cards><div class=card><div class=muted>OFFICE FILES</div><h2 id=statDocs>0</h2></div><div class=card><div class=muted>OPEN TASKS</div><h2 id=statTasks>0</h2></div><div class=card><div class=muted>CALENDAR EVENTS</div><h2 id=statEvents>0</h2></div><div class=card><div class=muted>CONTACTS</div><h2 id=statContacts>0</h2></div></div></div><div class=section><h2>Recent Work</h2><div class=cards id=recentList></div></div></section>
+
+<section id=page-word class=page><div id=wordLibrary><div class=titleRow><div><h1>Ethan Word</h1><p>Professional everyday word processing with page layout, rich formatting, tables, images, references and review tools.</p></div><button class="btn primary" onclick="newWord()">+ New Document</button></div><div class="libraryNotice"><span>●</span><div><b>AutoSave is on</b><small>Documents saved here also appear in File Manager → My Office Files.</small></div><button class="btn sm" data-page=files>Open File Manager</button></div><div class=list id=wordList></div></div><div id=wordWorkspace class=hidden>
+<div class="wordAppShell">
+  <div class="wordTitlebar"><button class="wordBack" onclick="closeWord()">←</button><input id=wordTitle value="Untitled Document" aria-label="Document title"><span id=saveStatus class="saveStatus">Saved locally</span><div class="wordQuick"><button title="Undo" onclick="wordCmd('undo')">↶</button><button title="Redo" onclick="wordCmd('redo')">↷</button><button title="Save" onclick="saveWord()">💾</button></div></div>
+  <div class="wordTabs" role=tablist><button class=active onclick="wordTab('file',this)">File</button><button onclick="wordTab('home',this)">Home</button><button onclick="wordTab('insert',this)">Insert</button><button onclick="wordTab('layout',this)">Layout</button><button onclick="wordTab('references',this)">References</button><button onclick="wordTab('review',this)">Review</button><button onclick="wordTab('view',this)">View</button></div>
+  <div class="wordRibbon">
+    <div class="wordRibbonPanel active" data-wordpanel=file>
+      <div class=ribbonGroup><b>Document</b><button onclick="newWord()">New</button><button onclick="saveWord()">Save</button><button onclick="wordSaveCopy()">Save a Copy</button></div>
+      <div class=ribbonGroup><b>Open / Import</b><label class=ribbonBtn>Import Text/HTML<input id=wordImport type=file accept=".txt,.html,.htm,text/plain,text/html" hidden onchange="wordImportFile(event)"></label></div>
+      <div class=ribbonGroup><b>Export</b><button onclick="downloadWord()">Download Ethan Office .doc</button><button onclick="printWord()">Print / PDF</button></div>
+    </div>
+    <div class="wordRibbonPanel" data-wordpanel=home>
+      <div class=ribbonGroup><b>Clipboard</b><button onclick="wordCut()">Cut</button><button onclick="wordCopy()">Copy</button><button onclick="wordPastePlain()">Paste</button></div>
+      <div class=ribbonGroup><b>Font</b><select onchange="wordFontFamily(this.value)"><option value="Arial">Arial</option><option value="Calibri">Calibri</option><option value="Georgia">Georgia</option><option value="Times New Roman">Times New Roman</option><option value="Verdana">Verdana</option><option value="Courier New">Courier New</option></select><select onchange="wordCmd('fontSize',this.value)"><option value=2>10</option><option value=3 selected>12</option><option value=4>14</option><option value=5>18</option><option value=6>24</option><option value=7>36</option></select><button onclick="wordCmd('bold')"><b>B</b></button><button onclick="wordCmd('italic')"><i>I</i></button><button onclick="wordCmd('underline')"><u>U</u></button><button onclick="wordCmd('strikeThrough')"><s>S</s></button><button onclick="wordCmd('subscript')">x₂</button><button onclick="wordCmd('superscript')">x²</button><input type=color title="Text colour" onchange="wordCmd('foreColor',this.value)"><input type=color title="Highlight" value="#fff59d" onchange="wordCmd('hiliteColor',this.value)"><button onclick="wordCmd('removeFormat')">Clear</button></div>
+      <div class=ribbonGroup><b>Paragraph</b><button onclick="wordCmd('insertUnorderedList')">• List</button><button onclick="wordCmd('insertOrderedList')">1. List</button><button onclick="wordCmd('outdent')">⇤</button><button onclick="wordCmd('indent')">⇥</button><button onclick="wordCmd('justifyLeft')">Left</button><button onclick="wordCmd('justifyCenter')">Center</button><button onclick="wordCmd('justifyRight')">Right</button><button onclick="wordCmd('justifyFull')">Justify</button><select onchange="wordLineHeight(this.value)"><option value=1>1.0</option><option value=1.15 selected>1.15</option><option value=1.5>1.5</option><option value=2>2.0</option></select></div>
+      <div class=ribbonGroup><b>Styles</b><button onclick="wordStyle('p')">Normal</button><button onclick="wordStyle('h1')">Title</button><button onclick="wordStyle('h2')">Heading 1</button><button onclick="wordStyle('h3')">Heading 2</button></div>
+    </div>
+    <div class="wordRibbonPanel" data-wordpanel=insert>
+      <div class=ribbonGroup><b>Pages</b><button onclick="wordInsertPageBreak()">Page Break</button><button onclick="wordInsertHR()">Divider</button></div>
+      <div class=ribbonGroup><b>Tables & Media</b><button onclick="wordInsertTable()">Table</button><label class=ribbonBtn>Picture<input id=wordImageInput type=file accept="image/*" hidden onchange="wordInsertImage(event)"></label><button class="dangerText" onclick="wordDeleteSelectedImage()" title="Select an image in the document first">Delete Image</button></div>
+      <div class=ribbonGroup><b>Links & Text</b><button onclick="wordInsertLink()">Hyperlink</button><button onclick="wordInsertDate()">Date/Time</button><button onclick="wordInsertSymbol()">Symbol</button><button onclick="wordInsertSignatureLine()">Signature Line</button></div>
+      <div class=ribbonGroup><b>Header & Footer</b><button onclick="wordFocusHeader()">Header</button><button onclick="wordFocusFooter()">Footer</button><button onclick="wordAddPageNumber('footer')">Page Number</button></div>
+    </div>
+    <div class="wordRibbonPanel" data-wordpanel=layout>
+      <div class=ribbonGroup><b>Page Setup</b><label>Size<select onchange="wordPageSetting('size',this.value)"><option value=a4>A4</option><option value=letter>Letter</option><option value=legal>Legal</option></select></label><label>Orientation<select onchange="wordPageSetting('orientation',this.value)"><option value=portrait>Portrait</option><option value=landscape>Landscape</option></select></label><label>Margins<select onchange="wordPageSetting('margin',this.value)"><option value=normal>Normal</option><option value=narrow>Narrow</option><option value=wide>Wide</option></select></label><label>Columns<select onchange="wordPageSetting('columns',this.value)"><option value=1>One</option><option value=2>Two</option><option value=3>Three</option></select></label></div>
+      <div class=ribbonGroup><b>Page Background</b><label class=ribbonBtn>Page Colour <input type=color value="#ffffff" onchange="wordPageSetting('color',this.value)"></label></div>
+    </div>
+    <div class="wordRibbonPanel" data-wordpanel=references>
+      <div class=ribbonGroup><b>Contents</b><button onclick="wordInsertTOC()">Table of Contents</button></div><div class=ribbonGroup><b>Notes</b><button onclick="wordInsertFootnote()">Insert Footnote</button></div>
+    </div>
+    <div class="wordRibbonPanel" data-wordpanel=review>
+      <div class=ribbonGroup><b>Proofing</b><button onclick="wordFindReplace()">Find / Replace</button><button onclick="wordWordCount()">Word Count</button><button onclick="wordToggleSpellcheck()">Spellcheck</button></div><div class=ribbonGroup><b>History</b><button onclick="wordVersionHistory()">Version History</button></div>
+    </div>
+    <div class="wordRibbonPanel" data-wordpanel=view>
+      <div class=ribbonGroup><b>Document View</b><button onclick="wordTogglePrintLayout()">Print / Pageless</button><button onclick="wordToggleRuler()">Ruler</button></div><div class=ribbonGroup><b>Zoom</b><button onclick="wordZoom(-10)">−</button><span id=wordZoomLabel>100%</span><button onclick="wordZoom(10)">+</button><button onclick="wordZoomReset()">100%</button></div>
+    </div>
+  </div>
+  <div class="wordWorkspaceBody"><div id=wordRuler class=wordRuler><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div><div id=wordPage class=wordPage><div id=wordHeader class=wordHeader contenteditable spellcheck=true data-placeholder="Header"></div><div id=wordEditor class=editor contenteditable spellcheck=true></div><div id=wordFooter class=wordFooter contenteditable spellcheck=true data-placeholder="Footer"></div></div></div>
+  <div class="wordStatus"><span id=wordStats>0 words • 0 characters</span><span id=wordPageInfo>Page 1</span><span id=wordLayoutInfo>A4 • Portrait • Normal margins</span><span class=grow></span><span>© 2026 Ethan Digital Academy</span></div>
+</div></div></section>
+
+<section id=page-excel class=page><div id=sheetLibrary><div class=titleRow><div><h1>Ethan Excel</h1><p>Professional everyday spreadsheets, analysis and charts.</p></div><button class="btn green" onclick="newSheet()">+ New Workbook</button></div><div class="libraryNotice excelNotice"><span>●</span><div><b>AutoSave is on</b><small>Workbooks saved here also appear in File Manager → My Office Files.</small></div><button class="btn sm" data-page=files>Open File Manager</button></div><div class=list id=sheetList></div></div><div id=sheetWorkspace class=hidden><div class="officeTop excelTop"><button class=btn onclick="closeSheet()">← Back</button><input id=sheetTitle><span id=excelSaveState class=muted>Saved locally</span></div><div class="appRibbon excelRibbon"><div class=ribbonTabs><button class=active onclick="excelTab('home',this)">Home</button><button onclick="excelTab('insert',this)">Insert</button><button onclick="excelTab('formulas',this)">Formulas</button><button onclick="excelTab('data',this)">Data</button><button onclick="excelTab('review',this)">Review</button><button onclick="excelTab('view',this)">View</button><button onclick="excelTab('file',this)">File</button></div><div id=excelRibbonBody class=ribbonBody></div></div><div class=formulaStrip><span id=cellName class=cellName>A1</span><span class=fx>fx</span><input id=formulaBar placeholder="Enter value or formula" onkeydown="if(event.key==='Enter')applyFormula()"><button onclick="applyFormula()">✓</button></div><div class=sheetWrap id=sheetGrid></div><div class=sheetStatus><span id=excelStatus>Ready</span><span class=grow></span><span id=excelSummary>Sum: 0 • Average: 0 • Count: 0</span></div></div></section>
+<section id=page-presentation class=page><div id=presLibrary><div class=titleRow><div><h1>Ethan Presentation</h1><p>Professional slides, themes, layouts and presenting tools.</p></div><button class="btn orange" onclick="newPres()">+ New Presentation</button></div><div class="libraryNotice presNotice"><span>●</span><div><b>AutoSave is on</b><small>Presentations saved here also appear in File Manager → My Office Files.</small></div><button class="btn sm" data-page=files>Open File Manager</button></div><div class=list id=presList></div></div><div id=presWorkspace class=hidden><div class="officeTop presTop"><button class=btn onclick="closePres()">← Back</button><input id=presTitle><span class=muted id=presSaveState>Saved locally</span></div><div class="appRibbon presRibbon"><div class=ribbonTabs><button class=active onclick="presTab('home',this)">Home</button><button onclick="presTab('insert',this)">Insert</button><button onclick="presTab('design',this)">Design</button><button onclick="presTab('transitions',this)">Transitions</button><button onclick="presTab('slideshow',this)">Slide Show</button><button onclick="presTab('review',this)">Review</button><button onclick="presTab('view',this)">View</button><button onclick="presTab('file',this)">File</button></div><div id=presRibbonBody class=ribbonBody></div></div><div class="presLayout presNormalView"><aside class="presThumbPane"><div class="presPaneHead"><span>Slides</span><button onclick="addSlide()" title="New slide">＋</button></div><div class=thumbs id=slideThumbs></div></aside><main class="presMain"><div class=slideStage><div class=slide id=slideCanvas tabindex="0"><div class="presObject presTitleObject" id=slideTitleBox><button class="presDragHandle" type="button" title="Drag title box">⋮⋮</button><h1 id=slideLiveTitle contenteditable="true" data-placeholder="Click to add title"></h1></div><div class="presObject presBodyObject" id=slideBodyBox><button class="presDragHandle" type="button" title="Drag text box">⋮⋮</button><p id=slideLiveBody contenteditable="true" data-placeholder="Click to add text"></p></div></div></div><div class="presNotesPane"><div class="presNotesLabel">Notes</div><textarea id=speakerNotes placeholder="Click to add speaker notes"></textarea></div><div class="presEdit presDataFields" aria-hidden="true"><input id=slideTitle><textarea id=slideBody></textarea></div></main></div><div class=sheetStatus><span id=presStatus>Slide 1 of 1</span><span class=grow></span><span id=presViewLabel>Normal • 16:9 • Ethan Presentation</span></div></div></section>
+
+<section id=page-documents class=page>
+<div class="titleRow utilityTitleRow"><div><div class="eyebrow darkEyebrow">DOCUMENT INTELLIGENCE</div><h1>Ethan Document Utility</h1><p>The full Ethan Document Utility productivity toolbox is now built directly into Ethan Office Suite.</p></div><div class="utilityHeaderActions"><button class="btn" onclick="reloadDocumentUtility()">Refresh Utility</button><button class="btn primary" id="docFocusBtn" onclick="toggleDocumentUtilityFocus()">Focus Mode</button></div></div>
+<div class="utilityFeatureStrip"><span>Scan & Import</span><span>OCR Searchable PDF</span><span>Word ↔ PDF</span><span>Excel ↔ PDF</span><span>PowerPoint ↔ PDF</span><span>Merge / Split</span><span>Compress</span><span>Protect / Unlock</span><span>Signatures</span><span>Redaction</span><span>PDF/A</span><span>Batch Tools</span></div>
+<div class="utilityInfoBar"><div><b>Integrated into Ethan Office v17</b><small>Local tools work inside this workspace. Advanced cloud conversions use the optional Ethan Conversion Gateway only when the user starts them.</small></div><button class="btn sm" data-page=files>My Office Files</button></div>
+<div class="documentUtilityFrameWrap"><button class="docFocusExit" onclick="toggleDocumentUtilityFocus()">← Return to Ethan Office</button><iframe id="documentUtilityFrame" src="document-utility.html" title="Ethan Document Utility" loading="lazy" allow="camera; clipboard-read; clipboard-write" referrerpolicy="no-referrer"></iframe></div>
+</section>
+
+<section id=page-notes class=page><div class=titleRow><div><h1>Ethan Notes</h1><p>Notebooks, pinned notes, checklists and searchable office information.</p></div><button class="btn primary" onclick="addNote()">+ Note</button></div><div class=cards id=notesList></div></section>
+<section id=page-calendar class=page><div class=titleRow><div><h1>Ethan Calendar</h1><p>Appointments, reminders and schedules in one place.</p></div><button class="btn primary" onclick="addEvent()">+ Event</button></div><div class=list id=eventList></div></section>
+<section id=page-tasks class=page><div class=titleRow><div><h1>Ethan Tasks</h1><p>Priorities, due dates, status filters and daily work planning.</p></div><button class="btn primary" onclick="addTask()">+ Task</button></div><div class=list id=taskList></div></section>
+<section id=page-meetings class=page><div class=titleRow><div><h1>Meetings</h1><p>Agenda, attendance, minutes and action points.</p></div><button class="btn primary" onclick="addMeeting()">+ Meeting</button></div><div class=cards id=meetingList></div></section>
+<section id=page-contacts class=page><div class=titleRow><div><h1>Ethan Contacts</h1><p>Searchable address book for clients, colleagues and suppliers.</p></div><button class="btn primary" onclick="addContact()">+ Contact</button></div><div class=cards id=contactList></div></section>
+<section id=page-templates class=page><div class=titleRow><div><h1>Office Templates</h1><p>Start common office documents quickly.</p></div></div><div class=grid><div class=tool><div class=toolico style="background:#1772e9">✉</div><h3>Business Letter</h3><p>Formal correspondence template.</p><button class=btn onclick="useTemplate('letter')">Use Template</button></div><div class=tool><div class=toolico style="background:#6c3ce8">M</div><h3>Office Memo</h3><p>Internal memorandum template.</p><button class=btn onclick="useTemplate('memo')">Use Template</button></div><div class=tool><div class=toolico style="background:#09a45b">☷</div><h3>Meeting Minutes</h3><p>Structured meeting minutes template.</p><button class=btn onclick="useTemplate('minutes')">Use Template</button></div><div class=tool><div class=toolico style="background:#ff8b1e">R</div><h3>Office Report</h3><p>Executive summary, findings and recommendations.</p><button class=btn onclick="useTemplate('report')">Use Template</button></div></div></section>
+<section id=page-files class=page><div class=titleRow><div><h1>My Office Files</h1><p>Your editable Ethan Word, Excel, Presentation, Notes and imported office items are saved here automatically.</p></div><div><button class="btn" data-page=documents>Document Utility</button> <button class=btn onclick="backup()">Backup Workspace</button><label class=btn>Restore Backup<input id=restoreInput2 type=file accept=.json hidden></label></div></div><div class="storageBanner"><div class="storageIcon">▰</div><div><b>Where are my saved documents?</b><p><strong>Save</strong> keeps the editable working file inside Ethan Office and it appears here and in the matching suite library. <strong>Download / Export</strong> creates a separate copy in your browser or device Downloads folder.</p></div></div><div class="fileCommandBar"><div class="fileTabs" role=tablist><button class=active onclick="setFileView('all',this)">All Files</button><button onclick="setFileView('recent',this)">Recent</button><button onclick="setFileView('favorites',this)">Favorites</button><button onclick="setFileView('trash',this)">Recycle Bin</button></div><div class="fileSearchBox">⌕ <input id=fileSearch placeholder="Search my office files" oninput="renderFiles()"></div></div><div id=fileWorkspace><div class=list id=filesList></div></div><div id=trashWorkspace class=hidden><div class="titleRow compactTitle"><div><h2>Recycle Bin</h2><p>Restore deleted Word, Excel and Presentation files, or permanently empty the bin.</p></div><button class="btn red sm" onclick="emptyTrash()">Empty Bin</button></div><div class=list id=trashList></div></div></section>
+<section id=page-calculator class=page><div class=titleRow><div><h1>Calculator</h1><p>Quick everyday office calculations.</p></div></div><div class="panel calc" style="padding:18px"><input readonly id=calcDisplay class=calcDisplay><div class=calcGrid><button onclick="calcKey('C')">C</button><button onclick="calcKey('(')">(</button><button onclick="calcKey(')')">)</button><button onclick="calcKey('←')">←</button><button onclick="calcKey('7')">7</button><button onclick="calcKey('8')">8</button><button onclick="calcKey('9')">9</button><button onclick="calcKey('/')">/</button><button onclick="calcKey('4')">4</button><button onclick="calcKey('5')">5</button><button onclick="calcKey('6')">6</button><button onclick="calcKey('*')">*</button><button onclick="calcKey('1')">1</button><button onclick="calcKey('2')">2</button><button onclick="calcKey('3')">3</button><button onclick="calcKey('-')">-</button><button onclick="calcKey('0')">0</button><button onclick="calcKey('.')">.</button><button onclick="calcKey('%')">%</button><button onclick="calcKey('+')">+</button><button class=eq onclick="calcKey('=')">=</button></div></div></section>
+<div class=footer>ETHAN OFFICE — Your Complete Everyday Office Suite<br>A Product of Ethan Digital Academy • © 2026 Ethan Digital Academy — All Rights Reserved.</div></div></main></div>
+<div id=modal class=modal><div class=modalbox><div class=titleRow><h2 id=modalTitle></h2><button class=btn onclick="closeModal()">×</button></div><div id=modalContent></div><div style="margin-top:15px;display:flex;justify-content:flex-end;gap:8px"><button class=btn onclick="closeModal()">Cancel</button><button id=modalSave class="btn primary">Save</button></div></div></div><div id=toast class=toast></div><script src="assets/app.js"></script><script>if('serviceWorker'in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('sw.js');const r2=document.getElementById('restoreInput2');if(r2)r2.onchange=document.getElementById('restoreInput').onchange;</script></body></html>
+{
+  "name": "Ethan Office Suite v16",
+  "short_name": "Ethan Office",
+  "description": "Ethan Office Suite v16 with Word, Excel, Presentation, Document Utility and everyday office productivity tools",
+  "id": "./",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "minimal-ui"
+  ],
+  "background_color": "#eaf0f7",
+  "theme_color": "#071a38",
+  "categories": [
+    "productivity",
+    "business",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ethan Word",
+      "short_name": "Word",
+      "url": "./index.html?open=word",
+      "icons": [
+        {
+          "src": "assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Ethan Excel",
+      "short_name": "Excel",
+      "url": "./index.html?open=excel",
+      "icons": [
+        {
+          "src": "assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Presentation",
+      "short_name": "Slides",
+      "url": "./index.html?open=presentation",
+      "icons": [
+        {
+          "src": "assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Ethan Document Utility",
+      "short_name": "Document Utility",
+      "url": "./index.html?open=documents",
+      "icons": [
+        {
+          "src": "assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Tasks",
+      "short_name": "Tasks",
+      "url": "./index.html?open=tasks",
+      "icons": [
+        {
+          "src": "assets/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
+
+Ethan Office Suite v17
+
+Clean stable office suite with Ethan AI removed for separate development.
+
+Included modules:
+- Home
+- Ethan Word
+- Ethan Excel
+- Presentation
+- Ethan Document Utility
+- Notes
+- Calendar
+- Tasks
+- Meetings
+- Contacts
+- Templates
+- File Manager
+- Calculator
+
+The optional gateway folder is retained only for Document Utility conversion/PDF services.
+
+const CACHE='ethan-office-v17-ai-removed-audited';
+const CORE=['./','./index.html','./manifest.webmanifest','./assets/style.css','./assets/app.js','./assets/icon-96.png','./assets/icon-192.png','./assets/icon-512.png','./assets/ethan-office-brand.jpg','./document-utility.html','./assets/ethan-documents-logo.png'];
+self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)))});
+self.addEventListener('activate',e=>e.waitUntil(Promise.all([self.clients.claim(),caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k))))])));
+self.addEventListener('fetch',e=>{
+ if(e.request.method!=='GET')return;
+ const url=new URL(e.request.url);
+ if(e.request.mode==='navigate'){
+  const fallback=url.pathname.endsWith('/document-utility.html')||url.pathname.endsWith('document-utility.html')?'./document-utility.html':'./index.html';
+  e.respondWith(fetch(e.request).then(r=>{const copy=r.clone();caches.open(CACHE).then(c=>c.put(fallback,copy));return r}).catch(()=>caches.match(fallback)));return;
+ }
+ if(url.origin===self.location.origin)e.respondWith(caches.match(e.request).then(cached=>cached||fetch(e.request).then(r=>{const copy=r.clone();caches.open(CACHE).then(c=>c.put(e.request,copy));return r})));
+});
+
+# Ethan Office Suite v16 — AI Removal & Stability Audit
+
+## Scope
+Ethan AI and Ethan Search were removed from Ethan Office for separate development. The remaining productivity suite was audited after removal so no dead AI navigation, settings, search endpoints, styles or manifest shortcuts remain active.
+
+## Remaining modules
+1. Home
+2. Ethan Word
+3. Ethan Excel
+4. Presentation
+5. Ethan Document Utility
+6. Notes
+7. Calendar
+8. Tasks
+9. Meetings
+10. Contacts
+11. Templates
+12. File Manager
+13. Calculator
+
+## Fixes applied
+- Removed the Ethan AI sidebar entry, home card, hero action, page and settings/search interface.
+- Removed AI/Search JavaScript upgrade layers and AI/Search UI styles.
+- Removed AI/Search PWA shortcut/manifest references.
+- Removed AI/Search server routes and provider configuration from the optional gateway.
+- Fixed the gateway health route so it no longer references removed AI/Search configuration variables.
+- Retained the gateway only for Document Utility conversion and PDF/OCR operations.
+- Removed the discontinued Theme system and theme propagation code; the suite uses the stable Executive interface.
+- Migrates old workspaces by deleting obsolete AI/theme settings and AI history without affecting Word, Excel, Presentation, Notes, Calendar, Tasks, Meetings, Contacts or file data.
+- Preserved v13 performance hardening for debounced Presentation persistence and the improved Excel formula engine.
+- Updated visible suite labels, manifest and PWA cache to v16.
+
+## Verification
+- Main modules: 13
+- Navigation targets: 13
+- Missing navigation destinations: 0
+- Duplicate main HTML IDs: 0
+- Inline UI action calls checked: 123
+- Unresolved inline handlers: 0
+- Ethan AI UI/navigation present: No
+- Main JavaScript syntax: PASS
+- Document Utility inline JavaScript syntax: PASS
+- Gateway JavaScript syntax: PASS
+- Gateway routes: /health, /api/convert, /api/pdf only
+- Manifest JSON: PASS
+- Service-worker referenced assets missing: 0
+- Codemagic YAML parsed successfully with debug and release workflows
+- Android package: org.ethandigitalacademy.office
+- Android versionName: 16.0.0
+- Android versionCode: 17
+
+## Note
+A local Chromium click-through could not be completed in this container because its headless browser environment would not load the temporary localhost test server. The code, handlers, navigation, JavaScript, manifest, service-worker references, gateway and Android project structure were validated directly instead. Android APK compilation remains a Codemagic step.
