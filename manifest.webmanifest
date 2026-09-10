@@ -1,17 +1,18 @@
 {
-  "name": "Ethan Office Suite",
+  "name": "Ethan Office Suite v16",
   "short_name": "Ethan Office",
-  "description": "Ethan Office Suite v21 \u2014 Word, Excel, Presentation, Document Utility and everyday office productivity tools.",
+  "description": "Ethan Office Suite v16 with Word, Excel, Presentation, Document Utility and everyday office productivity tools",
   "id": "./",
-  "start_url": "./",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "display_override": [
+    "window-controls-overlay",
     "standalone",
     "minimal-ui"
   ],
-  "background_color": "#F4F7FB",
-  "theme_color": "#102A56",
+  "background_color": "#eaf0f7",
+  "theme_color": "#071a38",
   "categories": [
     "productivity",
     "business",
@@ -22,25 +23,13 @@
       "src": "assets/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "any maskable"
     },
     {
       "src": "assets/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "assets/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "assets/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     }
   ],
   "shortcuts": [
@@ -99,9 +88,5 @@
         }
       ]
     }
-  ],
-  "lang": "en",
-  "dir": "ltr",
-  "orientation": "any",
-  "prefer_related_applications": false
+  ]
 }

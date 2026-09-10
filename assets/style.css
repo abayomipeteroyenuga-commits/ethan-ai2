@@ -102,241 +102,46 @@ body{overflow-x:hidden}
 .tool,.card,.panel{min-width:0}
 @media(max-width:700px){.content{min-width:0}.grid{min-width:0}}
 
+/* ===== Ethan Office v17 — presentation-grade workspace ===== */
+#presWorkspace{position:relative}.presTop{position:sticky!important;top:0!important;z-index:120!important;border-radius:0!important}.presRibbon{position:sticky;top:55px;z-index:110}.presRibbon .ribbonTabs{min-height:37px}.presRibbon .ribbonBody{min-height:82px}.presNormalView{height:calc(100vh - 238px);min-height:620px;grid-template-columns:190px minmax(0,1fr);overflow:hidden}.presThumbPane{height:100%;padding:0!important;display:flex;flex-direction:column}.presPaneHead{height:38px;display:flex;align-items:center;justify-content:space-between;padding:0 10px;border-bottom:1px solid #cfd4da;font-size:12px;font-weight:700;color:#4b5563}.presPaneHead button{width:27px;height:27px;border:0;border-radius:4px;background:#fff;color:#a33218;font-size:18px;cursor:pointer}.presThumbPane .thumbs{padding:10px;overflow:auto;flex:1}.presLayout .thumb{position:relative;aspect-ratio:16/9;min-height:0!important;padding:10px 9px 8px 26px;overflow:hidden;background:#fff;color:#1d2733;box-shadow:0 2px 5px #0002}.presLayout .thumb small{position:absolute;left:5px;top:5px;color:#6b7280}.presLayout .thumb b{display:block;font-size:10px;line-height:1.15;margin-bottom:4px}.presMain{height:100%;padding:0!important;display:grid;grid-template-rows:minmax(0,1fr) 92px;overflow:hidden;background:#d7d9dd}.slideStage{min-height:0;display:grid;place-items:center;padding:24px 34px!important;overflow:auto;background:#d7d9dd}.slide{width:min(960px,92%);max-width:none!important;max-height:calc(100vh - 365px);padding:7% 8%;border-radius:0!important;outline:1px solid rgba(0,0,0,.15);box-sizing:border-box}.slide h1,.slide p{outline:0;min-width:40%;cursor:text}.slide h1:empty:before,.slide p:empty:before{content:attr(data-placeholder);opacity:.55}.slide h1:focus,.slide p:focus{outline:1px dashed rgba(255,255,255,.55);outline-offset:6px}.slide.theme-light h1:focus,.slide.theme-light p:focus{outline-color:#557}.presNotesPane{background:#fff;border-top:1px solid #c6cbd1;display:grid;grid-template-columns:58px 1fr;min-height:0}.presNotesLabel{padding:12px 10px;font-size:11px;font-weight:700;color:#626b76;border-right:1px solid #e1e4e8}.presNotesPane textarea{border:0!important;border-radius:0!important;resize:none;padding:11px 14px;font:13px/1.45 Aptos,"Segoe UI",sans-serif;outline:0}.presDataFields{display:none!important}.presFooterMeta{z-index:2}.presRibbon .ribbonGroup button{min-width:42px}.presRibbon .ribbonGroup select{max-width:145px}.presSorterMode .presThumbPane{display:none}.presSorterMode{grid-template-columns:1fr!important}.presSorterMode .presMain{display:block;overflow:auto;padding:24px!important}.presSorterMode .slideStage{display:none}.presSorterMode .presNotesPane{display:none}.presSorterGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px}.presSorterCard{aspect-ratio:16/9;background:#fff;border:2px solid transparent;box-shadow:0 4px 12px #0002;padding:18px;cursor:pointer;overflow:hidden}.presSorterCard.active{border-color:#c43e1c}.presSorterCard h3{font-size:18px;margin:0 0 10px}.presSorterCard p{font-size:11px;white-space:pre-wrap}.presPresenterOverlay{position:fixed;inset:0;z-index:9999;background:#101318;color:#fff;display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr auto;gap:18px;padding:22px}.presPresenterCurrent{background:#222;display:grid;place-items:center;overflow:hidden}.presPresenterCurrent .slide{width:95%;max-height:78vh}.presPresenterSide{display:grid;grid-template-rows:auto 1fr;gap:14px}.presPresenterNext,.presPresenterNotes{background:#1d222a;border:1px solid #343b45;border-radius:8px;padding:14px;overflow:auto}.presPresenterControls{grid-column:1/-1;display:flex;align-items:center;gap:8px}.presPresenterControls button{padding:9px 13px;border:1px solid #555;background:#242b34;color:#fff;border-radius:5px;cursor:pointer}.presPresenterControls .grow{flex:1}
+@media(max-width:800px){.presTop{top:0!important}.presRibbon{top:55px}.presNormalView{height:auto;min-height:680px;grid-template-columns:1fr}.presThumbPane{height:130px}.presThumbPane .thumbs{flex-direction:row;padding:8px}.presLayout .thumb{min-width:150px!important}.presMain{height:550px}.slideStage{padding:14px!important}.slide{width:98%;max-height:360px}.presPresenterOverlay{grid-template-columns:1fr}.presPresenterSide{display:none}.presPresenterControls{grid-column:1}}
 
-/* =========================================================
-   ETHAN OFFICE v17 — EXECUTIVE AZURE
-   Premium light enterprise interface. Functional CSS only.
-   ========================================================= */
-:root{
-  --navy:#102A56;
-  --navy-2:#153A70;
-  --blue:#2563EB;
-  --blue2:#38A3FF;
-  --bg:#F4F7FB;
-  --card:#FFFFFF;
-  --text:#172033;
-  --muted:#667085;
-  --line:#DCE4F0;
-  --soft:#EEF4FF;
-  --shadow:0 12px 32px rgba(24,55,101,.10);
-  --shadow-soft:0 4px 16px rgba(24,55,101,.07);
-}
-html{background:#F4F7FB}
-body{
-  background:
-    radial-gradient(circle at 82% 0%,rgba(56,163,255,.10),transparent 28%),
-    linear-gradient(180deg,#F8FAFD 0%,#F2F6FB 50%,#F6F8FC 100%) !important;
-  color:var(--text);
-}
-.app{background:transparent}
-.sidebar{
-  background:
-    radial-gradient(circle at 18% 3%,rgba(77,163,255,.22),transparent 26%),
-    linear-gradient(180deg,#102A56 0%,#0D244A 55%,#0A1D3D 100%) !important;
-  border-right:1px solid rgba(255,255,255,.08);
-  box-shadow:12px 0 34px rgba(12,38,78,.11);
-  padding:18px 13px;
-}
-.brand{
-  margin:0 3px 14px;
-  padding:7px 8px 18px;
-  border-bottom:1px solid rgba(255,255,255,.13);
-}
-.brand img{
-  width:48px;height:48px;border-radius:14px;
-  box-shadow:0 8px 24px rgba(0,0,0,.20);
-  border:1px solid rgba(255,255,255,.22);
-}
-.brand b{font-size:20px;letter-spacing:-.02em}
-.brand small{color:#B9CBE5;opacity:1;margin-top:2px}
-.nav{gap:5px;margin-top:7px}
-.nav button{
-  position:relative;
-  color:#DCE9F8;
-  padding:11px 12px;
-  border-radius:12px;
-  font-weight:650;
-  transition:background .18s ease,transform .18s ease,color .18s ease,box-shadow .18s ease;
-}
-.nav button:hover{
-  background:rgba(255,255,255,.085) !important;
-  color:#fff;
-  transform:translateX(2px);
-}
-.nav button.active{
-  background:linear-gradient(100deg,#2563EB 0%,#2F80ED 70%,#38A3FF 100%) !important;
-  color:#fff;
-  box-shadow:0 8px 20px rgba(37,99,235,.28);
-}
-.nav button.active::before{
-  content:"";
-  position:absolute;left:-6px;top:9px;bottom:9px;width:3px;
-  border-radius:999px;background:#8FD3FF;
-}
-.nav .ico{
-  width:28px;height:28px;display:grid;place-items:center;
-  background:rgba(255,255,255,.08);border-radius:8px;
-  font-size:16px;
-}
-.nav button.active .ico{background:rgba(255,255,255,.18)}
-.sidebar-foot{
-  color:#B6C8E0;opacity:1;
-  border-top:1px solid rgba(255,255,255,.11);
-}
-.main{background:transparent}
-.topbar{
-  height:74px;
-  background:rgba(255,255,255,.96) !important;
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid #E4EAF2;
-  box-shadow:0 3px 14px rgba(24,55,101,.04);
-}
-.menuBtn{
-  background:#EEF4FF !important;color:#18498E;
-  border:1px solid #D9E6FA !important;
-}
-.search input{
-  background:#F8FAFD !important;
-  border:1px solid #D8E2EF !important;
-  border-radius:14px;
-  box-shadow:inset 0 1px 2px rgba(16,42,86,.02);
-  transition:.18s ease;
-}
-.search input:focus{
-  background:#fff !important;
-  border-color:#7FB3FF !important;
-  box-shadow:0 0 0 4px rgba(37,99,235,.10);
-}
-.content{padding:28px}
-.titleRow{margin-bottom:20px}
-.titleRow h1{color:#102A56 !important;font-size:29px;letter-spacing:-.025em}
-.titleRow p{color:#667085 !important}
-.btn{
-  background:#EEF4FF;
-  color:#18498E;
-  border:1px solid #DCE8F8;
-  border-radius:11px;
-  box-shadow:0 1px 2px rgba(16,42,86,.03);
-  transition:transform .15s ease,box-shadow .15s ease,background .15s ease;
-}
-.btn:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(24,55,101,.09);background:#E6F0FF}
-.btn.primary{
-  background:linear-gradient(100deg,#2563EB,#2F80ED 68%,#38A3FF) !important;
-  border-color:transparent !important;
-  color:#fff;
-  box-shadow:0 8px 18px rgba(37,99,235,.20);
-}
-.btn.green{background:#EAF8F0 !important;color:#147A43 !important;border-color:#CDEEDD}
-.btn.orange{background:#FFF4E6 !important;color:#9C5B10 !important;border-color:#FFE0B6}
-.btn.red{background:#FFF0F0 !important;color:#B42318 !important;border-color:#FFD5D2}
-.hero{
-  background:
-    radial-gradient(circle at 95% 5%,rgba(147,210,255,.34),transparent 28%),
-    linear-gradient(120deg,#12366E 0%,#1D5FC2 55%,#2F8FEA 100%) !important;
-  border:1px solid rgba(255,255,255,.20);
-  border-radius:24px;
-  box-shadow:0 18px 46px rgba(27,71,133,.20);
-}
-.hero img{box-shadow:0 14px 30px rgba(3,24,60,.24)}
-.grid{gap:16px}
-.tool,.card,.panel,.item{
-  background:#fff !important;
-  border:1px solid #E0E7F0 !important;
-  box-shadow:var(--shadow-soft) !important;
-}
-.tool{border-radius:18px;padding:18px}
-.tool:hover{
-  transform:translateY(-3px);
-  border-color:#C9DAEE !important;
-  box-shadow:0 14px 28px rgba(25,66,120,.12) !important;
-}
-.tool h3,.card h3,.section h2{color:#19355F}
-.tool p,.muted{color:#667085 !important}
-.card{border-radius:16px}
-.panel{border-radius:19px}
-.empty{
-  background:#FAFCFF !important;
-  border-color:#CCD9EA !important;
-  color:#708096 !important;
-}
-.toolbar{
-  background:#F8FAFD !important;
-  border-bottom:1px solid #E1E8F1 !important;
-}
-.toolbar button,.toolbar select,.toolbar input{
-  background:#fff !important;
-  border-color:#D9E2EE !important;
-}
-.toolbar button:hover{background:#EEF5FF !important;border-color:#BFD4EF !important}
-.officeTop{
-  background:#fff !important;
-  border-color:#E0E7F0 !important;
-}
-.editorWrap{background:#E8EEF5 !important}
-.editor{box-shadow:0 10px 32px rgba(31,60,99,.10)}
-.sheetWrap{background:#fff}
-.sheet th{
-  background:#F3F7FC !important;
-  color:#314766;
-}
-.sheet td:first-child,.sheet th:first-child{background:#F3F7FC !important}
-.sheet td[contenteditable]:focus{box-shadow:inset 0 0 0 2px #2563EB !important}
-.sheet td.selected{background:#EDF5FF !important;outline-color:#2563EB !important}
-.field input,.field textarea,.field select,.calcDisplay{
-  border-color:#D9E3EF !important;
-  background:#fff !important;
-}
-.field input:focus,.field textarea:focus,.field select:focus,.calcDisplay:focus{
-  outline:none;border-color:#78AFFF !important;box-shadow:0 0 0 4px rgba(37,99,235,.09)
-}
-.fileCommandBar,.storageBanner,.libraryNotice,.utilityInfoBar{
-  background:#fff !important;
-  border:1px solid #E0E7F0 !important;
-  box-shadow:var(--shadow-soft);
-}
-.fileTabs button.active{
-  background:#EAF2FF !important;color:#1E5EC8 !important;
-  box-shadow:inset 0 -2px 0 #2563EB;
-}
-.fileSearchBox{
-  background:#F8FAFD !important;border-color:#DCE4F0 !important;
-}
-.thumb.active{border-color:#2563EB !important;box-shadow:0 0 0 2px rgba(37,99,235,.08)}
-.thumbs{background:#F4F7FB !important}
-.slideStage{
-  background:
-    radial-gradient(circle at 50% 0,#253F67 0,#182D4E 45%,#11223D 100%) !important;
-}
-.slide{box-shadow:0 22px 56px rgba(3,19,42,.34)}
-.calcGrid button{background:#F1F5FB !important;color:#233A5C}
-.calcGrid button:hover{background:#E5EEFA !important}
-.calcGrid button.eq{background:linear-gradient(100deg,#2563EB,#3187EE) !important;color:#fff}
-.modal{background:rgba(8,26,55,.48) !important;backdrop-filter:blur(3px)}
-.modalbox{
-  border:1px solid #E1E7EF;
-  box-shadow:0 28px 80px rgba(14,37,72,.24) !important;
-}
-.toast{background:#102A56 !important}
-.footer{color:#7B879B}
-.badge{background:#EAF2FF !important;color:#225CB5 !important}
-.badge.done{background:#E7F7ED !important;color:#147243 !important}
-.net.online{background:#E8F7EF !important;color:#13754A !important}
-.saveStatus{background:#F0F4FA !important;color:#5C6B80 !important}
-.saveStatus.ok{background:#E7F7ED !important;color:#147243 !important}
-@media(max-width:800px){
-  .sidebar{box-shadow:18px 0 50px rgba(4,18,42,.22)}
-  .content{padding:18px}
-  .topbar{height:68px}
-}
-@media(max-width:500px){
-  .content{padding:14px}
-  .tool,.card{border-radius:15px}
-}
+/* v17.1 Presentation canvas workspace enlargement */
+#presWorkspace .presNormalView{grid-template-columns:150px minmax(0,1fr)!important;height:calc(100vh - 218px)!important;min-height:660px!important}
+#presWorkspace .presMain{grid-template-rows:minmax(0,1fr) 72px!important}
+#presWorkspace .slideStage{padding:10px 12px!important;overflow:auto!important}
+#presWorkspace .slide{width:min(1180px,98%)!important;max-width:1180px!important;max-height:calc(100vh - 300px)!important;padding:6% 7%!important;box-shadow:0 10px 24px rgba(20,24,32,.18)!important}
+#presWorkspace .slide h1{font-size:clamp(34px,4.4vw,64px)!important;margin-bottom:18px!important}
+#presWorkspace .slide p{font-size:clamp(20px,2.25vw,34px)!important;line-height:1.35!important}
+#presWorkspace .presThumbPane .thumbs{padding:7px!important}
+#presWorkspace .presLayout .thumb{padding:7px 6px 6px 22px!important}
+#presWorkspace .presNotesPane{grid-template-columns:50px 1fr!important}
+#presWorkspace .presNotesLabel{padding:9px 7px!important}
+#presWorkspace .presNotesPane textarea{padding:8px 10px!important;font-size:12px!important}
+@media(max-width:1000px) and (min-width:801px){#presWorkspace .presNormalView{grid-template-columns:125px minmax(0,1fr)!important}#presWorkspace .slide{width:99%!important;padding:5.5% 6%!important}}
+@media(max-width:800px){#presWorkspace .presNormalView{height:auto!important;min-height:720px!important}#presWorkspace .presMain{height:600px!important;grid-template-rows:minmax(0,1fr) 66px!important}#presWorkspace .slideStage{padding:6px!important}#presWorkspace .slide{width:99.5%!important;max-height:430px!important;padding:5% 6%!important}}
 
+/* ===== Ethan Office v17.2 — full-bleed Ethan Presentation canvas ===== */
+#presWorkspace .presMain{background:#fff!important;}
+#presWorkspace .slideStage{padding:0!important;margin:0!important;background:transparent!important;overflow:hidden!important;display:block!important;}
+#presWorkspace .slideStage .slide{width:100%!important;height:100%!important;min-height:100%!important;max-width:none!important;max-height:none!important;margin:0!important;border:0!important;outline:0!important;border-radius:0!important;box-shadow:none!important;box-sizing:border-box!important;}
+#presWorkspace .slideStage .slide.theme-light{border-top:0!important;}
+@media(max-width:800px){#presWorkspace .slideStage{padding:0!important}#presWorkspace .slideStage .slide{width:100%!important;height:100%!important;max-height:none!important;}}
 
-
-/* Ethan Office v18 stability/performance */
-@media (prefers-reduced-motion:reduce){
- *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
-}
+/* ===== Ethan Office v17.3 — draggable PowerPoint-style placeholders ===== */
+#presWorkspace .slideStage .slide{position:relative!important;padding:0!important;overflow:hidden!important;}
+#presWorkspace .presObject{position:absolute;box-sizing:border-box;min-width:140px;min-height:54px;border:1px solid transparent;outline:0;z-index:3;}
+#presWorkspace .presObject:hover,#presWorkspace .presObject:focus-within,#presWorkspace .presObject.is-selected{border-color:rgba(72,92,125,.72);box-shadow:0 0 0 1px rgba(255,255,255,.35) inset;}
+#presWorkspace .presObject .presDragHandle{position:absolute;left:50%;top:-18px;transform:translateX(-50%);display:none;align-items:center;justify-content:center;width:42px;height:18px;padding:0;border:1px solid #708096;border-bottom:0;border-radius:5px 5px 0 0;background:#fff;color:#34465d;font-size:13px;line-height:1;cursor:grab;z-index:5;touch-action:none;user-select:none;box-shadow:0 -1px 3px #0002;}
+#presWorkspace .presObject:hover .presDragHandle,#presWorkspace .presObject:focus-within .presDragHandle,#presWorkspace .presObject.is-selected .presDragHandle{display:flex;}
+#presWorkspace .presObject .presDragHandle:active{cursor:grabbing;}
+#presWorkspace .presObject h1,#presWorkspace .presObject p{width:100%;height:100%;box-sizing:border-box;margin:0!important;padding:8px 12px;overflow:auto;}
+#presWorkspace .presTitleObject{left:7%;top:10%;width:86%;height:22%;}
+#presWorkspace .presBodyObject{left:7%;top:38%;width:86%;height:47%;}
+#presWorkspace .slide.layout-section .presTitleObject{left:10%;top:30%;width:80%;height:22%;}
+#presWorkspace .slide.layout-section .presBodyObject{left:14%;top:55%;width:72%;height:22%;}
+#presWorkspace .slide.layout-title-only .presTitleObject{left:7%;top:14%;width:86%;height:25%;}
+#presWorkspace .slide.layout-title-only .presBodyObject{display:none!important;}
+#presWorkspace .presObject::after{content:"";position:absolute;right:-5px;bottom:-5px;width:9px;height:9px;border:1px solid #63748b;background:#fff;cursor:nwse-resize;display:none;}
+#presWorkspace .presObject:hover::after,#presWorkspace .presObject:focus-within::after,#presWorkspace .presObject.is-selected::after{display:block;}
+@media(max-width:800px){#presWorkspace .presObject .presDragHandle{top:-16px;height:16px;width:36px}.presObject h1,.presObject p{padding:5px 7px!important}}

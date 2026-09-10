@@ -1,4 +1,4 @@
-Ethan Office Suite v20
+Ethan Office Suite v17
 
 Clean stable office suite with Ethan AI removed for separate development.
 
