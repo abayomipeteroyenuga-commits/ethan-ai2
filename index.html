@@ -1,180 +1,68 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#ffffff" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <meta name="apple-mobile-web-app-title" content="ETHAN AI" />
-  <meta name="description" content="ETHAN AI Search — professional AI search with source-backed answers, web results, learning tools and file search." />
-  <title>ETHAN AI</title>
-  <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="icon" href="icon-192.png" type="image/png" />
-  <link rel="apple-touch-icon" href="icon-192.png" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-<header class="topbar">
-  <button class="brand-home" id="homeBtn" aria-label="ETHAN AI home"><img src="ethan-ai-logo.png" alt="ETHAN AI"/><span><strong>ETHAN AI</strong><small>AI SEARCH & KNOWLEDGE</small></span></button>
-  <nav class="main-menu" aria-label="Main navigation">
-    <button id="discoverBtn" class="nav-btn nav-primary"><span class="nav-ico">＋</span><span>New chat</span></button>
-    <div class="nav-section-label">WORKSPACE</div>
-    <button id="projectsBtn" class="nav-btn"><span class="nav-ico">▦</span><span>Projects</span></button>
-    <button id="libraryBtn" class="nav-btn"><span class="nav-ico">▤</span><span>Library</span></button>
-    <button id="scheduleBtn" class="nav-btn"><span class="nav-ico">◷</span><span>Scheduled</span></button>
-    <button id="pinnedBtn" class="nav-btn"><span class="nav-ico">★</span><span>Pinned</span></button>
-    <div class="nav-section-label">ACTIVITY</div>
-    <button id="historyBtn" class="nav-btn"><span class="nav-ico">◴</span><span>Recent</span></button>
-    <button id="savedBtn" class="nav-btn"><span class="nav-ico">☆</span><span>Saved</span></button>
-    <div class="nav-spacer"></div>
-    <button id="pricingBtn" class="nav-btn upgrade-nav"><span class="nav-ico">✦</span><span>Upgrade plan</span><span class="upgrade-dot">PRO</span></button>
-    <button id="accountBtn" class="nav-btn account-nav"><span class="nav-ico">◉</span><span class="account-label">Account / Sign in</span></button>
-    <button id="themeBtn" class="nav-btn" title="Theme"><span class="nav-ico">◐</span><span>Appearance</span></button>
-    <button id="installBtn" class="nav-btn" title="Install ETHAN AI"><span class="nav-ico">⇩</span><span>Install app</span></button>
-  </nav>
-</header>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b3a78"><meta name="color-scheme" content="light"><meta name="description" content="Ethan Office Suite — professional everyday productivity workspace with Word, Excel, Presentation and Ethan Document Utility"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="assets/icon-192.png"><link rel="apple-touch-icon" href="assets/icon-192.png"><link rel="stylesheet" href="assets/style.css"><title>Ethan Office Suite — Executive Productivity Workspace</title></head><body>
+<div class=app><aside class=sidebar id=side><div class=brand><img src="assets/icon-96.png"><div><b>Ethan Office</b><small>Work Smarter Everyday</small></div></div><nav class=nav>
+<button class=active data-page=home><span class=ico>⌂</span>Home</button><div class="navLabel">CREATE</div><button data-page=word><span class=ico>W</span>Ethan Word</button><button data-page=excel><span class=ico>▦</span>Ethan Excel</button><button data-page=presentation><span class=ico>▶</span>Presentation</button><button data-page=documents><span class=ico>DU</span>Document Utility</button><div class="navLabel">ORGANIZE</div><button data-page=notes><span class=ico>✎</span>Notes</button><button data-page=calendar><span class=ico>▣</span>Calendar</button><button data-page=tasks><span class=ico>✓</span>Tasks</button><button data-page=meetings><span class=ico>☷</span>Meetings</button><button data-page=contacts><span class=ico>☻</span>Contacts</button><div class="navLabel">WORKSPACE</div><button data-page=templates><span class=ico>▤</span>Templates</button><button data-page=files><span class=ico>▰</span>File Manager</button><button data-page=calculator><span class=ico>＋</span>Calculator</button></nav><div class=sidebar-foot>A product of <b>Ethan Digital Academy</b><br>© 2026 Ethan Digital Academy.<br>All Rights Reserved.<br><span class="versionPill">Executive Suite v17.3</span></div></aside>
+<main class=main><header class=topbar><button id=menuBtn class=menuBtn aria-label="Open navigation">☰</button><div class="topIdentity"><strong>Professional Workspace</strong><span>My Workspace • AutoSave • Office-ready</span></div><div class=search><span>⌕</span><input id=globalSearch placeholder="Search tools, files and office apps..." aria-label="Search Ethan Office"></div><div class=top-actions><button class="btn topFileBtn" data-page=files title="Open My Office Files">My Files</button><button class=btn onclick="backup()">Backup</button><label class=btn>Restore<input id=restoreInput type=file accept=.json hidden></label></div></header><div class=content>
+<section id=page-home class="page active"><div class="hero executiveHero"><div><div class="eyebrow">ETHAN OFFICE SUITE • EXECUTIVE WORKSPACE</div><h2>One memorable workspace for serious everyday office work.</h2><p>Create, calculate, present, scan, convert, organize and manage your office files from a single polished productivity environment.</p><div class=chips><span class=chip>AutoSave Workspace</span><span class=chip>Document Utility Built In</span><span class=chip>Offline-first</span><span class=chip>Android + PWA</span></div><div class="heroActions"><button class="btn heroPrimary" data-page=word>Create Document</button><button class="btn heroGhost" data-page=documents>Open Document Utility</button><button id=installBtn class="btn hidden heroGhost">Install Ethan Office</button></div></div><div class="heroBrandOrb"><img src="assets/icon-512.png"><span>Work Smarter<br>Everyday</span></div></div><div class=grid>
+<div class=tool><div class=toolico style="background:#1671e8">W</div><h3>Ethan Word</h3><p>Letters, memos, reports, minutes and printable documents.</p><button class="btn sm" data-page=word>Open</button></div><div class=tool><div class=toolico style="background:#10a657">▦</div><h3>Ethan Excel</h3><p>Spreadsheets, formulas, calculations and CSV export.</p><button class="btn sm" data-page=excel>Open</button></div><div class=tool><div class=toolico style="background:#ff6a21">▶</div><h3>Presentation</h3><p>Create simple professional slide presentations.</p><button class="btn sm" data-page=presentation>Open</button></div><div class="tool utilityTool"><div class=toolico style="background:#b4232f">DU</div><h3>Ethan Document Utility</h3><p>Scan, OCR, convert, merge, split, sign, redact, compress, protect and organize document workflows.</p><button class="btn sm" data-page=documents>Open Utility</button></div><div class=tool><div class=toolico style="background:#6f3be7">✎</div><h3>Notes</h3><p>Quick notes, checklists and office information.</p><button class="btn sm" data-page=notes>Open</button></div><div class=tool><div class=toolico style="background:#08a9b6">▣</div><h3>Calendar</h3><p>Appointments, events and office schedules.</p><button class="btn sm" data-page=calendar>Open</button></div><div class=tool><div class=toolico style="background:#f03a88">✓</div><h3>Tasks</h3><p>Priorities, deadlines and daily to-do lists.</p><button class="btn sm" data-page=tasks>Open</button></div><div class=tool><div class=toolico style="background:#f4a000">☷</div><h3>Meetings</h3><p>Agendas, attendance, minutes and action points.</p><button class="btn sm" data-page=meetings>Open</button></div></div>
+<div class=section><div class=cards><div class=card><div class=muted>OFFICE FILES</div><h2 id=statDocs>0</h2></div><div class=card><div class=muted>OPEN TASKS</div><h2 id=statTasks>0</h2></div><div class=card><div class=muted>CALENDAR EVENTS</div><h2 id=statEvents>0</h2></div><div class=card><div class=muted>CONTACTS</div><h2 id=statContacts>0</h2></div></div></div><div class=section><h2>Recent Work</h2><div class=cards id=recentList></div></div></section>
 
-<main>
-<section id="hero" class="hero">
-  <img class="hero-logo" src="ethan-ai-logo.png" alt="ETHAN AI logo"/>
-  <h1>Search smarter. Learn faster. Do more.</h1>
-  <p class="sub">Ask questions, search the web, explore sources and continue the conversation without losing context.</p>
-
-  <div class="experience-switch" id="modeSwitch" role="tablist" aria-label="Search mode">
-    <button class="active" data-mode="search">Search</button>
-    <button data-mode="chat">AI Chat</button>
-    
+<section id=page-word class=page><div id=wordLibrary><div class=titleRow><div><h1>Ethan Word</h1><p>Professional everyday word processing with page layout, rich formatting, tables, images, references and review tools.</p></div><button class="btn primary" onclick="newWord()">+ New Document</button></div><div class="libraryNotice"><span>●</span><div><b>AutoSave is on</b><small>Documents saved here also appear in File Manager → My Office Files.</small></div><button class="btn sm" data-page=files>Open File Manager</button></div><div class=list id=wordList></div></div><div id=wordWorkspace class=hidden>
+<div class="wordAppShell">
+  <div class="wordTitlebar"><button class="wordBack" onclick="closeWord()">←</button><input id=wordTitle value="Untitled Document" aria-label="Document title"><span id=saveStatus class="saveStatus">Saved locally</span><div class="wordQuick"><button title="Undo" onclick="wordCmd('undo')">↶</button><button title="Redo" onclick="wordCmd('redo')">↷</button><button title="Save" onclick="saveWord()">💾</button></div></div>
+  <div class="wordTabs" role=tablist><button class=active onclick="wordTab('file',this)">File</button><button onclick="wordTab('home',this)">Home</button><button onclick="wordTab('insert',this)">Insert</button><button onclick="wordTab('layout',this)">Layout</button><button onclick="wordTab('references',this)">References</button><button onclick="wordTab('review',this)">Review</button><button onclick="wordTab('view',this)">View</button></div>
+  <div class="wordRibbon">
+    <div class="wordRibbonPanel active" data-wordpanel=file>
+      <div class=ribbonGroup><b>Document</b><button onclick="newWord()">New</button><button onclick="saveWord()">Save</button><button onclick="wordSaveCopy()">Save a Copy</button></div>
+      <div class=ribbonGroup><b>Open / Import</b><label class=ribbonBtn>Import Text/HTML<input id=wordImport type=file accept=".txt,.html,.htm,text/plain,text/html" hidden onchange="wordImportFile(event)"></label></div>
+      <div class=ribbonGroup><b>Export</b><button onclick="downloadWord()">Download Ethan Office .doc</button><button onclick="printWord()">Print / PDF</button></div>
+    </div>
+    <div class="wordRibbonPanel" data-wordpanel=home>
+      <div class=ribbonGroup><b>Clipboard</b><button onclick="wordCut()">Cut</button><button onclick="wordCopy()">Copy</button><button onclick="wordPastePlain()">Paste</button></div>
+      <div class=ribbonGroup><b>Font</b><select onchange="wordFontFamily(this.value)"><option value="Arial">Arial</option><option value="Calibri">Calibri</option><option value="Georgia">Georgia</option><option value="Times New Roman">Times New Roman</option><option value="Verdana">Verdana</option><option value="Courier New">Courier New</option></select><select onchange="wordCmd('fontSize',this.value)"><option value=2>10</option><option value=3 selected>12</option><option value=4>14</option><option value=5>18</option><option value=6>24</option><option value=7>36</option></select><button onclick="wordCmd('bold')"><b>B</b></button><button onclick="wordCmd('italic')"><i>I</i></button><button onclick="wordCmd('underline')"><u>U</u></button><button onclick="wordCmd('strikeThrough')"><s>S</s></button><button onclick="wordCmd('subscript')">x₂</button><button onclick="wordCmd('superscript')">x²</button><input type=color title="Text colour" onchange="wordCmd('foreColor',this.value)"><input type=color title="Highlight" value="#fff59d" onchange="wordCmd('hiliteColor',this.value)"><button onclick="wordCmd('removeFormat')">Clear</button></div>
+      <div class=ribbonGroup><b>Paragraph</b><button onclick="wordCmd('insertUnorderedList')">• List</button><button onclick="wordCmd('insertOrderedList')">1. List</button><button onclick="wordCmd('outdent')">⇤</button><button onclick="wordCmd('indent')">⇥</button><button onclick="wordCmd('justifyLeft')">Left</button><button onclick="wordCmd('justifyCenter')">Center</button><button onclick="wordCmd('justifyRight')">Right</button><button onclick="wordCmd('justifyFull')">Justify</button><select onchange="wordLineHeight(this.value)"><option value=1>1.0</option><option value=1.15 selected>1.15</option><option value=1.5>1.5</option><option value=2>2.0</option></select></div>
+      <div class=ribbonGroup><b>Styles</b><button onclick="wordStyle('p')">Normal</button><button onclick="wordStyle('h1')">Title</button><button onclick="wordStyle('h2')">Heading 1</button><button onclick="wordStyle('h3')">Heading 2</button></div>
+    </div>
+    <div class="wordRibbonPanel" data-wordpanel=insert>
+      <div class=ribbonGroup><b>Pages</b><button onclick="wordInsertPageBreak()">Page Break</button><button onclick="wordInsertHR()">Divider</button></div>
+      <div class=ribbonGroup><b>Tables & Media</b><button onclick="wordInsertTable()">Table</button><label class=ribbonBtn>Picture<input id=wordImageInput type=file accept="image/*" hidden onchange="wordInsertImage(event)"></label><button class="dangerText" onclick="wordDeleteSelectedImage()" title="Select an image in the document first">Delete Image</button></div>
+      <div class=ribbonGroup><b>Links & Text</b><button onclick="wordInsertLink()">Hyperlink</button><button onclick="wordInsertDate()">Date/Time</button><button onclick="wordInsertSymbol()">Symbol</button><button onclick="wordInsertSignatureLine()">Signature Line</button></div>
+      <div class=ribbonGroup><b>Header & Footer</b><button onclick="wordFocusHeader()">Header</button><button onclick="wordFocusFooter()">Footer</button><button onclick="wordAddPageNumber('footer')">Page Number</button></div>
+    </div>
+    <div class="wordRibbonPanel" data-wordpanel=layout>
+      <div class=ribbonGroup><b>Page Setup</b><label>Size<select onchange="wordPageSetting('size',this.value)"><option value=a4>A4</option><option value=letter>Letter</option><option value=legal>Legal</option></select></label><label>Orientation<select onchange="wordPageSetting('orientation',this.value)"><option value=portrait>Portrait</option><option value=landscape>Landscape</option></select></label><label>Margins<select onchange="wordPageSetting('margin',this.value)"><option value=normal>Normal</option><option value=narrow>Narrow</option><option value=wide>Wide</option></select></label><label>Columns<select onchange="wordPageSetting('columns',this.value)"><option value=1>One</option><option value=2>Two</option><option value=3>Three</option></select></label></div>
+      <div class=ribbonGroup><b>Page Background</b><label class=ribbonBtn>Page Colour <input type=color value="#ffffff" onchange="wordPageSetting('color',this.value)"></label></div>
+    </div>
+    <div class="wordRibbonPanel" data-wordpanel=references>
+      <div class=ribbonGroup><b>Contents</b><button onclick="wordInsertTOC()">Table of Contents</button></div><div class=ribbonGroup><b>Notes</b><button onclick="wordInsertFootnote()">Insert Footnote</button></div>
+    </div>
+    <div class="wordRibbonPanel" data-wordpanel=review>
+      <div class=ribbonGroup><b>Proofing</b><button onclick="wordFindReplace()">Find / Replace</button><button onclick="wordWordCount()">Word Count</button><button onclick="wordToggleSpellcheck()">Spellcheck</button></div><div class=ribbonGroup><b>History</b><button onclick="wordVersionHistory()">Version History</button></div>
+    </div>
+    <div class="wordRibbonPanel" data-wordpanel=view>
+      <div class=ribbonGroup><b>Document View</b><button onclick="wordTogglePrintLayout()">Print / Pageless</button><button onclick="wordToggleRuler()">Ruler</button></div><div class=ribbonGroup><b>Zoom</b><button onclick="wordZoom(-10)">−</button><span id=wordZoomLabel>100%</span><button onclick="wordZoom(10)">+</button><button onclick="wordZoomReset()">100%</button></div>
+    </div>
   </div>
+  <div class="wordWorkspaceBody"><div id=wordRuler class=wordRuler><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div><div id=wordPage class=wordPage><div id=wordHeader class=wordHeader contenteditable spellcheck=true data-placeholder="Header"></div><div id=wordEditor class=editor contenteditable spellcheck=true></div><div id=wordFooter class=wordFooter contenteditable spellcheck=true data-placeholder="Footer"></div></div></div>
+  <div class="wordStatus"><span id=wordStats>0 words • 0 characters</span><span id=wordPageInfo>Page 1</span><span id=wordLayoutInfo>A4 • Portrait • Normal margins</span><span class=grow></span><span>© 2026 Ethan Digital Academy</span></div>
+</div></div></section>
 
-  <form id="searchForm" class="searchbox hero-search">
-    <span class="magnify">⌕</span>
-    <input id="query" autocomplete="off" maxlength="500" placeholder="Ask ETHAN AI anything…"/>
-    <button type="button" id="voiceBtn" class="tool-btn" title="Voice search">🎙</button>
-    <button type="submit" class="search-submit">Search</button>
-  </form>
-  <div class="hero-capabilities" aria-label="ETHAN AI capabilities">
-    <span>✦ Smart answers</span><span>⌕ Better search</span><span>↻ Continuous chat</span><span>✓ Source-backed</span>
-  </div>
-  <div id="suggestions" class="suggestions hidden"></div>
+<section id=page-excel class=page><div id=sheetLibrary><div class=titleRow><div><h1>Ethan Excel</h1><p>Professional everyday spreadsheets, analysis and charts.</p></div><button class="btn green" onclick="newSheet()">+ New Workbook</button></div><div class="libraryNotice excelNotice"><span>●</span><div><b>AutoSave is on</b><small>Workbooks saved here also appear in File Manager → My Office Files.</small></div><button class="btn sm" data-page=files>Open File Manager</button></div><div class=list id=sheetList></div></div><div id=sheetWorkspace class=hidden><div class="officeTop excelTop"><button class=btn onclick="closeSheet()">← Back</button><input id=sheetTitle><span id=excelSaveState class=muted>Saved locally</span></div><div class="appRibbon excelRibbon"><div class=ribbonTabs><button class=active onclick="excelTab('home',this)">Home</button><button onclick="excelTab('insert',this)">Insert</button><button onclick="excelTab('formulas',this)">Formulas</button><button onclick="excelTab('data',this)">Data</button><button onclick="excelTab('review',this)">Review</button><button onclick="excelTab('view',this)">View</button><button onclick="excelTab('file',this)">File</button></div><div id=excelRibbonBody class=ribbonBody></div></div><div class=formulaStrip><span id=cellName class=cellName>A1</span><span class=fx>fx</span><input id=formulaBar placeholder="Enter value or formula" onkeydown="if(event.key==='Enter')applyFormula()"><button onclick="applyFormula()">✓</button></div><div class=sheetWrap id=sheetGrid></div><div class=sheetStatus><span id=excelStatus>Ready</span><span class=grow></span><span id=excelSummary>Sum: 0 • Average: 0 • Count: 0</span></div></div></section>
+<section id=page-presentation class=page><div id=presLibrary><div class=titleRow><div><h1>Ethan Presentation</h1><p>Professional slides, themes, layouts and presenting tools.</p></div><button class="btn orange" onclick="newPres()">+ New Presentation</button></div><div class="libraryNotice presNotice"><span>●</span><div><b>AutoSave is on</b><small>Presentations saved here also appear in File Manager → My Office Files.</small></div><button class="btn sm" data-page=files>Open File Manager</button></div><div class=list id=presList></div></div><div id=presWorkspace class=hidden><div class="officeTop presTop"><button class=btn onclick="closePres()">← Back</button><input id=presTitle><span class=muted id=presSaveState>Saved locally</span></div><div class="appRibbon presRibbon"><div class=ribbonTabs><button class=active onclick="presTab('home',this)">Home</button><button onclick="presTab('insert',this)">Insert</button><button onclick="presTab('design',this)">Design</button><button onclick="presTab('transitions',this)">Transitions</button><button onclick="presTab('slideshow',this)">Slide Show</button><button onclick="presTab('review',this)">Review</button><button onclick="presTab('view',this)">View</button><button onclick="presTab('file',this)">File</button></div><div id=presRibbonBody class=ribbonBody></div></div><div class="presLayout presNormalView"><aside class="presThumbPane"><div class="presPaneHead"><span>Slides</span><button onclick="addSlide()" title="New slide">＋</button></div><div class=thumbs id=slideThumbs></div></aside><main class="presMain"><div class=slideStage><div class=slide id=slideCanvas tabindex="0"><div class="presObject presTitleObject" id=slideTitleBox><button class="presDragHandle" type="button" title="Drag title box">⋮⋮</button><h1 id=slideLiveTitle contenteditable="true" data-placeholder="Click to add title"></h1></div><div class="presObject presBodyObject" id=slideBodyBox><button class="presDragHandle" type="button" title="Drag text box">⋮⋮</button><p id=slideLiveBody contenteditable="true" data-placeholder="Click to add text"></p></div></div></div><div class="presNotesPane"><div class="presNotesLabel">Notes</div><textarea id=speakerNotes placeholder="Click to add speaker notes"></textarea></div><div class="presEdit presDataFields" aria-hidden="true"><input id=slideTitle><textarea id=slideBody></textarea></div></main></div><div class=sheetStatus><span id=presStatus>Slide 1 of 1</span><span class=grow></span><span id=presViewLabel>Normal • 16:9 • Ethan Presentation</span></div></div></section>
+
+<section id=page-documents class=page>
+<div class="titleRow utilityTitleRow"><div><div class="eyebrow darkEyebrow">DOCUMENT INTELLIGENCE</div><h1>Ethan Document Utility</h1><p>The full Ethan Document Utility productivity toolbox is now built directly into Ethan Office Suite.</p></div><div class="utilityHeaderActions"><button class="btn" onclick="reloadDocumentUtility()">Refresh Utility</button><button class="btn primary" id="docFocusBtn" onclick="toggleDocumentUtilityFocus()">Focus Mode</button></div></div>
+<div class="utilityFeatureStrip"><span>Scan & Import</span><span>OCR Searchable PDF</span><span>Word ↔ PDF</span><span>Excel ↔ PDF</span><span>PowerPoint ↔ PDF</span><span>Merge / Split</span><span>Compress</span><span>Protect / Unlock</span><span>Signatures</span><span>Redaction</span><span>PDF/A</span><span>Batch Tools</span></div>
+<div class="utilityInfoBar"><div><b>Integrated into Ethan Office v17</b><small>Local tools work inside this workspace. Advanced cloud conversions use the optional Ethan Conversion Gateway only when the user starts them.</small></div><button class="btn sm" data-page=files>My Office Files</button></div>
+<div class="documentUtilityFrameWrap"><button class="docFocusExit" onclick="toggleDocumentUtilityFocus()">← Return to Ethan Office</button><iframe id="documentUtilityFrame" src="document-utility.html" title="Ethan Document Utility" loading="lazy" allow="camera; clipboard-read; clipboard-write" referrerpolicy="no-referrer"></iframe></div>
 </section>
 
-<section id="results" class="results hidden" aria-live="polite">
-  <div class="results-top">
-    <form id="searchFormTop" class="searchbox compact"><span class="magnify">⌕</span><input id="queryTop" maxlength="500"/><button type="button" id="voiceBtnTop" class="tool-btn">🎙</button><button type="submit" class="search-submit">Search</button></form>
-    <div class="pro-controls">
-      <label class="toggle"><input id="deepSearch" type="checkbox"><span></span> Deep Search</label>
-      <label class="toggle premium-toggle"><input id="premiumSearch" type="checkbox"><span></span> ✦ Premium AI</label>
-      <span class="safe-pill">✓ Safe Search</span>
-    </div>
-  </div>
-
-  <div class="toolbar">
-    <div class="tabs" id="tabs" role="tablist">
-      <button class="active" data-type="all">Smart Answer</button>
-      <button data-type="web">Web</button>
-      <button data-type="news">News</button>
-      <button data-type="images">Images</button>
-      <button data-type="videos">Videos</button>
-      <button data-type="education">Academic</button>
-      <button data-type="discussions">Discussions</button>
-    </div>
-    <div class="filter-row">
-      <select id="recency" aria-label="Date filter"><option value="any">Any time</option><option value="day">Past 24 hours</option><option value="week">Past week</option><option value="month">Past month</option><option value="year">Past year</option></select>
-      <select id="region" aria-label="Region filter"><option value="global">Global</option><option value="africa">Africa</option></select>
-    </div>
-  </div>
-
-  <div id="status" class="status"></div>
-  <section id="topSources" class="top-sources hidden"><div class="section-kicker">Sources</div><div id="topSourceGrid" class="top-source-grid"></div></section>
-
-  <div class="result-layout">
-    <div class="main-column">
-      <div class="conversation-header">
-        <div><span class="conversation-kicker">ETHAN AI</span><h2>Conversation</h2></div>
-        <div class="conversation-tools"><button id="copyConversation" class="conversation-tool">Copy</button><button id="clearConversationBtn" class="conversation-tool">Clear</button></div>
-      </div>
-      <section id="conversationThread" class="conversation-thread" aria-live="polite"></section>
-      <article class="answer-card legacy-answer-card">
-        <div class="answer-head"><div class="spark">✦</div><div><b id="overviewTitle">ETHAN AI Answer</b><small id="modeLabel"></small></div><div class="answer-actions"><button id="copyAnswer" class="tiny">Copy</button><button id="saveSearch" class="tiny">☆ Save</button></div></div>
-        <div id="answer" class="answer"></div>
-        <div id="citationChips" class="citation-chips"></div>
-        <div class="feedback"><span>Helpful?</span><button data-vote="up">👍</button><button data-vote="down">👎</button></div>
-      </article>
-
-      <section id="followupBlock" class="followup-block"><div class="section-title"><h3>Ask a follow-up</h3><span>Context stays with your search</span></div><form id="followupForm" class="followup-form"><input id="followup" maxlength="500" placeholder="Ask ETHAN AI to explain, compare or go deeper…"/><button type="submit">Ask</button></form><div id="related" class="related"></div></section>
-
-      <section class="sources-section"><div class="section-title"><h3 id="sourcesTitle">Web results</h3><span id="sourceCount"></span></div><div id="sourceList" class="source-list"></div></section>
-    </div>
-
-    <aside class="side-column">
-      <div class="side-card"><b>Search focus</b><button data-focus="Best reliable sources">Best sources</button><button data-focus="Official and primary sources only">Official sources</button><button data-focus="Explain this for a student">Student friendly</button><button data-focus="Compare different viewpoints">Compare views</button></div>
-      <div class="side-card"><b>ETHAN AI tools</b><p>Smart Search • Files • Voice • News • Images • Video • Academic</p></div>
-    </aside>
-  </div>
-</section>
-<section class="commercial-section" id="pricingSection">
-  <div class="section-heading">
-    <span class="eyebrow">ETHAN AI GLOBAL PLANS</span>
-    <h2>Choose the plan that fits how you use AI.</h2>
-    <p>Global pricing with selectable display currency. Final checkout currency and taxes depend on the connected payment provider and region.</p>
-    <div class="pricing-controls">
-      <div class="billing-toggle" aria-label="Billing period">
-        <button class="billing-btn active" data-billing="monthly">Monthly</button>
-        <button class="billing-btn" data-billing="annual">Annual <span>Save 20%</span></button>
-      </div>
-      <label class="currency-control">Currency
-        <select id="currencySelect" aria-label="Display currency">
-          <option value="USD">USD $</option><option value="NGN">NGN ₦</option>
-          <option value="GBP">GBP £</option><option value="EUR">EUR €</option>
-        </select>
-      </label>
-    </div>
-  </div>
-  <div class="pricing-grid pricing-grid-four">
-    <article class="price-card"><span class="plan-badge">FREE</span><h3>Free</h3><div class="price" data-usd="0">$0 <small>/ month</small></div><ul><li>20 free searches/day</li><li>Web, News & Education</li><li>Source citations</li><li>Safe Search</li></ul><button class="plan-btn" data-plan="free">Start Free</button></article>
-    <article class="price-card"><span class="plan-badge">PLUS</span><h3>Plus</h3><div class="price" data-usd="2.99">$2.99 <small>/ month</small></div><ul><li>40 Premium AI searches/month</li><li>AI Chat & Files</li><li>Deep Search allowance</li><li>Saved searches</li></ul><button class="plan-btn" data-plan="plus">Choose Plus</button></article>
-    <article class="price-card featured"><span class="plan-badge">POPULAR</span><h3>Pro</h3><div class="price" data-usd="6.99">$6.99 <small>/ month</small></div><ul><li>150 Premium AI searches/month</li><li>Higher Deep Search allowance</li><li>Larger file allowance</li><li>Priority usage tier</li></ul><button class="plan-btn primary" data-plan="pro">Choose Pro</button></article>
-    <article class="price-card"><span class="plan-badge">TEAMS</span><h3>Education & Business</h3><div class="price" data-usd="14.99">$14.99 <small>/ month</small></div><ul><li>Team-ready foundation</li><li>Education & business use</li><li>Shared administration ready</li><li>Priority support tier</li></ul><button class="plan-btn" data-plan="education-business">Choose Team Plan</button></article>
-  </div>
-  <div class="comparison-wrap">
-    <h3>Compare plans</h3>
-    <div class="comparison-table">
-      <div><strong>Feature</strong><strong>Free</strong><strong>Plus</strong><strong>Pro</strong><strong>Education & Business</strong></div>
-      <div><span>AI Search</span><span>20/day</span><span>40 Premium/mo</span><span>150 Premium/mo</span><span>350 Premium/mo</span></div>
-      <div><span>Deep Search</span><span>Limited</span><span>✓</span><span>Higher</span><span>✓</span></div>
-      <div><span>Files</span><span>Basic</span><span>✓</span><span>Larger</span><span>✓</span></div>
-      <div><span>Team features</span><span>—</span><span>—</span><span>—</span><span>Ready to connect</span></div>
-    </div>
-  </div>
-  <p class="pricing-note">Currency conversion is for display convenience until localized checkout is connected. USD remains the base product price.</p>
-</section>
-<section class="dashboard-preview" id="accountSection"><div><span class="eyebrow">MY ETHAN AI</span><h2>Account, plan and usage.</h2><p>Supabase-ready authentication and commercial data architecture are included.</p></div><div class="usage-card"><div class="usage-top"><strong>Free Plan</strong><span id="usageLabel">0 / 20 today</span></div><div class="usage-track"><span id="usageBar"></span></div><div class="usage-meta"><span>AI searches</span><span>Safe Search on</span></div></div></section>
-<div class="modal-backdrop" id="commercialModal" hidden><div class="commercial-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" aria-label="Close">×</button><img src="ethan-ai-logo.png" alt="ETHAN AI" class="modal-logo"><h2 id="modalTitle">Welcome to ETHAN AI</h2><p id="modalText">Sign in to continue.</p><div class="auth-tabs"><button class="auth-tab active" id="signInTab" data-auth="signin" type="button">Sign in</button><button class="auth-tab" id="createAccountTab" data-auth="signup" type="button">Create account</button></div><form id="authForm" class="auth-form"><input id="authName" type="text" placeholder="Your name" autocomplete="name" hidden><input id="authEmail" type="email" placeholder="Email address" autocomplete="email" required><input id="authPassword" type="password" placeholder="Password (minimum 8 characters)" autocomplete="current-password" minlength="8" required><button class="primary-action" id="authSubmit" type="submit">Sign in</button><button class="text-action" id="forgotPasswordBtn" type="button">Forgot password?</button></form><div id="authStatus" class="auth-status" role="status" aria-live="polite"></div><small class="modal-note">ETHAN AI uses secure Supabase authentication when configured. Never place a Supabase service-role key in browser files.</small></div></div>
-</main>
-
-<aside id="upgradePanel" class="panel workspace-panel upgrade-panel" aria-hidden="true">
-      <div class="panel-head"><h3>Upgrade ETHAN AI</h3><button data-close="upgradePanel">×</button></div>
-      <p class="panel-note">Choose the plan that fits your usage.</p>
-      <div class="upgrade-list">
-        <button class="upgrade-choice" data-upgrade-plan="plus"><span><b>Plus</b><small>40 Premium AI searches / month</small></span><strong>$2.99</strong></button>
-        <button class="upgrade-choice featured-choice" data-upgrade-plan="pro"><span><b>Pro</b><small>150 Premium AI searches / month</small></span><strong>$6.99</strong></button>
-        <button class="upgrade-choice" data-upgrade-plan="education"><span><b>Education / Business</b><small>350 Premium AI searches / month</small></span><strong>$14.99</strong></button>
-      </div>
-      <small class="panel-fineprint">Checkout becomes available when your payment provider is connected.</small>
-    </aside>
-<aside id="projectsPanel" class="panel workspace-panel" aria-hidden="true"><div class="panel-head"><h3>Projects</h3><button data-close="projectsPanel">×</button></div><p class="panel-note">Group your Ethan AI work by topic.</p><div id="projectsList"></div><button id="addProject" class="clear panel-primary">＋ New project</button></aside>
-<aside id="libraryPanel" class="panel workspace-panel" aria-hidden="true"><div class="panel-head"><h3>Library</h3><button data-close="libraryPanel">×</button></div><p class="panel-note">Your saved searches and useful research.</p><div id="libraryList"></div></aside>
-<aside id="schedulePanel" class="panel workspace-panel" aria-hidden="true"><div class="panel-head"><h3>Scheduled</h3><button data-close="schedulePanel">×</button></div><p class="panel-note">Keep planned research and follow-ups together.</p><div id="scheduleList"></div><button id="addSchedule" class="clear panel-primary">＋ Add scheduled item</button></aside>
-<aside id="pinnedPanel" class="panel workspace-panel" aria-hidden="true"><div class="panel-head"><h3>Pinned</h3><button data-close="pinnedPanel">×</button></div><p class="panel-note">Important conversations you want close at hand.</p><div id="pinnedList"></div><button id="pinCurrent" class="clear panel-primary">★ Pin current conversation</button></aside>
-
-<aside id="appearancePanel" class="panel workspace-panel" aria-hidden="true"><div class="panel-head"><h3>Appearance</h3><button data-close="appearancePanel">×</button></div><p class="panel-note">ETHAN AI is using the clean plain-white interface.</p><div class="appearance-choice active"><span>○</span><div><b>Plain White</b><small>Active on the full interface</small></div><strong>✓</strong></div></aside>
-<aside id="historyPanel" class="panel" aria-hidden="true"><div class="panel-head"><h3>Search history</h3><button data-close="historyPanel">×</button></div><div id="historyList"></div><button id="clearHistory" class="clear">Clear history</button></aside>
-<aside id="savedPanel" class="panel" aria-hidden="true"><div class="panel-head"><h3>Saved searches</h3><button data-close="savedPanel">×</button></div><div id="savedList"></div><button id="clearSaved" class="clear">Clear saved</button></aside>
-
-<footer><img src="ethan-ai-logo.png" alt="ETHAN AI"/><div><strong>ETHAN AI</strong><span>Your World of Knowledge</span></div><span>search.ethandigitalacademy.org</span><span class="build-tag">v7.7.0</span></footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="config.js"></script>
-  <script src="app.js" defer></script>
-</body></html>
+<section id=page-notes class=page><div class=titleRow><div><h1>Ethan Notes</h1><p>Notebooks, pinned notes, checklists and searchable office information.</p></div><button class="btn primary" onclick="addNote()">+ Note</button></div><div class=cards id=notesList></div></section>
+<section id=page-calendar class=page><div class=titleRow><div><h1>Ethan Calendar</h1><p>Appointments, reminders and schedules in one place.</p></div><button class="btn primary" onclick="addEvent()">+ Event</button></div><div class=list id=eventList></div></section>
+<section id=page-tasks class=page><div class=titleRow><div><h1>Ethan Tasks</h1><p>Priorities, due dates, status filters and daily work planning.</p></div><button class="btn primary" onclick="addTask()">+ Task</button></div><div class=list id=taskList></div></section>
+<section id=page-meetings class=page><div class=titleRow><div><h1>Meetings</h1><p>Agenda, attendance, minutes and action points.</p></div><button class="btn primary" onclick="addMeeting()">+ Meeting</button></div><div class=cards id=meetingList></div></section>
+<section id=page-contacts class=page><div class=titleRow><div><h1>Ethan Contacts</h1><p>Searchable address book for clients, colleagues and suppliers.</p></div><button class="btn primary" onclick="addContact()">+ Contact</button></div><div class=cards id=contactList></div></section>
+<section id=page-templates class=page><div class=titleRow><div><h1>Office Templates</h1><p>Start common office documents quickly.</p></div></div><div class=grid><div class=tool><div class=toolico style="background:#1772e9">✉</div><h3>Business Letter</h3><p>Formal correspondence template.</p><button class=btn onclick="useTemplate('letter')">Use Template</button></div><div class=tool><div class=toolico style="background:#6c3ce8">M</div><h3>Office Memo</h3><p>Internal memorandum template.</p><button class=btn onclick="useTemplate('memo')">Use Template</button></div><div class=tool><div class=toolico style="background:#09a45b">☷</div><h3>Meeting Minutes</h3><p>Structured meeting minutes template.</p><button class=btn onclick="useTemplate('minutes')">Use Template</button></div><div class=tool><div class=toolico style="background:#ff8b1e">R</div><h3>Office Report</h3><p>Executive summary, findings and recommendations.</p><button class=btn onclick="useTemplate('report')">Use Template</button></div></div></section>
+<section id=page-files class=page><div class=titleRow><div><h1>My Office Files</h1><p>Your editable Ethan Word, Excel, Presentation, Notes and imported office items are saved here automatically.</p></div><div><button class="btn" data-page=documents>Document Utility</button> <button class=btn onclick="backup()">Backup Workspace</button><label class=btn>Restore Backup<input id=restoreInput2 type=file accept=.json hidden></label></div></div><div class="storageBanner"><div class="storageIcon">▰</div><div><b>Where are my saved documents?</b><p><strong>Save</strong> keeps the editable working file inside Ethan Office and it appears here and in the matching suite library. <strong>Download / Export</strong> creates a separate copy in your browser or device Downloads folder.</p></div></div><div class="fileCommandBar"><div class="fileTabs" role=tablist><button class=active onclick="setFileView('all',this)">All Files</button><button onclick="setFileView('recent',this)">Recent</button><button onclick="setFileView('favorites',this)">Favorites</button><button onclick="setFileView('trash',this)">Recycle Bin</button></div><div class="fileSearchBox">⌕ <input id=fileSearch placeholder="Search my office files" oninput="renderFiles()"></div></div><div id=fileWorkspace><div class=list id=filesList></div></div><div id=trashWorkspace class=hidden><div class="titleRow compactTitle"><div><h2>Recycle Bin</h2><p>Restore deleted Word, Excel and Presentation files, or permanently empty the bin.</p></div><button class="btn red sm" onclick="emptyTrash()">Empty Bin</button></div><div class=list id=trashList></div></div></section>
+<section id=page-calculator class=page><div class=titleRow><div><h1>Calculator</h1><p>Quick everyday office calculations.</p></div></div><div class="panel calc" style="padding:18px"><input readonly id=calcDisplay class=calcDisplay><div class=calcGrid><button onclick="calcKey('C')">C</button><button onclick="calcKey('(')">(</button><button onclick="calcKey(')')">)</button><button onclick="calcKey('←')">←</button><button onclick="calcKey('7')">7</button><button onclick="calcKey('8')">8</button><button onclick="calcKey('9')">9</button><button onclick="calcKey('/')">/</button><button onclick="calcKey('4')">4</button><button onclick="calcKey('5')">5</button><button onclick="calcKey('6')">6</button><button onclick="calcKey('*')">*</button><button onclick="calcKey('1')">1</button><button onclick="calcKey('2')">2</button><button onclick="calcKey('3')">3</button><button onclick="calcKey('-')">-</button><button onclick="calcKey('0')">0</button><button onclick="calcKey('.')">.</button><button onclick="calcKey('%')">%</button><button onclick="calcKey('+')">+</button><button class=eq onclick="calcKey('=')">=</button></div></div></section>
+<div class=footer>ETHAN OFFICE — Your Complete Everyday Office Suite<br>A Product of Ethan Digital Academy • © 2026 Ethan Digital Academy — All Rights Reserved.</div></div></main></div>
+<div id=modal class=modal><div class=modalbox><div class=titleRow><h2 id=modalTitle></h2><button class=btn onclick="closeModal()">×</button></div><div id=modalContent></div><div style="margin-top:15px;display:flex;justify-content:flex-end;gap:8px"><button class=btn onclick="closeModal()">Cancel</button><button id=modalSave class="btn primary">Save</button></div></div></div><div id=toast class=toast></div><script src="assets/app.js"></script><script>if('serviceWorker'in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('sw.js');const r2=document.getElementById('restoreInput2');if(r2)r2.onchange=document.getElementById('restoreInput').onchange;</script></body></html>
