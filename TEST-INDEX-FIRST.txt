@@ -1,0 +1,9 @@
+ETHAN AI SEARCH v4 — QUICK TEST
+
+1. Extract this ZIP.
+2. Double-click index.html.
+3. Search normally to test the interface and fallback knowledge search.
+4. Try Search / AI Chat / Files modes.
+5. Voice search works in browsers that permit microphone access for local pages; otherwise test it after deployment.
+6. TXT, MD, CSV, JSON and HTML files can be read in Files mode. PDF selection is visible, but full PDF text extraction is a future server-side step.
+7. For live AI + web results, deploy to Vercel/Render and configure OPENAI_API_KEY as a server environment variable.

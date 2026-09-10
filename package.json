@@ -1,0 +1,13 @@
+{
+  "name": "ethan-ai",
+  "version": "7.7.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "check": "node --check api/search.js && node --check api/health.js && node --check app.js && node --check public/app.js && node --check sw.js && node --check public/sw.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

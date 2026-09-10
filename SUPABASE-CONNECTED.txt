@@ -1,0 +1,10 @@
+ETHAN AI Supabase connection configured.
+Project URL: https://qcdmrqvxosihmmczmojb.supabase.co
+Publishable key: configured in config.js
+
+Next steps in Supabase:
+1. Authentication -> Providers -> Email: enable Email provider.
+2. Authentication -> URL Configuration: set Site URL to your deployed ETHAN AI domain.
+3. Run supabase/schema.sql in SQL Editor after reviewing it.
+4. Test Create Account, email confirmation (if enabled), Sign In, refresh/session persistence, Forgot Password, and Sign Out.
+5. Do not expose service_role or secret keys in the frontend.
